@@ -5,8 +5,10 @@ alembic
 psycopg2-binary
 pydantic
 pydantic-settings
-python-jose[cryptography]
+PyJWT
+email-validator
 passlib[bcrypt]
+bcrypt==3.2.2
 python-multipart
 requests
 beautifulsoup4

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.api.routers import auth, users
 
 app = FastAPI(
     title="Monitor de Editais API",
@@ -9,3 +10,6 @@ app = FastAPI(
 @app.get("/")
 def read_root():
     return {"message": "Monitor de Editais API is running"}
+
+app.include_router(auth.router, prefix="/auth", tags=["auth"])
+app.include_router(users.router, prefix="/users", tags=["users"])
