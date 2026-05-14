@@ -1,10 +1,19 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.api.routers import auth, users, admin_institutions, admin_sources, notices, alerts, notifications, admin_match
 
 app = FastAPI(
     title="Monitor de Editais API",
     description="API para o MVP da plataforma Monitor de Editais",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/")
