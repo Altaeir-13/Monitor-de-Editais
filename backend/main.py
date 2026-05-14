@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.routers import auth, users
+from app.api.routers import auth, users, admin_institutions, admin_sources
 
 app = FastAPI(
     title="Monitor de Editais API",
@@ -13,3 +13,5 @@ def read_root():
 
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(users.router, prefix="/users", tags=["users"])
+app.include_router(admin_institutions.router, prefix="/admin/institutions", tags=["admin-institutions"])
+app.include_router(admin_sources.router, prefix="/admin/sources", tags=["admin-sources"])
