@@ -4,9 +4,11 @@ import AdminRoute from '../components/AdminRoute';
 import Layout from '../components/Layout';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
+import NoticesPage from '../pages/public/NoticesPage';
+import NoticeDetailPage from '../pages/public/NoticeDetailPage';
 
 // ── Placeholder pages for future subetapas ──────────────────────────────────
-// These are minimal placeholders. Real implementations come in 8B/8C/8D.
+// These are minimal placeholders. Real implementations come in 8C/8D.
 
 function PlaceholderPage({ title }: { title: string }) {
   return (
@@ -29,11 +31,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/notices',
-    element: <PlaceholderPage title="Editais" />,
+    element: <NoticesPage />,
   },
   {
     path: '/notices/:id',
-    element: <PlaceholderPage title="Detalhe do Edital" />,
+    element: <NoticeDetailPage />,
   },
 
   // Protected routes (require authentication)

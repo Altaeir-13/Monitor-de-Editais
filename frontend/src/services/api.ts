@@ -89,5 +89,70 @@ export async function getMe(): Promise<UserResponse> {
   return response.data;
 }
 
+// ── Notices Service ───────────────────────────────────────────────────────────
+
+export interface InstitutionBasicResponse {
+  id: number;
+  name: string;
+  initials: string;
+  state: string;
+  official_site_url: string;
+}
+
+export interface NoticeResponse {
+  id: number;
+  institution_id: number;
+  source_id: number;
+  title: string;
+  url: string;
+  notice_type: string;
+  detected_at: string;
+  publication_date: string | null;
+  description: string | null;
+  is_active: boolean;
+}
+
+export interface NoticeDetailResponse extends NoticeResponse {
+  institution: InstitutionBasicResponse | null;
+}
+
+export interface NoticesFilters {
+  keyword?: string;
+  state?: string;
+  notice_type?: string;
+  detected_after?: string;
+  detected_before?: string;
+  skip?: number;
+  limit?: number;
+}
+
+/**
+ * GET /notices
+ * Public endpoint — lists active notices with optional filters.
+ */
+export async function getNotices(filters: NoticesFilters = {}): Promise<NoticeResponse[]> {
+  const params: Record<string, string | number> = {};
+
+  if (filters.keyword) params.keyword = filters.keyword;
+  if (filters.state) params.state = filters.state;
+  if (filters.notice_type) params.notice_type = filters.notice_type;
+  if (filters.detected_after) params.detected_after = filters.detected_after;
+  if (filters.detected_before) params.detected_before = filters.detected_before;
+  if (filters.skip !== undefined) params.skip = filters.skip;
+  if (filters.limit !== undefined) params.limit = filters.limit;
+
+  const response = await api.get<NoticeResponse[]>('/notices', { params });
+  return response.data;
+}
+
+/**
+ * GET /notices/{id}
+ * Public endpoint — returns a single notice with institution details.
+ */
+export async function getNoticeById(id: number): Promise<NoticeDetailResponse> {
+  const response = await api.get<NoticeDetailResponse>(`/notices/${id}`);
+  return response.data;
+}
+
 export { TOKEN_KEY };
 export default api;
