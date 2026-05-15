@@ -6,9 +6,12 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import NoticesPage from '../pages/public/NoticesPage';
 import NoticeDetailPage from '../pages/public/NoticeDetailPage';
+import DashboardPage from '../pages/user/DashboardPage';
+import AlertsPage from '../pages/user/AlertsPage';
+import NotificationsPage from '../pages/user/NotificationsPage';
 
 // ── Placeholder pages for future subetapas ──────────────────────────────────
-// These are minimal placeholders. Real implementations come in 8C/8D.
+// These are minimal placeholders. Real implementations come in 8D.
 
 function PlaceholderPage({ title }: { title: string }) {
   return (
@@ -47,15 +50,15 @@ const router = createBrowserRouter([
         children: [
           {
             path: '/dashboard',
-            element: <PlaceholderPage title="Dashboard" />,
+            element: <DashboardPage />,
           },
           {
             path: '/alerts',
-            element: <PlaceholderPage title="Meus Alertas" />,
+            element: <AlertsPage />,
           },
           {
             path: '/notifications',
-            element: <PlaceholderPage title="Minhas Notificações" />,
+            element: <NotificationsPage />,
           },
         ],
       },

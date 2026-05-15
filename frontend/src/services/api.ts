@@ -154,5 +154,90 @@ export async function getNoticeById(id: number): Promise<NoticeDetailResponse> {
   return response.data;
 }
 
+// ── Alerts Service ────────────────────────────────────────────────────────────
+
+export interface UserAlertResponse {
+  id: number;
+  user_id: number;
+  keyword: string;
+  institution_id: number | null;
+  notice_type: string | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string | null;
+}
+
+export interface UserAlertCreate {
+  keyword: string;
+  notice_type?: string;
+}
+
+export interface UserAlertUpdate {
+  keyword?: string;
+  notice_type?: string;
+  is_active?: boolean;
+}
+
+/**
+ * GET /alerts
+ * Authenticated — lists all alerts for the current user.
+ */
+export async function getAlerts(skip = 0, limit = 50): Promise<UserAlertResponse[]> {
+  const response = await api.get<UserAlertResponse[]>('/alerts', {
+    params: { skip, limit },
+  });
+  return response.data;
+}
+
+/**
+ * POST /alerts
+ * Authenticated — creates a new alert.
+ */
+export async function createAlert(data: UserAlertCreate): Promise<UserAlertResponse> {
+  const response = await api.post<UserAlertResponse>('/alerts', data);
+  return response.data;
+}
+
+/**
+ * PUT /alerts/{id}
+ * Authenticated — partially updates an alert.
+ */
+export async function updateAlert(id: number, data: UserAlertUpdate): Promise<UserAlertResponse> {
+  const response = await api.put<UserAlertResponse>(`/alerts/${id}`, data);
+  return response.data;
+}
+
+/**
+ * DELETE /alerts/{id}
+ * Authenticated — soft-deletes an alert (sets is_active=false).
+ */
+export async function deleteAlert(id: number): Promise<UserAlertResponse> {
+  const response = await api.delete<UserAlertResponse>(`/alerts/${id}`);
+  return response.data;
+}
+
+// ── Notifications Service ─────────────────────────────────────────────────────
+
+export interface NotificationResponse {
+  id: number;
+  user_id: number;
+  notice_id: number;
+  status: string;
+  sent_at: string | null;
+  error_message: string | null;
+  created_at: string;
+}
+
+/**
+ * GET /notifications
+ * Authenticated — lists notifications for the current user.
+ */
+export async function getNotifications(skip = 0, limit = 50): Promise<NotificationResponse[]> {
+  const response = await api.get<NotificationResponse[]>('/notifications', {
+    params: { skip, limit },
+  });
+  return response.data;
+}
+
 export { TOKEN_KEY };
 export default api;
