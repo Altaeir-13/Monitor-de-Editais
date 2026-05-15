@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useAlerts, useCreateAlert, useUpdateAlert, useDeleteAlert } from '../../hooks/useAlerts';
+import { useAlerts, useCreateAlert, useUpdateAlert } from '../../hooks/useAlerts';
 import Spinner from '../../components/ui/Spinner';
 import EmptyState from '../../components/ui/EmptyState';
 import ErrorMessage from '../../components/ui/ErrorMessage';
 import {
   Plus,
   Pencil,
-  Trash2,
+  BellOff,
   RotateCcw,
   X,
   AlertTriangle,
@@ -200,11 +200,10 @@ export default function AlertsPage() {
   const { data: alerts, isLoading, isError, refetch } = useAlerts();
   const createMutation = useCreateAlert();
   const updateMutation = useUpdateAlert();
-  const deleteMutation = useDeleteAlert();
 
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [editingAlert, setEditingAlert] = useState<UserAlertResponse | null>(null);
-  const [deletingAlertId, setDeletingAlertId] = useState<number | null>(null);
+  const [deactivatingAlertId, setDeactivatingAlertId] = useState<number | null>(null);
   const [modalError, setModalError] = useState('');
 
   if (isLoading) {
@@ -248,14 +247,16 @@ export default function AlertsPage() {
     }
   };
 
-  const handleDelete = async () => {
-    if (deletingAlertId === null) return;
+  const handleDeactivate = async () => {
+    if (deactivatingAlertId === null) return;
     try {
-      await deleteMutation.mutateAsync(deletingAlertId);
-      setDeletingAlertId(null);
+      await updateMutation.mutateAsync({
+        id: deactivatingAlertId,
+        data: { is_active: false },
+      });
+      setDeactivatingAlertId(null);
     } catch {
-      // Error handled by cache invalidation
-      setDeletingAlertId(null);
+      setDeactivatingAlertId(null);
     }
   };
 
@@ -338,11 +339,11 @@ export default function AlertsPage() {
                       <Pencil size={16} />
                     </button>
                     <button
-                      onClick={() => setDeletingAlertId(alert.id)}
-                      className="p-2 text-gray-400 hover:text-red-600 transition-colors"
+                      onClick={() => setDeactivatingAlertId(alert.id)}
+                      className="p-2 text-gray-400 hover:text-amber-600 transition-colors"
                       title="Desativar"
                     >
-                      <Trash2 size={16} />
+                      <BellOff size={16} />
                     </button>
                   </>
                 ) : (
@@ -384,14 +385,14 @@ export default function AlertsPage() {
       )}
 
       {/* Delete Confirmation */}
-      {deletingAlertId !== null && (
+      {deactivatingAlertId !== null && (
         <ConfirmModal
           title="Desativar alerta"
           message="Tem certeza que deseja desativar este alerta? Você poderá reativá-lo depois."
           confirmLabel="Desativar"
-          onConfirm={handleDelete}
-          onCancel={() => setDeletingAlertId(null)}
-          isLoading={deleteMutation.isPending}
+          onConfirm={handleDeactivate}
+          onCancel={() => setDeactivatingAlertId(null)}
+          isLoading={updateMutation.isPending}
         />
       )}
     </div>
