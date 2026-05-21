@@ -33,21 +33,23 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center  px-4">
       <div className="w-full max-w-md">
-        {/* Header */}
-        <div className="text-center mb-8">
+        {/* Header / Presentation */}
+        <div className="text-center mb-8 px-2">
           <div className="flex justify-center mb-4">
-            <div className="p-3 bg-indigo-100 rounded-xl">
-              <FileText className="text-indigo-600" size={32} />
+            <div className="p-4 bg-primary-100 rounded-2xl shadow-sm">
+              <FileText className="text-primary-600" size={36} />
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Monitor de Editais</h1>
-          <p className="text-gray-500 mt-1">Entre na sua conta</p>
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Monitor de Editais</h1>
+          <p className="text-gray-500 mt-3 text-sm sm:text-base max-w-sm mx-auto leading-relaxed">
+            Acompanhe editais públicos, configure alertas e receba notificações de oportunidades diretamente no seu e-mail.
+          </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
+        <form onSubmit={handleSubmit} className="glass-panel rounded-xl border border-gray-200 p-6 space-y-5">
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
               {error}
@@ -64,9 +66,7 @@ export default function LoginPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm
-                         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
-                         placeholder-gray-400"
+              className="input-field"
               placeholder="seu@email.com"
               autoComplete="email"
             />
@@ -83,9 +83,7 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg text-sm
-                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
-                           placeholder-gray-400"
+                className="input-field pr-10"
                 placeholder="••••••••"
                 autoComplete="current-password"
               />
@@ -103,8 +101,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-2.5 bg-indigo-600 text-white rounded-lg text-sm font-medium
-                       hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+            className="btn-primary w-full py-2.5
                        disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isLoading ? 'Entrando...' : 'Entrar'}
@@ -112,7 +109,7 @@ export default function LoginPage() {
 
           <p className="text-center text-sm text-gray-500">
             Não tem conta?{' '}
-            <Link to="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">
+            <Link to="/register" className="text-primary-600 hover:text-primary-700 font-medium">
               Cadastre-se
             </Link>
           </p>

@@ -17,19 +17,18 @@ export default function EmptyState({
   onAction,
 }: EmptyStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-20 text-center">
-      <div className="p-3 bg-gray-100 rounded-xl mb-4">
+    <div className="flex flex-col items-center justify-center py-16 px-4 text-center glass-panel rounded-2xl">
+      <div className="p-4 bg-gray-50 rounded-2xl mb-5 shadow-sm border border-gray-100">
         {icon || <FileX className="text-gray-400" size={32} />}
       </div>
-      <h3 className="text-lg font-medium text-gray-700">{title}</h3>
+      <h3 className="text-xl font-bold text-gray-900">{title}</h3>
       {description && (
-        <p className="text-sm text-gray-500 mt-1 max-w-sm">{description}</p>
+        <p className="text-sm text-gray-500 mt-2 max-w-md leading-relaxed">{description}</p>
       )}
       {actionLabel && onAction && (
         <button
           onClick={onAction}
-          className="mt-4 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg
-                     hover:bg-indigo-700 transition-colors"
+          className="btn-primary mt-6"
         >
           {actionLabel}
         </button>

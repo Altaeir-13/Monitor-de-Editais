@@ -70,8 +70,8 @@ function AlertModal({ alert, onClose, onSave, isSaving, error }: AlertModalProps
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="fixed inset-0 bg-black/40" onClick={onClose} />
       <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-4 p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-xl font-bold text-gray-900">
             {alert ? 'Editar Alerta' : 'Novo Alerta'}
           </h2>
           <button
@@ -81,6 +81,9 @@ function AlertModal({ alert, onClose, onSave, isSaving, error }: AlertModalProps
             <X size={20} />
           </button>
         </div>
+        <p className="text-sm text-gray-500 mb-6">
+          Configure as palavras-chave para monitorar novos editais no diário oficial.
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {(error || validationError) && (
@@ -103,7 +106,7 @@ function AlertModal({ alert, onClose, onSave, isSaving, error }: AlertModalProps
               }}
               placeholder="Ex: professor, bolsa, mestrado..."
               className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm
-                         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
                          placeholder-gray-400"
               autoFocus
             />
@@ -118,7 +121,7 @@ function AlertModal({ alert, onClose, onSave, isSaving, error }: AlertModalProps
               value={noticeType}
               onChange={(e) => setNoticeType(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm
-                         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+                         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
                          bg-white"
             >
               <option value="">Qualquer tipo</option>
@@ -132,16 +135,14 @@ function AlertModal({ alert, onClose, onSave, isSaving, error }: AlertModalProps
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium
-                         rounded-lg hover:bg-gray-50 transition-colors"
+              className="btn-secondary flex-1"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={isSaving || isKeywordEmpty}
-              className="flex-1 px-4 py-2 bg-indigo-600 text-white text-sm font-medium
-                         rounded-lg hover:bg-indigo-700 transition-colors
+              className="btn-primary flex-1
                          disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSaving ? 'Salvando...' : alert ? 'Salvar' : 'Criar Alerta'}
@@ -172,18 +173,16 @@ function ConfirmModal({ title, message, confirmLabel, onConfirm, onCancel, isLoa
         <h2 className="text-lg font-semibold text-gray-900 mb-2">{title}</h2>
         <p className="text-sm text-gray-600 mb-4">{message}</p>
         <div className="flex gap-2">
-          <button
-            onClick={onCancel}
-            className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium
-                       rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            Cancelar
-          </button>
+            <button
+              onClick={onCancel}
+              className="btn-secondary flex-1"
+            >
+              Cancelar
+            </button>
           <button
             onClick={onConfirm}
             disabled={isLoading}
-            className="flex-1 px-4 py-2 bg-red-600 text-white text-sm font-medium
-                       rounded-lg hover:bg-red-700 transition-colors
+            className="flex-1 btn-danger
                        disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Processando...' : confirmLabel}
@@ -280,8 +279,7 @@ export default function AlertsPage() {
         </div>
         <button
           onClick={() => { setModalError(''); setShowCreateModal(true); }}
-          className="inline-flex items-center gap-1.5 px-4 py-2 bg-indigo-600 text-white text-sm
-                     font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+          className="inline-flex items-center gap-1.5 btn-primary"
         >
           <Plus size={16} />
           Novo Alerta
@@ -301,8 +299,8 @@ export default function AlertsPage() {
           {alertList.map((alert) => (
             <div
               key={alert.id}
-              className={`bg-white rounded-xl border shadow-sm p-4 flex items-center justify-between gap-4
-                          ${alert.is_active ? 'border-gray-200' : 'border-gray-100 opacity-70'}`}
+              className={`glass-panel rounded-2xl p-4 flex items-center justify-between gap-4
+                          ${alert.is_active ? 'border-gray-200/50' : 'border-gray-100 opacity-60'}`}
             >
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 mb-1">
@@ -316,7 +314,7 @@ export default function AlertsPage() {
                     {alert.is_active ? 'Ativo' : 'Inativo'}
                   </span>
                   {alert.notice_type && (
-                    <span className="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full capitalize">
+                    <span className="text-xs bg-primary-50 text-primary-600 px-2 py-0.5 rounded-full capitalize">
                       {alert.notice_type}
                     </span>
                   )}
@@ -334,7 +332,7 @@ export default function AlertsPage() {
                   <>
                     <button
                       onClick={() => { setModalError(''); setEditingAlert(alert); }}
-                      className="p-2 text-gray-400 hover:text-indigo-600 transition-colors"
+                      className="p-2 text-gray-400 hover:text-primary-600 transition-colors"
                       title="Editar"
                     >
                       <Pencil size={16} />
@@ -351,7 +349,7 @@ export default function AlertsPage() {
                   <button
                     onClick={() => handleReactivate(alert.id)}
                     className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium
-                               text-indigo-600 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors"
+                               text-primary-600 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors"
                     title="Reativar"
                   >
                     <RotateCcw size={14} />

@@ -57,27 +57,37 @@ export default function DashboardPage() {
 
   return (
     <div>
-      {/* Greeting */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">
-          Olá, {user?.name?.split(' ')[0] ?? 'Usuário'}!
-        </h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Acompanhe seus alertas e notificações.
-        </p>
+      {/* Hero / Greeting */}
+      <div className="mb-8 p-8 glass-panel rounded-2xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+            Bem-vindo, {user?.name?.split(' ')[0] ?? 'Usuário'}!
+          </h1>
+          <p className="text-base text-gray-500 mt-2 max-w-xl leading-relaxed">
+            Aqui você encontra o resumo das suas atividades. Acompanhe os editais mais recentes e gerencie seus alertas para não perder nenhuma oportunidade.
+          </p>
+        </div>
+        <div className="flex gap-3">
+          <Link to="/notices" className="btn-secondary">
+            Explorar Editais
+          </Link>
+          <Link to="/alerts" className="btn-primary">
+            <Plus size={18} /> Novo Alerta
+          </Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Alerts Card */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="glass-panel rounded-2xl overflow-hidden flex flex-col">
           <div className="flex items-center justify-between p-5 border-b border-gray-100">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="text-indigo-600" size={20} />
+              <AlertTriangle className="text-primary-600" size={20} />
               <h2 className="font-semibold text-gray-900">Meus Alertas</h2>
             </div>
             <Link
               to="/alerts"
-              className="text-xs text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-0.5"
+              className="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-0.5"
             >
               Ver todos <ChevronRight size={14} />
             </Link>
@@ -90,13 +100,12 @@ export default function DashboardPage() {
               />
             ) : activeAlerts.length === 0 ? (
               <div className="text-center py-6">
-                <p className="text-sm text-gray-500 mb-3">
-                  Você não tem alertas ativos.
+                <p className="text-sm text-gray-500 mb-4 px-4">
+                  Crie alertas com palavras-chave para ser avisado automaticamente quando novos editais forem encontrados no diário oficial.
                 </p>
                 <Link
                   to="/alerts"
-                  className="inline-flex items-center gap-1 px-4 py-2 bg-indigo-600 text-white
-                             text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="inline-flex items-center gap-1 btn-primary"
                 >
                   <Plus size={16} />
                   Criar meu primeiro alerta
@@ -104,7 +113,7 @@ export default function DashboardPage() {
               </div>
             ) : (
               <div>
-                <p className="text-3xl font-bold text-indigo-600 mb-1">
+                <p className="text-3xl font-bold text-primary-600 mb-1">
                   {activeAlerts.length}
                 </p>
                 <p className="text-sm text-gray-500">
@@ -137,15 +146,15 @@ export default function DashboardPage() {
         </div>
 
         {/* Notifications Card */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="glass-panel rounded-2xl overflow-hidden flex flex-col">
           <div className="flex items-center justify-between p-5 border-b border-gray-100">
             <div className="flex items-center gap-2">
-              <Bell className="text-indigo-600" size={20} />
+              <Bell className="text-primary-600" size={20} />
               <h2 className="font-semibold text-gray-900">Notificações Recentes</h2>
             </div>
             <Link
               to="/notifications"
-              className="text-xs text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-0.5"
+              className="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-0.5"
             >
               Ver todas <ChevronRight size={14} />
             </Link>
@@ -157,21 +166,23 @@ export default function DashboardPage() {
                 onRetry={() => refetchNotifs()}
               />
             ) : recentNotifications.length === 0 ? (
-              <p className="text-sm text-gray-500 text-center py-6">
-                Nenhuma notificação ainda.
-              </p>
+              <div className="text-center py-6">
+                <p className="text-sm text-gray-500 mb-4 px-4">
+                  Nenhuma notificação recebida ainda. Quando um de seus alertas encontrar correspondência em novos editais, ela aparecerá aqui.
+                </p>
+              </div>
             ) : (
               <div className="space-y-3">
                 {recentNotifications.map((notif) => {
                   const badge = STATUS_BADGES[notif.status] ?? {
                     label: notif.status,
-                    classes: 'bg-gray-50 text-gray-600',
+                    classes: ' text-gray-600',
                   };
                   return (
                     <Link
                       key={notif.id}
                       to={`/notices/${notif.notice_id}`}
-                      className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                      className="flex items-center justify-between p-3 rounded-lg hover: transition-colors"
                     >
                       <div className="min-w-0">
                         <p className="text-sm text-gray-700">

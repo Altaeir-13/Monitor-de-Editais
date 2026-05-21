@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import ProtectedRoute from '../components/ProtectedRoute';
 import AdminRoute from '../components/AdminRoute';
 import Layout from '../components/Layout';
+import HybridLayout from '../components/HybridLayout';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import NoticesPage from '../pages/public/NoticesPage';
@@ -23,13 +24,19 @@ const router = createBrowserRouter([
     path: '/register',
     element: <RegisterPage />,
   },
+  // Hybrid routes (Public or Authenticated depending on session)
   {
-    path: '/notices',
-    element: <NoticesPage />,
-  },
-  {
-    path: '/notices/:id',
-    element: <NoticeDetailPage />,
+    element: <HybridLayout />,
+    children: [
+      {
+        path: '/notices',
+        element: <NoticesPage />,
+      },
+      {
+        path: '/notices/:id',
+        element: <NoticeDetailPage />,
+      },
+    ],
   },
 
   // Protected routes (require authentication)

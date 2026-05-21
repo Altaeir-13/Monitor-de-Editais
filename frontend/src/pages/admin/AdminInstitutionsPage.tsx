@@ -74,8 +74,8 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="fixed inset-0 bg-black/40" onClick={onClose} />
       <div className="relative bg-white rounded-xl shadow-xl w-full max-w-lg mx-4 p-6 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-xl font-bold text-gray-900">
             {institution ? 'Editar Instituição' : 'Nova Instituição'}
           </h2>
           <button
@@ -85,6 +85,9 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
             <X size={20} />
           </button>
         </div>
+        <p className="text-sm text-gray-500 mb-6">
+          Preencha os dados da instituição para rastreabilidade dos editais.
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {(error || validationError) && (
@@ -102,7 +105,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
               value={name}
               onChange={(e) => { setName(e.target.value); setValidationError(''); }}
               placeholder="Ex: Universidade Federal do Piauí"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
               autoFocus
             />
           </div>
@@ -117,7 +120,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
                 value={initials}
                 onChange={(e) => { setInitials(e.target.value); setValidationError(''); }}
                 placeholder="Ex: UFPI"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
             </div>
             <div>
@@ -130,7 +133,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
                 maxLength={2}
                 onChange={(e) => { setStateUF(e.target.value); setValidationError(''); }}
                 placeholder="Ex: PI"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 uppercase"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 uppercase"
               />
             </div>
           </div>
@@ -144,7 +147,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
               value={siteUrl}
               onChange={(e) => { setSiteUrl(e.target.value); setValidationError(''); }}
               placeholder="Ex: https://ufpi.br"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
           </div>
 
@@ -157,7 +160,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
               value={logoUrl}
               onChange={(e) => { setLogoUrl(e.target.value); setValidationError(''); }}
               placeholder="Ex: https://ufpi.br/logo.png"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
           </div>
 
@@ -165,14 +168,14 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+              className="btn-secondary flex-1"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={isSaving || isFormEmpty}
-              className="flex-1 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSaving ? 'Salvando...' : institution ? 'Salvar' : 'Criar Instituição'}
             </button>
@@ -204,14 +207,14 @@ function ConfirmModal({ title, message, confirmLabel, onConfirm, onCancel, isLoa
         <div className="flex gap-2">
           <button
             onClick={onCancel}
-            className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+            className="btn-secondary flex-1"
           >
             Cancelar
           </button>
           <button
             onClick={onConfirm}
             disabled={isLoading}
-            className="flex-1 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 btn-danger disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Processando...' : confirmLabel}
           </button>
@@ -311,7 +314,7 @@ export default function AdminInstitutionsPage() {
         </div>
         <button
           onClick={() => { setModalError(''); setShowCreateModal(true); }}
-          className="inline-flex items-center gap-1.5 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+          className="inline-flex items-center gap-1.5 btn-primary"
         >
           <Plus size={16} />
           Nova Instituição
@@ -328,9 +331,9 @@ export default function AdminInstitutionsPage() {
         />
       ) : (
         <>
-          <div className="overflow-x-auto bg-white rounded-xl border border-gray-200 shadow-sm">
+          <div className="overflow-x-auto glass-panel rounded-2xl">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="">
                 <tr>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome / Sigla</th>
@@ -341,7 +344,7 @@ export default function AdminInstitutionsPage() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {instList.map((inst) => (
-                  <tr key={inst.id} className={!inst.is_active ? 'opacity-60 bg-gray-50' : ''}>
+                  <tr key={inst.id} className={!inst.is_active ? 'opacity-60 ' : ''}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       #{inst.id}
                     </td>
@@ -350,7 +353,7 @@ export default function AdminInstitutionsPage() {
                         {inst.logo_url ? (
                            <img src={inst.logo_url} alt={`${inst.initials} logo`} className="w-8 h-8 rounded object-contain border border-gray-100 bg-white" />
                         ) : (
-                           <div className="w-8 h-8 rounded border border-gray-100 bg-gray-50 flex items-center justify-center">
+                           <div className="w-8 h-8 rounded border border-gray-100  flex items-center justify-center">
                              <Building2 size={14} className="text-gray-400"/>
                            </div>
                         )}
@@ -369,12 +372,12 @@ export default function AdminInstitutionsPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-end items-center gap-2">
-                       <a href={inst.official_site_url} target="_blank" rel="noopener noreferrer" className="p-1.5 text-gray-400 hover:text-indigo-600 transition-colors" title="Site Oficial">
+                       <a href={inst.official_site_url} target="_blank" rel="noopener noreferrer" className="p-1.5 text-gray-400 hover:text-primary-600 transition-colors" title="Site Oficial">
                           <ExternalLink size={16}/>
                        </a>
                        {inst.is_active ? (
                          <>
-                           <button onClick={() => { setModalError(''); setEditingInst(inst); }} className="p-1.5 text-gray-400 hover:text-indigo-600 transition-colors" title="Editar">
+                           <button onClick={() => { setModalError(''); setEditingInst(inst); }} className="p-1.5 text-gray-400 hover:text-primary-600 transition-colors" title="Editar">
                               <Pencil size={16} />
                            </button>
                            <button onClick={() => setDeactivatingInstId(inst.id)} className="p-1.5 text-gray-400 hover:text-orange-600 transition-colors" title="Desativar">
@@ -382,7 +385,7 @@ export default function AdminInstitutionsPage() {
                            </button>
                          </>
                        ) : (
-                         <button onClick={() => handleReactivate(inst.id)} className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-indigo-600 bg-indigo-50 rounded hover:bg-indigo-100 transition-colors" title="Reativar">
+                         <button onClick={() => handleReactivate(inst.id)} className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary-600 bg-primary-50 rounded hover:bg-primary-100 transition-colors" title="Reativar">
                            <RotateCcw size={14} /> Reativar
                          </button>
                        )}
@@ -393,7 +396,7 @@ export default function AdminInstitutionsPage() {
             </table>
           </div>
 
-          <div className="flex items-center justify-between mt-6 bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+          <div className="flex items-center justify-between mt-6 glass-panel rounded-2xl p-4">
             <button onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-100 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent">
               <ChevronLeft size={16} /> Anterior
             </button>

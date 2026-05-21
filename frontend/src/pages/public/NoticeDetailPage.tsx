@@ -40,7 +40,7 @@ export default function NoticeDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen">
         <Spinner text="Carregando edital..." />
       </div>
     );
@@ -48,7 +48,7 @@ export default function NoticeDetailPage() {
 
   if (isError || !notice) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Link
             to="/notices"
@@ -73,7 +73,7 @@ export default function NoticeDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back link */}
         <Link
@@ -86,11 +86,11 @@ export default function NoticeDetailPage() {
         </Link>
 
         {/* Main card */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="glass-panel rounded-2xl overflow-hidden">
           {/* Header */}
           <div className="p-6 border-b border-gray-100">
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex px-2.5 py-0.5 bg-indigo-50 text-indigo-700
+              <span className="inline-flex px-2.5 py-0.5 bg-primary-50 text-primary-700
                                text-xs font-medium rounded-full capitalize">
                 {notice.notice_type}
               </span>
@@ -163,8 +163,8 @@ export default function NoticeDetailPage() {
                       href={notice.institution.official_site_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-indigo-600
-                                 hover:text-indigo-700 mt-1 transition-colors"
+                      className="inline-flex items-center gap-1 text-xs text-primary-600
+                                 hover:text-primary-700 mt-1 transition-colors"
                     >
                       <ExternalLink size={12} />
                       Site oficial
@@ -181,9 +181,7 @@ export default function NoticeDetailPage() {
               href={notice.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white
-                         text-sm font-medium rounded-lg hover:bg-indigo-700
-                         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+              className="btn-primary px-5 py-2.5
                          transition-colors"
             >
               <ExternalLink size={16} />

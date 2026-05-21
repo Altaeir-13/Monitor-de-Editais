@@ -87,13 +87,13 @@ export default function NoticesPage() {
   const hasActiveFilters = appliedKeyword || state || noticeType || detectedAfter || detectedBefore;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-indigo-100 rounded-lg">
-              <FileText className="text-indigo-600" size={24} />
+            <div className="p-2 bg-primary-100 rounded-lg">
+              <FileText className="text-primary-600" size={24} />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Monitor de Editais</h1>
@@ -105,7 +105,7 @@ export default function NoticesPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Filters */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 mb-6">
+        <div className="glass-panel rounded-2xl p-6 mb-6">
           {/* Search bar */}
           <form onSubmit={handleSearch} className="flex gap-2 mb-4">
             <div className="relative flex-1">
@@ -116,14 +116,13 @@ export default function NoticesPage() {
                 onChange={(e) => setKeyword(e.target.value)}
                 placeholder="Buscar por palavra-chave..."
                 className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-lg text-sm
-                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+                           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
                            placeholder-gray-400"
               />
             </div>
             <button
               type="submit"
-              className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg
-                         hover:bg-indigo-700 transition-colors"
+              className="btn-primary"
             >
               Buscar
             </button>
@@ -137,7 +136,7 @@ export default function NoticesPage() {
                 value={state}
                 onChange={(e) => { setState(e.target.value); handleFilterChange(); }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm
-                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+                           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
                            bg-white"
               >
                 <option value="">Todos os estados</option>
@@ -153,7 +152,7 @@ export default function NoticesPage() {
                 value={noticeType}
                 onChange={(e) => { setNoticeType(e.target.value); handleFilterChange(); }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm
-                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+                           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
                            bg-white"
               >
                 <option value="">Todos os tipos</option>
@@ -172,7 +171,7 @@ export default function NoticesPage() {
                 value={detectedAfter}
                 onChange={(e) => { setDetectedAfter(e.target.value); handleFilterChange(); }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm
-                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
             </div>
 
@@ -185,7 +184,7 @@ export default function NoticesPage() {
                 value={detectedBefore}
                 onChange={(e) => { setDetectedBefore(e.target.value); handleFilterChange(); }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm
-                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
             </div>
           </div>
@@ -219,8 +218,8 @@ export default function NoticesPage() {
             title="Nenhum edital encontrado"
             description={
               hasActiveFilters
-                ? 'Tente ajustar os filtros para encontrar resultados.'
-                : 'Ainda não há editais cadastrados no sistema.'
+                ? 'Sua combinação de filtros não retornou nenhum edital. Tente remover palavras-chave, alterar o tipo de edital ou mudar o período de detecção.'
+                : 'O sistema ainda não capturou editais recentes em nossas fontes cadastradas. Volte em breve ou ative alertas para ser notificado.'
             }
             actionLabel={hasActiveFilters ? 'Limpar filtros' : undefined}
             onAction={hasActiveFilters ? clearFilters : undefined}
@@ -235,13 +234,13 @@ export default function NoticesPage() {
                 <Link
                   key={notice.id}
                   to={`/notices/${notice.id}`}
-                  className="block bg-white rounded-xl border border-gray-200 shadow-sm p-5
-                             hover:border-indigo-300 hover:shadow-md transition-all duration-200"
+                  className="block glass-panel rounded-2xl p-5
+                             hover:border-primary-300 hover:shadow-md transition-all duration-200"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="inline-flex px-2.5 py-0.5 bg-indigo-50 text-indigo-700
+                        <span className="inline-flex px-2.5 py-0.5 bg-primary-50 text-primary-700
                                          text-xs font-medium rounded-full capitalize">
                           {notice.notice_type}
                         </span>
@@ -268,7 +267,7 @@ export default function NoticesPage() {
             </div>
 
             {/* Pagination */}
-            <div className="flex items-center justify-between mt-6 bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+            <div className="flex items-center justify-between mt-6 glass-panel rounded-2xl p-4">
               <button
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}

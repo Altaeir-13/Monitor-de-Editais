@@ -39,7 +39,7 @@ export default function Layout() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen flex">
       {/* Mobile sidebar toggle */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -52,17 +52,17 @@ export default function Layout() {
       {/* Sidebar */}
       <aside
         className={`
-          fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-gray-200
+          fixed inset-y-0 left-0 z-40 w-64 glass-panel border-r border-gray-200/50
           transform transition-transform duration-200 ease-in-out
-          lg:translate-x-0 lg:static lg:inset-auto
+          lg:translate-x-0 lg:static lg:inset-auto bg-white/80
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="h-16 flex items-center px-6 border-b border-gray-200">
+          <div className="h-16 flex items-center px-6 border-b border-gray-200/50">
             <Link to="/dashboard" className="flex items-center gap-2">
-              <FileText className="text-indigo-600" size={24} />
+              <FileText className="text-primary-600" size={24} />
               <span className="font-bold text-lg text-gray-900">Monitor de Editais</span>
             </Link>
           </div>
@@ -81,8 +81,8 @@ export default function Layout() {
                     transition-colors duration-150
                     ${
                       isActive(item.to)
-                        ? 'bg-indigo-50 text-indigo-700'
-                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                        ? 'bg-primary-50 text-primary-700 border border-primary-100/50 shadow-sm'
+                        : 'text-gray-600 hover:bg-gray-100/50 hover:text-gray-900'
                     }
                   `}
                 >
@@ -111,8 +111,8 @@ export default function Layout() {
                         transition-colors duration-150
                         ${
                           isActive(item.to)
-                            ? 'bg-indigo-50 text-indigo-700'
-                            : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                            ? 'bg-primary-50 text-primary-700 border border-primary-100/50 shadow-sm'
+                            : 'text-gray-600 hover:bg-gray-100/50 hover:text-gray-900'
                         }
                       `}
                     >
@@ -158,7 +158,7 @@ export default function Layout() {
 
       {/* Main content */}
       <main className="flex-1 min-h-screen lg:pl-0">
-        <div className="p-6 lg:p-8 max-w-7xl mx-auto">
+        <div className="p-6 pt-16 lg:p-8 max-w-7xl mx-auto">
           <Outlet />
         </div>
       </main>

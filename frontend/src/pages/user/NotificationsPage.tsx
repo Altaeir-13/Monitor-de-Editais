@@ -71,13 +71,13 @@ export default function NotificationsPage() {
             {notifications.map((notif) => {
               const badge = STATUS_BADGES[notif.status] ?? {
                 label: notif.status,
-                classes: 'bg-gray-50 text-gray-600',
+                classes: ' text-gray-600',
               };
               return (
                 <div
                   key={notif.id}
-                  className="bg-white rounded-xl border border-gray-200 shadow-sm p-4
-                             flex items-center justify-between gap-4"
+                  className="glass-panel rounded-2xl p-5
+                             flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-1">
@@ -101,7 +101,7 @@ export default function NotificationsPage() {
                   <Link
                     to={`/notices/${notif.notice_id}`}
                     className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium
-                               text-indigo-600 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors
+                               text-primary-600 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors
                                flex-shrink-0"
                   >
                     <ExternalLink size={14} />
@@ -113,7 +113,7 @@ export default function NotificationsPage() {
           </div>
 
           {/* Pagination */}
-          <div className="flex items-center justify-between mt-6 bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+          <div className="flex items-center justify-between mt-6 glass-panel rounded-2xl p-4">
             <button
               onClick={() => setPage((p) => Math.max(0, p - 1))}
               disabled={page === 0}
