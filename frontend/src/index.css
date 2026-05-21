@@ -1,13 +1,62 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  
+  --color-primary-50: var(--theme-primary-50);
+  --color-primary-100: var(--theme-primary-100);
+  --color-primary-500: var(--theme-primary-500);
+  --color-primary-600: var(--theme-primary-600);
+  --color-primary-700: var(--theme-primary-700);
+  
+  --color-surface: var(--theme-surface);
+  --color-background: var(--theme-background);
+  --color-border: var(--theme-border);
+  --color-text-primary: var(--theme-text-primary);
+  --color-text-secondary: var(--theme-text-secondary);
+  --color-muted: var(--theme-muted);
+  
+  --color-danger-500: var(--theme-danger-500);
+  --color-danger-600: var(--theme-danger-600);
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: #111827;
-  background-color: #f9fafb;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Light Mode Variables */
+  --theme-background: hsl(210 20% 98%);
+  --theme-surface: hsl(0 0% 100%);
+  --theme-border: #e5e7eb;
+  --theme-text-primary: #111827;
+  --theme-text-secondary: #4b5563;
+  --theme-muted: #9ca3af;
+
+  --theme-primary-50: hsl(210 100% 98%);
+  --theme-primary-100: hsl(210 100% 94%);
+  --theme-primary-500: hsl(210 100% 50%);
+  --theme-primary-600: hsl(210 100% 45%);
+  --theme-primary-700: hsl(210 100% 40%);
+
+  --theme-danger-500: hsl(350 80% 55%);
+  --theme-danger-600: hsl(350 80% 45%);
+}
+
+.dark {
+  /* Dark Mode Variables */
+  --theme-background: #0f172a;
+  --theme-surface: #1e293b;
+  --theme-border: #334155;
+  --theme-text-primary: #f8fafc;
+  --theme-text-secondary: #cbd5e1;
+  --theme-muted: #64748b;
+
+  /* Slightly adjusted primary for better contrast in dark mode if needed, keeping similar for now */
+  --theme-primary-50: #1e293b;
+  --theme-primary-100: #334155;
+  --theme-primary-500: hsl(210 100% 60%);
+  --theme-primary-600: hsl(210 100% 55%);
+  --theme-primary-700: hsl(210 100% 50%);
+
+  --theme-danger-500: hsl(350 80% 60%);
+  --theme-danger-600: hsl(350 80% 55%);
 }
 
 * {
@@ -23,13 +72,19 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #f9fafb;
-  color: #111827;
+  background-color: var(--theme-background);
+  color: var(--theme-text-primary);
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 button,
@@ -37,4 +92,252 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+/* Premium Utilities */
+.glass-panel {
+  background: var(--theme-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.dark .glass-panel {
+  background: rgba(30, 41, 59, 0.8); /* slate-800 com opacidade */
+  border-color: rgba(51, 65, 85, 0.8); /* slate-700 com opacidade */
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--theme-primary-600);
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--theme-primary-700);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--theme-surface);
+  color: var(--theme-text-primary);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--theme-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--theme-background);
+  border-color: var(--theme-muted);
+}
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--theme-danger-500);
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--theme-danger-600);
+  transform: translateY(-1px);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--theme-border);
+  background-color: var(--theme-surface);
+  color: var(--theme-text-primary);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: var(--theme-primary-500);
+  box-shadow: 0 0 0 3px var(--theme-primary-100);
+}
+
+.input-field:disabled {
+  background-color: var(--theme-background);
+  cursor: not-allowed;
+}
+
+/* Badges Semânticos (Claro e Escuro) */
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.app-badge-muted { background-color: #f3f4f6; color: #374151; }
+.dark .app-badge-muted { background-color: rgba(75, 85, 99, 0.4); color: #d1d5db; }
+
+.app-badge-primary { background-color: var(--theme-primary-50); color: var(--theme-primary-700); }
+.dark .app-badge-primary { background-color: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+
+.app-badge-success { background-color: #dcfce7; color: #166534; }
+.dark .app-badge-success { background-color: rgba(34, 197, 94, 0.2); color: #86efac; }
+
+.app-badge-warning { background-color: #fef9c3; color: #854d0e; }
+.dark .app-badge-warning { background-color: rgba(234, 179, 8, 0.2); color: #fde047; }
+
+.app-badge-danger { background-color: #fee2e2; color: #991b1b; }
+.dark .app-badge-danger { background-color: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+
+.app-badge-info { background-color: #e0e7ff; color: #3730a3; }
+.dark .app-badge-info { background-color: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
+
+/* Icon Containers */
+.app-icon-soft {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--theme-primary-50);
+}
+.dark .app-icon-soft {
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+.app-icon-soft-muted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f3f4f6;
+}
+.dark .app-icon-soft-muted {
+  background-color: rgba(75, 85, 99, 0.3);
+}
+
+/* Error Boxes */
+.app-error-box {
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  color: #b91c1c;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+.dark .app-error-box {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+/* Secondary text forced contrast */
+.app-muted-text {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+.dark .app-muted-text {
+  color: #9ca3af;
+}
+
+/* Institution Logo Frame */
+.institution-logo-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  background-color: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.dark .institution-logo-frame {
+  background-color: #f8fafc; /* Fundo muito claro e suave para contrastar logos pretas transparentes */
+  border-color: #cbd5e1;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+}
+
+.institution-logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Global Tailwind Overrides for Dark Mode Compatibility 
+   (Avoids massive TSX file edits per user instructions) */
+@layer utilities {
+  .bg-white {
+    background-color: var(--theme-surface) !important;
+  }
+  .bg-gray-50 {
+    background-color: var(--theme-background) !important;
+  }
+  .border-gray-200, .border-gray-300, .border-gray-100 {
+    border-color: var(--theme-border) !important;
+  }
+  .text-gray-900, .text-gray-800 {
+    color: var(--theme-text-primary) !important;
+  }
+  .text-gray-600, .text-gray-500 {
+    color: var(--theme-text-secondary) !important;
+  }
+  .text-gray-400, .text-gray-300 {
+    color: var(--theme-muted) !important;
+  }
+  .hover\:bg-gray-100:hover, .hover\:bg-gray-50:hover {
+    background-color: var(--theme-background) !important;
+  }
+  .hover\:text-gray-900:hover, .hover\:text-gray-700:hover {
+    color: var(--theme-text-primary) !important;
+  }
+  .placeholder-gray-400::placeholder, .placeholder-gray-500::placeholder {
+    color: var(--theme-muted) !important;
+  }
+  .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--theme-border) !important;
+  }
 }
