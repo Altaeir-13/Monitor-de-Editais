@@ -252,10 +252,11 @@ export default function AlertsPage() {
     try {
       await updateMutation.mutateAsync({
         id: deactivatingAlertId,
-        data: { is_active: false },
+        data: { is_active: false }
       });
       setDeactivatingAlertId(null);
     } catch {
+      // Error handled by cache invalidation
       setDeactivatingAlertId(null);
     }
   };
@@ -340,7 +341,7 @@ export default function AlertsPage() {
                     </button>
                     <button
                       onClick={() => setDeactivatingAlertId(alert.id)}
-                      className="p-2 text-gray-400 hover:text-amber-600 transition-colors"
+                      className="p-2 text-gray-400 hover:text-orange-600 transition-colors"
                       title="Desativar"
                     >
                       <BellOff size={16} />
@@ -384,7 +385,7 @@ export default function AlertsPage() {
         />
       )}
 
-      {/* Delete Confirmation */}
+      {/* Deactivate Confirmation */}
       {deactivatingAlertId !== null && (
         <ConfirmModal
           title="Desativar alerta"
