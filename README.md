@@ -146,9 +146,14 @@ As configurações de variáveis para produção devem seguir o modelo fornecido
 
 ## Licença
 
-Licença: a definir.
+Este projeto é disponibilizado sob a Licença de Uso Não Comercial — Monitor de Editais.
+
+O uso é permitido para fins pessoais, acadêmicos, educacionais e de pesquisa, desde que haja atribuição à autora. Uso comercial, empresarial, monetização, revenda ou incorporação em produto/serviço pago exige autorização prévia.
+
+Consulte o arquivo LICENSE.md para os termos completos.
 
 ---
+
 
 ## Documentação de Fechamento
 
