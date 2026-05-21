@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from app.api import deps
 from app.models.user import User
 from app.services.notification import match_notices_with_alerts
+from app.services.email_dispatcher import dispatch_pending_emails
 
 router = APIRouter()
 
@@ -22,3 +23,15 @@ def trigger_match(
     - Admin: runs match and returns counters
     """
     return match_notices_with_alerts(db=db)
+
+
+@router.post("/dispatch-emails", response_model=Dict[str, int])
+def trigger_dispatch_emails(
+    db: Session = Depends(deps.get_db),
+    current_user: User = Depends(deps.get_current_active_superuser),
+) -> Any:
+    """
+    Manually trigger the email dispatch routine for pending notifications.
+    Requires superuser (admin) role.
+    """
+    return dispatch_pending_emails(db=db)
