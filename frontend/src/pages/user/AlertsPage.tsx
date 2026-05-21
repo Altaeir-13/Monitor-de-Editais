@@ -304,17 +304,15 @@ export default function AlertsPage() {
             >
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <span
-                    className={`text-xs font-medium px-2 py-0.5 rounded-full
-                      ${alert.is_active
-                        ? 'bg-green-50 text-green-700'
-                        : 'bg-gray-100 text-gray-500'
-                      }`}
-                  >
+                  <span className={`badge ${
+                        alert.is_active 
+                        ? 'badge-success'
+                        : 'badge-muted'
+                      }`}>
                     {alert.is_active ? 'Ativo' : 'Inativo'}
                   </span>
                   {alert.notice_type && (
-                    <span className="text-xs bg-primary-50 text-primary-600 px-2 py-0.5 rounded-full capitalize">
+                    <span className="badge badge-primary">
                       {alert.notice_type}
                     </span>
                   )}

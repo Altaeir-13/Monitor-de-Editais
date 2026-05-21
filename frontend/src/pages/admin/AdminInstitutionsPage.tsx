@@ -367,7 +367,7 @@ export default function AdminInstitutionsPage() {
                       {inst.state}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${inst.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-600'}`}>
+                      <span className={`badge ${inst.is_active ? 'badge-success' : 'badge-muted'}`}>
                         {inst.is_active ? 'Ativo' : 'Inativo'}
                       </span>
                     </td>

@@ -1,28 +1,38 @@
 import { Outlet, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../contexts/ThemeContext';
 import Layout from './Layout';
-import { FileText, LogIn, UserPlus } from 'lucide-react';
+import { FileText, LogIn, UserPlus, Sun, Moon } from 'lucide-react';
 
 function PublicLayout() {
+  const { theme, toggleTheme } = useTheme();
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-[var(--theme-background)] flex flex-col">
       {/* Public Header */}
-      <header className="bg-white border-b border-gray-200">
+      <header className="bg-[var(--theme-surface)] border-b border-[var(--theme-border)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/notices" className="flex items-center gap-2">
-              <div className="p-2 bg-primary-100 rounded-lg">
-                <FileText className="text-primary-600" size={20} />
+              <div className="p-2 bg-[var(--theme-primary-100)] rounded-lg">
+                <FileText className="text-[var(--theme-primary-600)]" size={20} />
               </div>
-              <span className="font-bold text-lg text-gray-900 hidden sm:block">Monitor de Editais</span>
+              <span className="font-bold text-lg text-[var(--theme-text-primary)] hidden sm:block">Monitor de Editais</span>
             </Link>
 
-            {/* Auth Buttons */}
+            {/* Auth Buttons & Theme */}
             <div className="flex items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                className="p-2 text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors rounded-lg hover:bg-[var(--theme-background)]"
+                aria-label="Alternar tema"
+              >
+                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+              
               <Link 
                 to="/login" 
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-1.5"
+                className="text-sm font-medium text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors flex items-center gap-1.5"
               >
                 <LogIn size={16} />
                 Entrar

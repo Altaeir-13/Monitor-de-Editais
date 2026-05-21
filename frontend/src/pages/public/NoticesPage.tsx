@@ -240,8 +240,7 @@ export default function NoticesPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="inline-flex px-2.5 py-0.5 bg-primary-50 text-primary-700
-                                         text-xs font-medium rounded-full capitalize">
+                        <span className="badge badge-primary">
                           {notice.notice_type}
                         </span>
                       </div>

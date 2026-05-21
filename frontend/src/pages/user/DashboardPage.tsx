@@ -26,9 +26,9 @@ function formatDate(dateStr: string | null): string {
 }
 
 const STATUS_BADGES: Record<string, { label: string; classes: string }> = {
-  pending: { label: 'Pendente', classes: 'bg-yellow-50 text-yellow-700' },
-  sent: { label: 'Enviada', classes: 'bg-green-50 text-green-700' },
-  failed: { label: 'Falhou', classes: 'bg-red-50 text-red-700' },
+  pending: { label: 'Pendente', classes: 'badge badge-warning' },
+  sent: { label: 'Enviada', classes: 'badge badge-success' },
+  failed: { label: 'Falhou', classes: 'badge badge-danger' },
 };
 
 export default function DashboardPage() {
@@ -128,7 +128,7 @@ export default function DashboardPage() {
                       <FileText size={14} className="text-gray-400" />
                       <span className="truncate">{alert.keyword}</span>
                       {alert.notice_type && (
-                        <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded capitalize">
+                        <span className="badge badge-muted">
                           {alert.notice_type}
                         </span>
                       )}

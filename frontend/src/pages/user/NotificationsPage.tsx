@@ -22,9 +22,9 @@ function formatDate(dateStr: string | null): string {
 }
 
 const STATUS_BADGES: Record<string, { label: string; classes: string }> = {
-  pending: { label: 'Pendente', classes: 'bg-yellow-50 text-yellow-700' },
-  sent: { label: 'Enviada', classes: 'bg-green-50 text-green-700' },
-  failed: { label: 'Falhou', classes: 'bg-red-50 text-red-700' },
+  pending: { label: 'Pendente', classes: 'badge badge-warning' },
+  sent: { label: 'Enviada', classes: 'badge badge-success' },
+  failed: { label: 'Falhou', classes: 'badge badge-danger' },
 };
 
 export default function NotificationsPage() {

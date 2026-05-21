@@ -90,8 +90,7 @@ export default function NoticeDetailPage() {
           {/* Header */}
           <div className="p-6 border-b border-gray-100">
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex px-2.5 py-0.5 bg-primary-50 text-primary-700
-                               text-xs font-medium rounded-full capitalize">
+              <span className="badge badge-primary">
                 {notice.notice_type}
               </span>
             </div>

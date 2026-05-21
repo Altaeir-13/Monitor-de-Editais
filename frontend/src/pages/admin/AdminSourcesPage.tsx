@@ -381,8 +381,8 @@ export default function AdminSourcesPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-medium text-gray-900 truncate max-w-[200px]" title={source.name}>{source.name}</div>
-                      <div className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full inline-block mt-1">
-                        {SOURCE_TYPES.find(t => t.value === source.source_type)?.label || source.source_type}
+                      <div className="badge badge-muted mt-1">
+                        HTML Estático
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -405,7 +405,7 @@ export default function AdminSourcesPage() {
                        </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${source.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-600'}`}>
+                      <span className={`badge ${source.is_active ? 'badge-success' : 'badge-muted'}`}>
                         {source.is_active ? 'Ativo' : 'Inativo'}
                       </span>
                     </td>
