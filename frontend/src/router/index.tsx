@@ -9,18 +9,9 @@ import NoticeDetailPage from '../pages/public/NoticeDetailPage';
 import DashboardPage from '../pages/user/DashboardPage';
 import AlertsPage from '../pages/user/AlertsPage';
 import NotificationsPage from '../pages/user/NotificationsPage';
-
-// ── Placeholder pages for future subetapas ──────────────────────────────────
-// These are minimal placeholders. Real implementations come in 8D.
-
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-      <p className="text-lg font-medium">{title}</p>
-      <p className="text-sm mt-1">Em breve</p>
-    </div>
-  );
-}
+import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
+import AdminInstitutionsPage from '../pages/admin/AdminInstitutionsPage';
+import AdminSourcesPage from '../pages/admin/AdminSourcesPage';
 
 const router = createBrowserRouter([
   // Public routes
@@ -74,15 +65,15 @@ const router = createBrowserRouter([
         children: [
           {
             path: '/admin',
-            element: <PlaceholderPage title="Painel Administrativo" />,
+            element: <AdminDashboardPage />,
           },
           {
             path: '/admin/institutions',
-            element: <PlaceholderPage title="Instituições" />,
+            element: <AdminInstitutionsPage />,
           },
           {
             path: '/admin/sources',
-            element: <PlaceholderPage title="Fontes Monitoradas" />,
+            element: <AdminSourcesPage />,
           },
         ],
       },

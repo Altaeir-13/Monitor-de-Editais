@@ -239,5 +239,116 @@ export async function getNotifications(skip = 0, limit = 50): Promise<Notificati
   return response.data;
 }
 
+// ── Admin Institutions Service ────────────────────────────────────────────────
+
+export interface InstitutionResponse {
+  id: number;
+  name: string;
+  initials: string;
+  state: string;
+  official_site_url: string;
+  logo_url: string | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string | null;
+}
+
+export interface InstitutionCreate {
+  name: string;
+  initials: string;
+  state: string;
+  official_site_url: string;
+  logo_url?: string | null;
+  is_active?: boolean;
+}
+
+export interface InstitutionUpdate {
+  name?: string;
+  initials?: string;
+  state?: string;
+  official_site_url?: string;
+  logo_url?: string | null;
+  is_active?: boolean;
+}
+
+export async function getAdminInstitutions(skip = 0, limit = 20): Promise<InstitutionResponse[]> {
+  const response = await api.get<InstitutionResponse[]>('/admin/institutions', {
+    params: { skip, limit },
+  });
+  return response.data;
+}
+
+export async function createAdminInstitution(data: InstitutionCreate): Promise<InstitutionResponse> {
+  const response = await api.post<InstitutionResponse>('/admin/institutions', data);
+  return response.data;
+}
+
+export async function updateAdminInstitution(id: number, data: InstitutionUpdate): Promise<InstitutionResponse> {
+  const response = await api.put<InstitutionResponse>(`/admin/institutions/${id}`, data);
+  return response.data;
+}
+
+export async function deleteAdminInstitution(id: number): Promise<InstitutionResponse> {
+  const response = await api.delete<InstitutionResponse>(`/admin/institutions/${id}`);
+  return response.data;
+}
+
+// ── Admin Sources Service ─────────────────────────────────────────────────────
+
+export interface MonitoredSourceResponse {
+  id: number;
+  institution_id: number;
+  name: string;
+  url: string;
+  source_type: string;
+  check_frequency_minutes: number;
+  last_checked_at: string | null;
+  last_success_at: string | null;
+  last_error_message: string | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string | null;
+}
+
+export interface MonitoredSourceCreate {
+  institution_id: number;
+  name: string;
+  url: string;
+  source_type: string;
+  check_frequency_minutes: number;
+  is_active?: boolean;
+}
+
+export interface MonitoredSourceUpdate {
+  institution_id?: number;
+  name?: string;
+  url?: string;
+  source_type?: string;
+  check_frequency_minutes?: number;
+  is_active?: boolean;
+}
+
+export async function getAdminSources(skip = 0, limit = 20): Promise<MonitoredSourceResponse[]> {
+  const response = await api.get<MonitoredSourceResponse[]>('/admin/sources', {
+    params: { skip, limit },
+  });
+  return response.data;
+}
+
+export async function createAdminSource(data: MonitoredSourceCreate): Promise<MonitoredSourceResponse> {
+  const response = await api.post<MonitoredSourceResponse>('/admin/sources', data);
+  return response.data;
+}
+
+export async function updateAdminSource(id: number, data: MonitoredSourceUpdate): Promise<MonitoredSourceResponse> {
+  const response = await api.put<MonitoredSourceResponse>(`/admin/sources/${id}`, data);
+  return response.data;
+}
+
+export async function deleteAdminSource(id: number): Promise<MonitoredSourceResponse> {
+  const response = await api.delete<MonitoredSourceResponse>(`/admin/sources/${id}`);
+  return response.data;
+}
+
 export { TOKEN_KEY };
 export default api;
