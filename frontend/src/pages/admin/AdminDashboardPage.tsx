@@ -38,8 +38,10 @@ export default function AdminDashboardPage() {
         {/* Institutions Card */}
         <div className="glass-panel rounded-2xl overflow-hidden flex flex-col">
           <div className="flex items-center justify-between p-5 border-b border-gray-100">
-            <div className="flex items-center gap-2">
-              <Building2 className="text-primary-600" size={20} />
+            <div className="flex items-center gap-3">
+              <div className="app-icon-soft">
+                <Building2 className="text-primary-600" size={20} />
+              </div>
               <h2 className="font-semibold text-gray-900">Instituições</h2>
             </div>
           </div>
@@ -66,8 +68,10 @@ export default function AdminDashboardPage() {
         {/* Sources Card */}
         <div className="glass-panel rounded-2xl overflow-hidden flex flex-col">
           <div className="flex items-center justify-between p-5 border-b border-gray-100">
-            <div className="flex items-center gap-2">
-              <Database className="text-primary-600" size={20} />
+            <div className="flex items-center gap-3">
+              <div className="app-icon-soft">
+                <Database className="text-primary-600" size={20} />
+              </div>
               <h2 className="font-semibold text-gray-900">Fontes Monitoradas</h2>
             </div>
           </div>

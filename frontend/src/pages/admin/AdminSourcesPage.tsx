@@ -118,8 +118,8 @@ function SourceModal({ source, onClose, onSave, isSaving, error }: SourceModalPr
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {(error || validationError) && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-              {validationError || error}
+            <div className="app-error-box text-sm mb-4">
+              {error || validationError}
             </div>
           )}
 
@@ -381,7 +381,7 @@ export default function AdminSourcesPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-medium text-gray-900 truncate max-w-[200px]" title={source.name}>{source.name}</div>
-                      <div className="badge badge-muted mt-1">
+                      <div className="app-badge app-badge-muted mt-1">
                         HTML Estático
                       </div>
                     </td>
@@ -405,7 +405,7 @@ export default function AdminSourcesPage() {
                        </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`badge ${source.is_active ? 'badge-success' : 'badge-muted'}`}>
+                      <span className={`app-badge ${source.is_active ? 'app-badge-success' : 'app-badge-muted'}`}>
                         {source.is_active ? 'Ativo' : 'Inativo'}
                       </span>
                     </td>

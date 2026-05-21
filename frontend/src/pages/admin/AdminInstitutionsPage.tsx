@@ -91,8 +91,8 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {(error || validationError) && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-              {validationError || error}
+            <div className="app-error-box text-sm mb-4">
+              {error || validationError}
             </div>
           )}
 
@@ -351,9 +351,11 @@ export default function AdminInstitutionsPage() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-3">
                         {inst.logo_url ? (
-                           <img src={inst.logo_url} alt={`${inst.initials} logo`} className="w-8 h-8 rounded object-contain border border-gray-100 bg-white" />
+                          <div className="institution-logo-frame">
+                            <img src={inst.logo_url} alt={`${inst.initials} logo`} className="institution-logo-image" />
+                          </div>
                         ) : (
-                           <div className="w-8 h-8 rounded border border-gray-100  flex items-center justify-center">
+                           <div className="institution-logo-frame">
                              <Building2 size={14} className="text-gray-400"/>
                            </div>
                         )}
@@ -367,7 +369,7 @@ export default function AdminInstitutionsPage() {
                       {inst.state}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`badge ${inst.is_active ? 'badge-success' : 'badge-muted'}`}>
+                      <span className={`app-badge ${inst.is_active ? 'app-badge-success' : 'app-badge-muted'}`}>
                         {inst.is_active ? 'Ativo' : 'Inativo'}
                       </span>
                     </td>

@@ -26,9 +26,9 @@ function formatDate(dateStr: string | null): string {
 }
 
 const STATUS_BADGES: Record<string, { label: string; classes: string }> = {
-  pending: { label: 'Pendente', classes: 'badge badge-warning' },
-  sent: { label: 'Enviada', classes: 'badge badge-success' },
-  failed: { label: 'Falhou', classes: 'badge badge-danger' },
+  pending: { label: 'Pendente', classes: 'app-badge app-badge-warning' },
+  sent: { label: 'Enviada', classes: 'app-badge app-badge-success' },
+  failed: { label: 'Falhou', classes: 'app-badge app-badge-danger' },
 };
 
 export default function DashboardPage() {
@@ -81,8 +81,10 @@ export default function DashboardPage() {
         {/* Alerts Card */}
         <div className="glass-panel rounded-2xl overflow-hidden flex flex-col">
           <div className="flex items-center justify-between p-5 border-b border-gray-100">
-            <div className="flex items-center gap-2">
-              <AlertTriangle className="text-primary-600" size={20} />
+            <div className="flex items-center gap-3">
+              <div className="app-icon-soft">
+                <AlertTriangle className="text-primary-600" size={20} />
+              </div>
               <h2 className="font-semibold text-gray-900">Meus Alertas</h2>
             </div>
             <Link
@@ -128,7 +130,7 @@ export default function DashboardPage() {
                       <FileText size={14} className="text-gray-400" />
                       <span className="truncate">{alert.keyword}</span>
                       {alert.notice_type && (
-                        <span className="badge badge-muted">
+                        <span className="app-badge app-badge-muted">
                           {alert.notice_type}
                         </span>
                       )}
@@ -148,8 +150,10 @@ export default function DashboardPage() {
         {/* Notifications Card */}
         <div className="glass-panel rounded-2xl overflow-hidden flex flex-col">
           <div className="flex items-center justify-between p-5 border-b border-gray-100">
-            <div className="flex items-center gap-2">
-              <Bell className="text-primary-600" size={20} />
+            <div className="flex items-center gap-3">
+              <div className="app-icon-soft">
+                <Bell className="text-primary-600" size={20} />
+              </div>
               <h2 className="font-semibold text-gray-900">Notificações Recentes</h2>
             </div>
             <Link
@@ -193,7 +197,7 @@ export default function DashboardPage() {
                         </p>
                       </div>
                       <span
-                        className={`text-xs font-medium px-2 py-0.5 rounded-full ${badge.classes}`}
+                        className={`app-badge ${badge.classes}`}
                       >
                         {badge.label}
                       </span>

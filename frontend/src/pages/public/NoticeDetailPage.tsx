@@ -90,7 +90,7 @@ export default function NoticeDetailPage() {
           {/* Header */}
           <div className="p-6 border-b border-gray-100">
             <div className="flex items-center gap-2 mb-3">
-              <span className="badge badge-primary">
+              <span className="app-badge app-badge-primary">
                 {notice.notice_type}
               </span>
             </div>
@@ -145,7 +145,7 @@ export default function NoticeDetailPage() {
             <div className="p-6 border-b border-gray-100">
               <h2 className="text-sm font-semibold text-gray-700 mb-3">Instituição</h2>
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-gray-100 rounded-lg">
+                <div className="app-icon-soft-muted">
                   <Building2 className="text-gray-500" size={20} />
                 </div>
                 <div>

@@ -92,7 +92,7 @@ export default function NoticesPage() {
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary-100 rounded-lg">
+            <div className="app-icon-soft">
               <FileText className="text-primary-600" size={24} />
             </div>
             <div>
@@ -240,7 +240,7 @@ export default function NoticesPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="badge badge-primary">
+                        <span className="app-badge app-badge-primary">
                           {notice.notice_type}
                         </span>
                       </div>

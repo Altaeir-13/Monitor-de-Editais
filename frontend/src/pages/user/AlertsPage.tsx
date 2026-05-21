@@ -87,8 +87,8 @@ function AlertModal({ alert, onClose, onSave, isSaving, error }: AlertModalProps
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {(error || validationError) && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-              {validationError || error}
+            <div className="app-error-box text-sm mb-4">
+              {error || validationError}
             </div>
           )}
 
@@ -304,15 +304,15 @@ export default function AlertsPage() {
             >
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className={`badge ${
+                  <span className={`app-badge ${
                         alert.is_active 
-                        ? 'badge-success'
-                        : 'badge-muted'
+                        ? 'app-badge-success'
+                        : 'app-badge-muted'
                       }`}>
                     {alert.is_active ? 'Ativo' : 'Inativo'}
                   </span>
                   {alert.notice_type && (
-                    <span className="badge badge-primary">
+                    <span className="app-badge app-badge-primary">
                       {alert.notice_type}
                     </span>
                   )}

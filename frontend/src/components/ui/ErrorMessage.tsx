@@ -11,11 +11,11 @@ export default function ErrorMessage({
 }: ErrorMessageProps) {
   return (
     <div className="flex flex-col items-center justify-center py-16 px-4 text-center glass-panel rounded-2xl border-red-100">
-      <div className="p-4 bg-red-50 rounded-2xl mb-5 shadow-sm border border-red-100">
-        <AlertCircle className="text-red-500" size={32} />
+      <div className="app-error-box rounded-2xl mb-5 shadow-sm">
+        <AlertCircle size={32} />
       </div>
       <h3 className="text-xl font-bold text-gray-900">Erro</h3>
-      <p className="text-sm text-gray-500 mt-2 max-w-md leading-relaxed">{message}</p>
+      <p className="app-muted-text mt-2 max-w-md leading-relaxed">{message}</p>
       {onRetry && (
         <button
           onClick={onRetry}
