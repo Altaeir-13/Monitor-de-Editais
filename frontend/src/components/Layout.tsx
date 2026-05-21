@@ -40,7 +40,10 @@ export default function Layout() {
     navigate('/login', { replace: true });
   };
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    if (path === '/notices') return location.pathname.startsWith('/notices');
+    return location.pathname === path;
+  };
 
   return (
     <div className="min-h-screen flex">

@@ -2,7 +2,6 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import ProtectedRoute from '../components/ProtectedRoute';
 import AdminRoute from '../components/AdminRoute';
 import Layout from '../components/Layout';
-import HybridLayout from '../components/HybridLayout';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import NoticesPage from '../pages/public/NoticesPage';
@@ -15,7 +14,7 @@ import AdminInstitutionsPage from '../pages/admin/AdminInstitutionsPage';
 import AdminSourcesPage from '../pages/admin/AdminSourcesPage';
 
 const router = createBrowserRouter([
-  // Public routes
+  // Public routes (Auth)
   {
     path: '/login',
     element: <LoginPage />,
@@ -23,20 +22,6 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <RegisterPage />,
-  },
-  // Hybrid routes (Public or Authenticated depending on session)
-  {
-    element: <HybridLayout />,
-    children: [
-      {
-        path: '/notices',
-        element: <NoticesPage />,
-      },
-      {
-        path: '/notices/:id',
-        element: <NoticeDetailPage />,
-      },
-    ],
   },
 
   // Protected routes (require authentication)
@@ -49,6 +34,14 @@ const router = createBrowserRouter([
           {
             path: '/dashboard',
             element: <DashboardPage />,
+          },
+          {
+            path: '/notices',
+            element: <NoticesPage />,
+          },
+          {
+            path: '/notices/:id',
+            element: <NoticeDetailPage />,
           },
           {
             path: '/alerts',
@@ -90,13 +83,13 @@ const router = createBrowserRouter([
   // Root redirect
   {
     path: '/',
-    element: <Navigate to="/notices" replace />,
+    element: <Navigate to="/dashboard" replace />,
   },
 
-  // Catch-all → redirect to notices
+  // Catch-all → redirect to dashboard
   {
     path: '*',
-    element: <Navigate to="/notices" replace />,
+    element: <Navigate to="/dashboard" replace />,
   },
 ]);
 

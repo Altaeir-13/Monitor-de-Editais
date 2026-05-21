@@ -89,21 +89,17 @@ export default function NoticesPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center gap-3">
-            <div className="app-icon-soft">
-              <FileText className="text-primary-600" size={24} />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Monitor de Editais</h1>
-              <p className="text-sm text-gray-500">Editais públicos de instituições monitoradas</p>
-            </div>
-          </div>
+      <div className="mb-8 p-8 glass-panel rounded-2xl flex items-center gap-4">
+        <div className="app-icon-soft">
+          <FileText className="text-primary-600" size={24} />
         </div>
-      </header>
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Monitor de Editais</h1>
+          <p className="text-sm text-gray-500 mt-1">Editais públicos de instituições monitoradas</p>
+        </div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div>
         {/* Filters */}
         <div className="glass-panel rounded-2xl p-6 mb-6">
           {/* Search bar */}
