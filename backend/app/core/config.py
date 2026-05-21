@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     SMTP_PASSWORD: str = ""
     EMAILS_FROM_EMAIL: str = ""
 
+    # CORS Configuration
+    BACKEND_CORS_ORIGINS: list[str] = ["http://localhost:5173"]
+
     class Config:
         env_file = ".env"
         extra = "ignore"
