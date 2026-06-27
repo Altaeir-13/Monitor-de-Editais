@@ -98,7 +98,7 @@
       {
         "name": "Processos seletivos SIGAA UFRN",
         "url": "https://sigaa.ufrn.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S",
-        "source_type": "TABLE_HTML"
+        "source_type": "SIGAA"
       }
     ]
   },
@@ -163,14 +163,20 @@
     "official_site_url": "https://www.ufpe.br",
     "sources": [
       {
-        "name": "Oportunidades UFPE",
-        "url": "https://www.ufpe.br/oportunidades",
-        "source_type": "PAGINATED_HTML"
+        "name": "Processos seletivos SIGAA UFPE - stricto sensu",
+        "url": "https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S",
+        "source_type": "SIGAA",
+        "replaces": [
+          "https://www.ufpe.br/oportunidades"
+        ]
       },
       {
-        "name": "Site oficial UFPE - descoberta",
-        "url": "https://www.ufpe.br/",
-        "source_type": "HTML_STATIC"
+        "name": "Processos seletivos SIGAA UFPE - graduacao",
+        "url": "https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=G",
+        "source_type": "SIGAA",
+        "replaces": [
+          "https://www.ufpe.br/"
+        ]
       }
     ]
   },
@@ -454,9 +460,12 @@
     "official_site_url": "https://upe.br",
     "sources": [
       {
-        "name": "Editais UPE",
-        "url": "https://upe.br/editais/",
-        "source_type": "WORDPRESS"
+        "name": "Editais de graduacao UPE",
+        "url": "https://upe.br/editais/editais-de-graduacao/",
+        "source_type": "WORDPRESS",
+        "replaces": [
+          "https://upe.br/editais/"
+        ]
       },
       {
         "name": "Concursos UPE",
@@ -508,14 +517,20 @@
     "official_site_url": "https://portal.uneb.br",
     "sources": [
       {
-        "name": "Portal UNEB - descoberta",
-        "url": "https://portal.uneb.br/",
-        "source_type": "WORDPRESS"
+        "name": "Portal UNEB - busca edital",
+        "url": "https://portal.uneb.br/?s=edital",
+        "source_type": "WORDPRESS",
+        "replaces": [
+          "https://portal.uneb.br/"
+        ]
       },
       {
-        "name": "Editais UNEB",
-        "url": "https://portal.uneb.br/category/editais/",
-        "source_type": "WORDPRESS"
+        "name": "Editais UNEB - tag edital",
+        "url": "https://portal.uneb.br/tag/edital/",
+        "source_type": "WORDPRESS",
+        "replaces": [
+          "https://portal.uneb.br/category/editais/"
+        ]
       }
     ]
   },

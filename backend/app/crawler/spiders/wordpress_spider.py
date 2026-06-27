@@ -14,24 +14,23 @@ class WordPressNoticeSpider(GenericNoticeSpider):
     generic HTML extractor for category/archive pages that disable the API.
     """
 
-    SEARCH_TERMS = (
+    STRONG_NOTICE_KEYWORDS = (
         "edital",
-        "concurso",
+        "chamada",
         "selecao",
-        "sele\u00e7\u00e3o",
-        "bolsa",
+        "seletivo",
+        "concurso",
         "licitacao",
-        "licita\u00e7\u00e3o",
         "pregao",
-        "preg\u00e3o",
+        "bolsa",
+    )
+    BROAD_NOTICE_KEYWORDS = (
         "resultado",
         "retificacao",
-        "retifica\u00e7\u00e3o",
         "homologacao",
-        "homologa\u00e7\u00e3o",
         "convocacao",
-        "convoca\u00e7\u00e3o",
     )
+    SEARCH_TERMS = STRONG_NOTICE_KEYWORDS + BROAD_NOTICE_KEYWORDS
 
     def run(self) -> List[Dict[str, Any]]:
         items: List[Dict[str, Any]] = []
@@ -103,7 +102,7 @@ class WordPressNoticeSpider(GenericNoticeSpider):
                     continue
 
                 searchable = " ".join([title, link, description])
-                if not self._has_notice_keyword(searchable):
+                if not self._is_relevant_rest_item(searchable):
                     continue
 
                 absolute_url = urljoin(base, link)
@@ -120,6 +119,21 @@ class WordPressNoticeSpider(GenericNoticeSpider):
                 )
 
         return found
+
+    def _is_relevant_rest_item(self, text: str) -> bool:
+        normalized = self._normalize_for_match(text)
+        if any(keyword in normalized for keyword in self.STRONG_NOTICE_KEYWORDS):
+            return True
+
+        if not any(keyword in normalized for keyword in self.BROAD_NOTICE_KEYWORDS):
+            return False
+
+        return bool(
+            "edital" in normalized
+            or "processo seletivo" in normalized
+            or "processos seletivos" in normalized
+            or "chamada publica" in normalized
+        )
 
     def _site_base_url(self) -> str:
         parsed = urlparse(self.source_url)
