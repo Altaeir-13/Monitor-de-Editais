@@ -2,6 +2,14 @@ import re
 import urllib.parse
 import hashlib
 
+TRACKING_QUERY_PREFIXES = ("utm_",)
+TRACKING_QUERY_PARAMS = {
+    "fbclid",
+    "gclid",
+    "mc_cid",
+    "mc_eid",
+}
+
 def normalize_title(title: str) -> str:
     """
     Normalizes a title string.
@@ -11,9 +19,7 @@ def normalize_title(title: str) -> str:
     """
     if not title:
         return ""
-    # Replace \n and \r with spaces
     title = title.replace("\n", " ").replace("\r", " ")
-    # Replace multiple spaces with a single space
     title = re.sub(r'\s+', ' ', title)
     return title.strip().lower()
 
@@ -22,17 +28,37 @@ def normalize_url(url: str, base_url: str) -> str:
     Normalizes a URL.
     - Resolves relative URLs using base_url
     - Removes leading/trailing spaces
-    - Removes fragments (hashtags like #anchor)
+    - Removes fragments and common tracking query params
+    - Sorts remaining query params for stable duplicate detection
     """
     if not url:
         return ""
     url = url.strip()
-    # Join with base_url
     joined_url = urllib.parse.urljoin(base_url, url)
-    # Remove fragments
     parsed = urllib.parse.urlparse(joined_url)
-    normalized = urllib.parse.urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, parsed.query, ''))
-    return normalized
+
+    netloc = parsed.netloc.lower()
+    if parsed.scheme == "http" and netloc.endswith(":80"):
+        netloc = netloc[:-3]
+    if parsed.scheme == "https" and netloc.endswith(":443"):
+        netloc = netloc[:-4]
+
+    path = parsed.path or "/"
+    if len(path) > 1:
+        path = path.rstrip("/")
+
+    query_pairs = urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+    filtered_pairs = [
+        (key, value)
+        for key, value in query_pairs
+        if key.lower() not in TRACKING_QUERY_PARAMS
+        and not key.lower().startswith(TRACKING_QUERY_PREFIXES)
+    ]
+    query = urllib.parse.urlencode(sorted(filtered_pairs), doseq=True)
+
+    return urllib.parse.urlunparse(
+        (parsed.scheme.lower(), netloc, path, parsed.params, query, "")
+    )
 
 def generate_fingerprint(institution_id: int, normalized_title: str, normalized_url: str) -> str:
     """
