@@ -1,0 +1,773 @@
+[
+  {
+    "name": "Universidade Federal do Piaui",
+    "initials": "UFPI",
+    "state": "PI",
+    "official_site_url": "https://ufpi.br",
+    "sources": [
+      {
+        "name": "Editais UFPI",
+        "url": "https://ufpi.br/editais",
+        "source_type": "PAGINATED_HTML"
+      },
+      {
+        "name": "Concursos UFPI",
+        "url": "http://www.ufpi.br/concursos",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal do Maranhao",
+    "initials": "UFMA",
+    "state": "MA",
+    "official_site_url": "https://portalpadrao.ufma.br",
+    "sources": [
+      {
+        "name": "Editais UFMA",
+        "url": "https://portalpadrao.ufma.br/site/editais",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal do Ceara",
+    "initials": "UFC",
+    "state": "CE",
+    "official_site_url": "https://www.ufc.br",
+    "sources": [
+      {
+        "name": "Noticias e editais de concursos e selecoes UFC",
+        "url": "https://www.ufc.br/noticias/noticias-e-editais-de-concursos-e-selecoes",
+        "source_type": "PAGINATED_HTML"
+      },
+      {
+        "name": "Editais e concursos UFC",
+        "url": "https://www.ufc.br/editais-e-concursos/graduacao",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal do Cariri",
+    "initials": "UFCA",
+    "state": "CE",
+    "official_site_url": "https://www.ufca.edu.br",
+    "sources": [
+      {
+        "name": "Concursos e selecoes UFCA",
+        "url": "https://www.ufca.edu.br/admissao/concursos-e-selecoes/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Editais vigentes UFCA",
+        "url": "https://www.ufca.edu.br/admissao/concursos-e-selecoes/docentes/efetivo/editais-vigentes/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade da Integracao Internacional da Lusofonia Afro-Brasileira",
+    "initials": "UNILAB",
+    "state": "CE",
+    "official_site_url": "https://unilab.edu.br",
+    "sources": [
+      {
+        "name": "Editais Unilab",
+        "url": "https://unilab.edu.br/editais-unilab/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Concursos e selecoes Unilab",
+        "url": "https://unilab.edu.br/category/concursos-e-selecoes/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal do Rio Grande do Norte",
+    "initials": "UFRN",
+    "state": "RN",
+    "official_site_url": "https://www.ufrn.br",
+    "sources": [
+      {
+        "name": "Concursos UFRN",
+        "url": "https://www.ufrn.br/institucional/concursos",
+        "source_type": "HTML_STATIC"
+      },
+      {
+        "name": "Processos seletivos SIGAA UFRN",
+        "url": "https://sigaa.ufrn.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S",
+        "source_type": "TABLE_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal Rural do Semi-Arido",
+    "initials": "UFERSA",
+    "state": "RN",
+    "official_site_url": "https://ufersa.edu.br",
+    "sources": [
+      {
+        "name": "Processos seletivos UFERSA",
+        "url": "https://ufersa.edu.br/portal/categoria/processos-seletivos",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Concursos UFERSA CPPS",
+        "url": "https://cpps.ufersa.edu.br",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal da Paraiba",
+    "initials": "UFPB",
+    "state": "PB",
+    "official_site_url": "https://www.ufpb.br",
+    "sources": [
+      {
+        "name": "Processos seletivos SIGAA UFPB",
+        "url": "https://sigaa.ufpb.br/sigaa/public/processo_seletivo/lista.jsf?nivel=S&aba=p-stricto",
+        "source_type": "TABLE_HTML"
+      },
+      {
+        "name": "Concursos PROGEP UFPB",
+        "url": "https://progep.ufpb.br/progep/contents/menu/Institucional/concursos/",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Editais PRG UFPB",
+        "url": "https://www.prg.ufpb.br/editais/ingressantes/",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal de Campina Grande",
+    "initials": "UFCG",
+    "state": "PB",
+    "official_site_url": "https://www.gov.br/ufcg/pt-br",
+    "sources": [
+      {
+        "name": "Processos seletivos UFCG",
+        "url": "https://www.gov.br/ufcg/pt-br/assuntos/processos-seletivos",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal de Pernambuco",
+    "initials": "UFPE",
+    "state": "PE",
+    "official_site_url": "https://www.ufpe.br",
+    "sources": [
+      {
+        "name": "Oportunidades UFPE",
+        "url": "https://www.ufpe.br/oportunidades",
+        "source_type": "PAGINATED_HTML"
+      },
+      {
+        "name": "Site oficial UFPE - descoberta",
+        "url": "https://www.ufpe.br/",
+        "source_type": "HTML_STATIC"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal Rural de Pernambuco",
+    "initials": "UFRPE",
+    "state": "PE",
+    "official_site_url": "https://www.ufrpe.br",
+    "sources": [
+      {
+        "name": "Concursos UFRPE",
+        "url": "http://ufrpe.br/concursos/",
+        "source_type": "PAGINATED_HTML"
+      },
+      {
+        "name": "Editais UFRPE",
+        "url": "http://ufrpe.br/editais/",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal do Vale do Sao Francisco",
+    "initials": "UNIVASF",
+    "state": "PE",
+    "official_site_url": "https://portais.univasf.edu.br",
+    "sources": [
+      {
+        "name": "Concursos UNIVASF",
+        "url": "https://portais.univasf.edu.br/servicos/concursos",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Processos seletivos UNIVASF",
+        "url": "https://portais.univasf.edu.br/servicos/processos-seletivos",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal de Alagoas",
+    "initials": "UFAL",
+    "state": "AL",
+    "official_site_url": "https://ufal.br",
+    "sources": [
+      {
+        "name": "Editais UFAL",
+        "url": "https://editais.ufal.br",
+        "source_type": "PAGINATED_HTML"
+      },
+      {
+        "name": "Concursos publicos UFAL",
+        "url": "https://ufal.br/servidor/admissao/concursos-publicos",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Chamadas internas UFAL",
+        "url": "https://ufal.br/ufal/pesquisa-e-inovacao/chamadas",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal de Sergipe",
+    "initials": "UFS",
+    "state": "SE",
+    "official_site_url": "https://www.ufs.br",
+    "sources": [
+      {
+        "name": "Site oficial UFS - descoberta",
+        "url": "https://www.ufs.br/",
+        "source_type": "HTML_STATIC"
+      },
+      {
+        "name": "Processos seletivos SIGAA UFS",
+        "url": "https://www.sigaa.ufs.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S",
+        "source_type": "TABLE_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal da Bahia",
+    "initials": "UFBA",
+    "state": "BA",
+    "official_site_url": "https://www.ufba.br",
+    "sources": [
+      {
+        "name": "Portal de concursos UFBA",
+        "url": "https://concursos.ufba.br/",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal do Oeste da Bahia",
+    "initials": "UFOB",
+    "state": "BA",
+    "official_site_url": "https://ufob.edu.br",
+    "sources": [
+      {
+        "name": "Editais UFOB",
+        "url": "https://ufob.edu.br/a-ufob/editais",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Chamadas externas UFOB",
+        "url": "https://ufob.edu.br/pesquisa/chamadas-externas",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal do Reconcavo da Bahia",
+    "initials": "UFRB",
+    "state": "BA",
+    "official_site_url": "https://ufrb.edu.br/portal/",
+    "sources": [
+      {
+        "name": "Concursos UFRB",
+        "url": "https://ufrb.edu.br/portal/concursos/",
+        "source_type": "PAGINATED_HTML"
+      },
+      {
+        "name": "Concursos PROGEP UFRB",
+        "url": "https://ufrb.edu.br/progep/concursos",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Federal do Sul da Bahia",
+    "initials": "UFSB",
+    "state": "BA",
+    "official_site_url": "https://ufsb.edu.br",
+    "sources": [
+      {
+        "name": "Concursos UFSB",
+        "url": "https://ufsb.edu.br/concursos",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual do Maranhao",
+    "initials": "UEMA",
+    "state": "MA",
+    "official_site_url": "https://www.uema.br",
+    "sources": [
+      {
+        "name": "Editais UEMA",
+        "url": "https://www.uema.br/category/editais",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "SIGConcursos UEMA",
+        "url": "https://sigconcursos.uema.br/",
+        "source_type": "TABLE_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual da Regiao Tocantina do Maranhao",
+    "initials": "UEMASUL",
+    "state": "MA",
+    "official_site_url": "https://www.uemasul.edu.br",
+    "sources": [
+      {
+        "name": "Site oficial UEMASUL - descoberta",
+        "url": "https://www.uemasul.edu.br/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Editais UEMASUL",
+        "url": "https://www.uemasul.edu.br/editais/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual do Piaui",
+    "initials": "UESPI",
+    "state": "PI",
+    "official_site_url": "https://uespi.br",
+    "sources": [
+      {
+        "name": "Editais UESPI",
+        "url": "https://uespi.br/editais/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual do Ceara",
+    "initials": "UECE",
+    "state": "CE",
+    "official_site_url": "https://www.uece.br",
+    "sources": [
+      {
+        "name": "Editais UECE",
+        "url": "https://www.uece.br/material/editais/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "CEV UECE",
+        "url": "https://www.uece.br/cev/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Regional do Cariri",
+    "initials": "URCA",
+    "state": "CE",
+    "official_site_url": "https://www.urca.br",
+    "sources": [
+      {
+        "name": "Concursos URCA",
+        "url": "https://www.urca.br/concursos/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Editais internos URCA",
+        "url": "https://www.urca.br/editais-internos/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual Vale do Acarau",
+    "initials": "UVA",
+    "state": "CE",
+    "official_site_url": "https://www.uva.ce.gov.br",
+    "sources": [
+      {
+        "name": "Processo seletivo UVA",
+        "url": "https://www.uva.ce.gov.br/category/processo-seletivo/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "CEPS UVA",
+        "url": "https://ww2.uva.ce.gov.br/apps/view/ceps_inscricoes.php",
+        "source_type": "TABLE_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade do Estado do Rio Grande do Norte",
+    "initials": "UERN",
+    "state": "RN",
+    "official_site_url": "https://portal.uern.br",
+    "sources": [
+      {
+        "name": "Editais PROEG UERN",
+        "url": "https://portal.uern.br/proeg/editais/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual da Paraiba",
+    "initials": "UEPB",
+    "state": "PB",
+    "official_site_url": "https://uepb.edu.br",
+    "sources": [
+      {
+        "name": "Editais UEPB",
+        "url": "https://uepb.edu.br/editais/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Professor substituto UEPB",
+        "url": "https://uepb.edu.br/editais/selecao-professor-substituto/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade de Pernambuco",
+    "initials": "UPE",
+    "state": "PE",
+    "official_site_url": "https://upe.br",
+    "sources": [
+      {
+        "name": "Editais UPE",
+        "url": "https://upe.br/editais/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Concursos UPE",
+        "url": "https://upe.br/editais/concursos/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Processo de ingresso UPE",
+        "url": "https://processodeingresso.upe.pe.gov.br/",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual de Alagoas",
+    "initials": "UNEAL",
+    "state": "AL",
+    "official_site_url": "https://www.uneal.edu.br",
+    "sources": [
+      {
+        "name": "Editais UNEAL",
+        "url": "https://www.uneal.edu.br/editais",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Concurso UNEAL",
+        "url": "https://www.uneal.edu.br/concurso",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual de Ciencias da Saude de Alagoas",
+    "initials": "UNCISAL",
+    "state": "AL",
+    "official_site_url": "https://www.uncisal.edu.br",
+    "sources": [
+      {
+        "name": "Editais UNCISAL",
+        "url": "https://www.uncisal.edu.br/editais",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade do Estado da Bahia",
+    "initials": "UNEB",
+    "state": "BA",
+    "official_site_url": "https://portal.uneb.br",
+    "sources": [
+      {
+        "name": "Portal UNEB - descoberta",
+        "url": "https://portal.uneb.br/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Editais UNEB",
+        "url": "https://portal.uneb.br/category/editais/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual de Feira de Santana",
+    "initials": "UEFS",
+    "state": "BA",
+    "official_site_url": "https://www.uefs.br",
+    "sources": [
+      {
+        "name": "Selecoes e concursos UEFS",
+        "url": "http://csa.uefs.br/",
+        "source_type": "PAGINATED_HTML"
+      },
+      {
+        "name": "Site oficial UEFS - descoberta",
+        "url": "https://www.uefs.br/",
+        "source_type": "HTML_STATIC"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual de Santa Cruz",
+    "initials": "UESC",
+    "state": "BA",
+    "official_site_url": "https://www.uesc.br",
+    "sources": [
+      {
+        "name": "Selecoes e concursos UESC",
+        "url": "https://www.uesc.br/selecoes_e_concursos/",
+        "source_type": "TABLE_HTML"
+      },
+      {
+        "name": "Selecao publica UESC",
+        "url": "https://www.uesc.br/selecao_publica/index.php?item=conteudo_prof_substituto.php",
+        "source_type": "TABLE_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Universidade Estadual do Sudoeste da Bahia",
+    "initials": "UESB",
+    "state": "BA",
+    "official_site_url": "https://www.uesb.br",
+    "sources": [
+      {
+        "name": "Editais UESB",
+        "url": "https://www.uesb.br/editais/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Concursos e selecoes UESB",
+        "url": "http://www2.uesb.br/concursos",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal do Maranhao",
+    "initials": "IFMA",
+    "state": "MA",
+    "official_site_url": "https://portal.ifma.edu.br",
+    "sources": [
+      {
+        "name": "Concursos e seletivos IFMA",
+        "url": "https://portal.ifma.edu.br/concursos-e-seletivos/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal do Piaui",
+    "initials": "IFPI",
+    "state": "PI",
+    "official_site_url": "https://www.ifpi.edu.br",
+    "sources": [
+      {
+        "name": "Chamadas publicas IFPI",
+        "url": "https://www.ifpi.edu.br/chamadas-publicas",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Concursos IFPI",
+        "url": "https://www.ifpi.edu.br/processos-seletivos/concursos",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Seletivos IFPI",
+        "url": "https://www.ifpi.edu.br/processos-seletivos/concursos-e-seletivos",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal do Ceara",
+    "initials": "IFCE",
+    "state": "CE",
+    "official_site_url": "https://portal.ifce.edu.br",
+    "sources": [
+      {
+        "name": "Processos seletivos IFCE",
+        "url": "https://portal.ifce.edu.br/processos-seletivos/buscar/",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Trabalhe no IFCE",
+        "url": "https://portal.ifce.edu.br/processos-seletivos/buscar/?tipo=3",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal do Rio Grande do Norte",
+    "initials": "IFRN",
+    "state": "RN",
+    "official_site_url": "https://portal.ifrn.edu.br",
+    "sources": [
+      {
+        "name": "Processos seletivos IFRN",
+        "url": "https://processoseletivo.ifrn.edu.br/",
+        "source_type": "PAGINATED_HTML",
+        "replaces": [
+          "https://portal.ifrn.edu.br/processos-seletivos/buscar/"
+        ]
+      },
+      {
+        "name": "Trabalhe no IFRN",
+        "url": "https://portal.ifrn.edu.br/processos-seletivos/buscar/?tipo=8",
+        "source_type": "GOVBR",
+        "is_active": false
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal da Paraiba",
+    "initials": "IFPB",
+    "state": "PB",
+    "official_site_url": "https://www.ifpb.edu.br",
+    "sources": [
+      {
+        "name": "Editais IFPB",
+        "url": "https://www.ifpb.edu.br/editais",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Concursos IFPB",
+        "url": "https://www.ifpb.edu.br/concursopublico",
+        "source_type": "GOVBR"
+      },
+      {
+        "name": "Processos seletivos estudante IFPB",
+        "url": "https://estudante.ifpb.edu.br/processoseletivo/",
+        "source_type": "TABLE_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal de Pernambuco",
+    "initials": "IFPE",
+    "state": "PE",
+    "official_site_url": "https://portal.ifpe.edu.br",
+    "sources": [
+      {
+        "name": "Concurso professor IFPE",
+        "url": "https://portal.ifpe.edu.br/ingresso/trabalhe-no-ifpe/concurso-professor/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Concurso tecnico-administrativo IFPE",
+        "url": "https://portal.ifpe.edu.br/ingresso/trabalhe-no-ifpe/concurso-tecnico-administrativo/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Editais extensao IFPE",
+        "url": "https://portal.ifpe.edu.br/o-ifpe/extensao/editais/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal do Sertao Pernambucano",
+    "initials": "IFSERTAOPE",
+    "state": "PE",
+    "official_site_url": "https://ifsertaope.edu.br",
+    "sources": [
+      {
+        "name": "Site oficial IF Sertao-PE - descoberta",
+        "url": "https://ifsertaope.edu.br/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal de Alagoas",
+    "initials": "IFAL",
+    "state": "AL",
+    "official_site_url": "https://www2.ifal.edu.br",
+    "sources": [
+      {
+        "name": "Editais IFAL",
+        "url": "https://www2.ifal.edu.br/o-ifal/editais",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal de Sergipe",
+    "initials": "IFS",
+    "state": "SE",
+    "official_site_url": "https://www.ifs.edu.br",
+    "sources": [
+      {
+        "name": "Editais CONSUP IFS",
+        "url": "https://www.ifs.edu.br/orgaos-colegiados/conselho-superior/editais-consup.html",
+        "source_type": "PAGINATED_HTML"
+      },
+      {
+        "name": "Chamadas publicas IFS",
+        "url": "https://www.ifs.edu.br/orgaos-colegiados/conselho-superior/chamada-publica-consup.html",
+        "source_type": "PAGINATED_HTML"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal da Bahia",
+    "initials": "IFBA",
+    "state": "BA",
+    "official_site_url": "https://portal.ifba.edu.br",
+    "sources": [
+      {
+        "name": "Portal IFBA - descoberta",
+        "url": "https://portal.ifba.edu.br/",
+        "source_type": "GOVBR"
+      }
+    ]
+  },
+  {
+    "name": "Instituto Federal Baiano",
+    "initials": "IFBAIANO",
+    "state": "BA",
+    "official_site_url": "https://ifbaiano.edu.br/portal/",
+    "sources": [
+      {
+        "name": "Concursos IF Baiano",
+        "url": "https://concurso.ifbaiano.edu.br/portal/",
+        "source_type": "WORDPRESS"
+      },
+      {
+        "name": "Portal IF Baiano - descoberta",
+        "url": "https://ifbaiano.edu.br/portal/",
+        "source_type": "WORDPRESS"
+      }
+    ]
+  }
+]
