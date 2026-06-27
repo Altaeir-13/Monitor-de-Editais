@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSources, useCreateSource, useUpdateSource } from '../../hooks/useSources';
+import { useSources, useCreateSource, useUpdateSource, useRunCrawler } from '../../hooks/useSources';
 import Spinner from '../../components/ui/Spinner';
 import EmptyState from '../../components/ui/EmptyState';
 import ErrorMessage from '../../components/ui/ErrorMessage';
@@ -7,6 +7,7 @@ import {
   Plus,
   Pencil,
   Power,
+  RefreshCw,
   RotateCcw,
   X,
   Database,
@@ -21,6 +22,14 @@ import type { AxiosError } from 'axios';
 
 const PAGE_SIZE = 20;
 
+
+interface SourceFormData {
+  institution_id: number;
+  name: string;
+  url: string;
+  source_type: string;
+  check_frequency_minutes: number;
+}
 const SOURCE_TYPES = [
   { value: 'HTML_STATIC', label: 'HTML Estático' },
   { value: 'HTML_DYNAMIC', label: 'HTML Dinâmico' },
@@ -49,7 +58,7 @@ function formatDate(dateStr: string | null): string {
 interface SourceModalProps {
   source?: MonitoredSourceResponse | null;
   onClose: () => void;
-  onSave: (data: { institution_id: number; name: string; url: string; source_type: string; check_frequency_minutes: number }) => Promise<void>;
+  onSave: (data: SourceFormData) => Promise<void>;
   isSaving: boolean;
   error: string;
 }
@@ -263,11 +272,14 @@ export default function AdminSourcesPage() {
   const { data: sources, isLoading, isError, refetch } = useSources(skip, PAGE_SIZE);
   const createMutation = useCreateSource();
   const updateMutation = useUpdateSource();
+  const runCrawlerMutation = useRunCrawler();
 
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [editingSource, setEditingSource] = useState<MonitoredSourceResponse | null>(null);
   const [deactivatingSourceId, setDeactivatingSourceId] = useState<number | null>(null);
   const [modalError, setModalError] = useState('');
+  const [crawlerMessage, setCrawlerMessage] = useState('');
+  const [crawlerError, setCrawlerError] = useState('');
 
   if (isLoading) {
     return <Spinner text="Carregando fontes monitoradas..." />;
@@ -286,7 +298,7 @@ export default function AdminSourcesPage() {
   const hasNextPage = sourcesList.length === PAGE_SIZE;
   const currentPage = page + 1;
 
-  const handleCreate = async (data: any) => {
+  const handleCreate = async (data: SourceFormData) => {
     setModalError('');
     try {
       await createMutation.mutateAsync(data);
@@ -297,7 +309,7 @@ export default function AdminSourcesPage() {
     }
   };
 
-  const handleUpdate = async (data: any) => {
+  const handleUpdate = async (data: SourceFormData) => {
     if (!editingSource) return;
     setModalError('');
     try {
@@ -332,7 +344,19 @@ export default function AdminSourcesPage() {
       // handled silently
     }
   };
-
+  const handleRunCrawler = async () => {
+    setCrawlerMessage('');
+    setCrawlerError('');
+    try {
+      const result = await runCrawlerMutation.mutateAsync();
+      setCrawlerMessage(
+        `Fontes verificadas: ${result.sources_checked}. Itens encontrados: ${result.items_found}. Editais novos: ${result.new_items}. Fontes com falha: ${result.failed_sources}.`
+      );
+    } catch (err) {
+      const axiosErr = err as AxiosError<{ detail: string }>;
+      setCrawlerError(axiosErr.response?.data?.detail || 'Erro ao executar crawler.');
+    }
+  };
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -342,15 +366,29 @@ export default function AdminSourcesPage() {
             Gerencie as origens (links, feeds) rastreadas pelo Crawler.
           </p>
         </div>
-        <button
-          onClick={() => { setModalError(''); setShowCreateModal(true); }}
-          className="inline-flex items-center gap-1.5 btn-primary"
-        >
-          <Plus size={16} />
-          Nova Fonte
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleRunCrawler}
+            disabled={runCrawlerMutation.isPending}
+            className="inline-flex items-center gap-1.5 btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <RefreshCw size={16} className={runCrawlerMutation.isPending ? 'animate-spin' : ''} />
+            {runCrawlerMutation.isPending ? 'Executando...' : 'Executar crawler'}
+          </button>
+          <button
+            onClick={() => { setModalError(''); setShowCreateModal(true); }}
+            className="inline-flex items-center gap-1.5 btn-primary"
+          >
+            <Plus size={16} />
+            Nova Fonte
+          </button>
+        </div>
       </div>
-
+      {(crawlerMessage || crawlerError) && (
+        <div className={`mb-4 rounded-lg px-4 py-3 text-sm ${crawlerError ? 'border border-red-200 bg-red-50 text-red-700' : 'border border-green-200 bg-green-50 text-green-700'}`}>
+          {crawlerError || crawlerMessage}
+        </div>
+      )}
       {sourcesList.length === 0 && page === 0 ? (
         <EmptyState
           icon={<Database className="text-gray-400" size={32} />}

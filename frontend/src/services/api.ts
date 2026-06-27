@@ -350,5 +350,16 @@ export async function deleteAdminSource(id: number): Promise<MonitoredSourceResp
   return response.data;
 }
 
+export interface CrawlerRunSummary {
+  sources_checked: number;
+  items_found: number;
+  new_items: number;
+  failed_sources: number;
+}
+
+export async function runAdminCrawler(): Promise<CrawlerRunSummary> {
+  const response = await api.post<CrawlerRunSummary>('/admin/run-crawler');
+  return response.data;
+}
 export { TOKEN_KEY };
 export default api;

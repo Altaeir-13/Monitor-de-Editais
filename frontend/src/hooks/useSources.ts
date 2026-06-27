@@ -4,6 +4,7 @@ import {
   createAdminSource,
   updateAdminSource,
   deleteAdminSource,
+  runAdminCrawler,
 } from '../services/api';
 import type { MonitoredSourceCreate, MonitoredSourceUpdate } from '../services/api';
 
@@ -39,6 +40,16 @@ export function useDeleteSource() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (id: number) => deleteAdminSource(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-sources'] });
+    },
+  });
+}
+
+export function useRunCrawler() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => runAdminCrawler(),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-sources'] });
     },

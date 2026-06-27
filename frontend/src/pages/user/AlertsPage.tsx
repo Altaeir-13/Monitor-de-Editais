@@ -15,12 +15,16 @@ import type { UserAlertResponse } from '../../services/api';
 import type { AxiosError } from 'axios';
 
 const NOTICE_TYPES = [
-  { value: 'concurso', label: 'Concurso' },
-  { value: 'bolsa', label: 'Bolsa' },
   { value: 'edital', label: 'Edital' },
+  { value: 'concurso', label: 'Concurso' },
+  { value: 'processo_seletivo', label: 'Processo seletivo' },
   { value: 'licitacao', label: 'Licitação' },
-  { value: 'selecao', label: 'Seleção' },
-  { value: 'outro', label: 'Outro' },
+  { value: 'pregao', label: 'Pregão' },
+  { value: 'resultado', label: 'Resultado' },
+  { value: 'retificacao', label: 'Retificação' },
+  { value: 'homologacao', label: 'Homologação' },
+  { value: 'convocacao', label: 'Convocação' },
+  { value: 'bolsa', label: 'Bolsa' },
 ];
 
 function formatDate(dateStr: string | null): string {
