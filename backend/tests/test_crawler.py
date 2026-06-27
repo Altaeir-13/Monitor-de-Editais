@@ -36,6 +36,7 @@ from app.crawler.spiders.generic_notice_spider import GenericNoticeSpider
 from app.crawler.spiders.sigaa_notice_spider import SigaaNoticeSpider
 from app.crawler.runner import run_crawler
 from app.crawler.spider_factory import get_spider_for_source
+from app.core import scheduler as crawler_scheduler
 from app.api.routers import admin_match as admin_match_router
 
 results = {}
@@ -201,6 +202,26 @@ try:
     results["23_runner_uses_sigaa_dedupe_url_for_normalized_url"] = "id=19215" in sigaa_notices[0].normalized_url
     results["24_runner_sigaa_second_run_no_duplicates"] = run_crawler(db, source_ids=[sigaa_source.id])["new_items"] == 0
 
+    original_scheduler_enabled = crawler_scheduler.settings.CRAWLER_SCHEDULER_ENABLED
+    original_scheduler_interval = crawler_scheduler.settings.CRAWLER_INTERVAL_MINUTES
+    crawler_scheduler.settings.CRAWLER_SCHEDULER_ENABLED = False
+    results["25_scheduler_disabled_returns_none"] = crawler_scheduler.start_crawler_scheduler() is None
+    crawler_scheduler.settings.CRAWLER_SCHEDULER_ENABLED = True
+    crawler_scheduler.settings.CRAWLER_INTERVAL_MINUTES = 360
+    scheduler = crawler_scheduler.start_crawler_scheduler()
+    try:
+        job = scheduler.get_job(crawler_scheduler.CRAWLER_JOB_ID) if scheduler else None
+        results["26_scheduler_enabled_creates_single_safe_job"] = bool(
+            scheduler
+            and scheduler.running
+            and job
+            and job.max_instances == 1
+            and job.coalesce is True
+        )
+    finally:
+        crawler_scheduler.shutdown_crawler_scheduler(scheduler)
+        crawler_scheduler.settings.CRAWLER_SCHEDULER_ENABLED = original_scheduler_enabled
+        crawler_scheduler.settings.CRAWLER_INTERVAL_MINUTES = original_scheduler_interval
 
     suffix = uuid.uuid4().hex
     common_email = f"crawler_common_{suffix}@example.com"
@@ -234,9 +255,9 @@ try:
     common_response = client.post("/admin/run-crawler", headers=common_headers)
     admin_response = client.post("/admin/run-crawler", headers=admin_headers)
 
-    results["25_endpoint_requires_token"] = no_token_response.status_code == 401
-    results["26_endpoint_requires_admin"] = common_response.status_code == 403
-    results["27_endpoint_returns_summary"] = admin_response.status_code == 200 and admin_response.json() == fake_summary
+    results["27_endpoint_requires_token"] = no_token_response.status_code == 401
+    results["28_endpoint_requires_admin"] = common_response.status_code == 403
+    results["29_endpoint_returns_summary"] = admin_response.status_code == 200 and admin_response.json() == fake_summary
 
 except Exception as e:
     results["error"] = str(e)
