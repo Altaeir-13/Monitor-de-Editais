@@ -13,7 +13,7 @@ import {
   Moon,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 
 interface IconProps {
   size?: number;
@@ -64,12 +64,12 @@ const userNavItems = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/notices', label: 'Editais', icon: FileText },
   { to: '/alerts', label: 'Meus Alertas', icon: AlertTriangle },
-  { to: '/notifications', label: 'Notificações', icon: Bell },
+  { to: '/notifications', label: 'NotificaÃ§Ãµes', icon: Bell },
 ];
 
 const adminNavItems = [
   { to: '/admin', label: 'Admin', icon: Shield },
-  { to: '/admin/institutions', label: 'Instituições', icon: Shield },
+  { to: '/admin/institutions', label: 'InstituiÃ§Ãµes', icon: Shield },
   { to: '/admin/sources', label: 'Fontes', icon: Shield },
 ];
 
@@ -168,7 +168,7 @@ export default function Layout() {
               <>
                 <div className={`pt-4 pb-2 ${isCollapsed ? 'lg:flex lg:justify-center' : ''}`}>
                   <p className={`px-3 text-xs font-semibold text-[var(--theme-muted)] uppercase tracking-wider ${isCollapsed ? 'lg:hidden' : ''}`}>
-                    Administração
+                    AdministraÃ§Ã£o
                   </p>
                   <div className={`hidden ${isCollapsed ? 'lg:block' : ''} w-8 h-px bg-[var(--theme-border)]`} />
                 </div>

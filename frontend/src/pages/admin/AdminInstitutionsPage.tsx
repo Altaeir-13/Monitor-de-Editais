@@ -14,14 +14,14 @@ import {
   ChevronRight,
   ExternalLink
 } from 'lucide-react';
-import type { InstitutionResponse } from '../../services/api';
+import type { InstitutionCreate, InstitutionResponse, InstitutionUpdate } from '../../services/api';
 import type { AxiosError } from 'axios';
 
 const PAGE_SIZE = 20;
 
 // No date formatting needed on this page
 
-// ── Institution Modal ─────────────────────────────────────────────────────────
+// â”€â”€ Institution Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 interface InstitutionModalProps {
   institution?: InstitutionResponse | null;
@@ -50,7 +50,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
     const trimmedLogo = logoUrl.trim();
 
     if (!trimmedName || !trimmedInitials || !trimmedState || !trimmedSite) {
-      setValidationError('Preencha todos os campos obrigatórios.');
+      setValidationError('Preencha todos os campos obrigatÃ³rios.');
       return;
     }
 
@@ -76,7 +76,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
       <div className="relative bg-white rounded-xl shadow-xl w-full max-w-lg mx-4 p-6 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-2">
           <h2 className="text-xl font-bold text-gray-900">
-            {institution ? 'Editar Instituição' : 'Nova Instituição'}
+            {institution ? 'Editar InstituiÃ§Ã£o' : 'Nova InstituiÃ§Ã£o'}
           </h2>
           <button
             onClick={onClose}
@@ -86,7 +86,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
           </button>
         </div>
         <p className="text-sm text-gray-500 mb-6">
-          Preencha os dados da instituição para rastreabilidade dos editais.
+          Preencha os dados da instituiÃ§Ã£o para rastreabilidade dos editais.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -104,7 +104,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
               type="text"
               value={name}
               onChange={(e) => { setName(e.target.value); setValidationError(''); }}
-              placeholder="Ex: Universidade Federal do Piauí"
+              placeholder="Ex: Universidade Federal do PiauÃ­"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
               autoFocus
             />
@@ -177,7 +177,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
               disabled={isSaving || isFormEmpty}
               className="btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSaving ? 'Salvando...' : institution ? 'Salvar' : 'Criar Instituição'}
+              {isSaving ? 'Salvando...' : institution ? 'Salvar' : 'Criar InstituiÃ§Ã£o'}
             </button>
           </div>
         </form>
@@ -186,7 +186,7 @@ function InstitutionModal({ institution, onClose, onSave, isSaving, error }: Ins
   );
 }
 
-// ── Confirm Modal ─────────────────────────────────────────────────────────────
+// â”€â”€ Confirm Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 interface ConfirmModalProps {
   title: string;
@@ -224,7 +224,7 @@ function ConfirmModal({ title, message, confirmLabel, onConfirm, onCancel, isLoa
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
+// â”€â”€ Main Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function AdminInstitutionsPage() {
   const [page, setPage] = useState(0);
@@ -240,13 +240,13 @@ export default function AdminInstitutionsPage() {
   const [modalError, setModalError] = useState('');
 
   if (isLoading) {
-    return <Spinner text="Carregando instituições..." />;
+    return <Spinner text="Carregando instituiÃ§Ãµes..." />;
   }
 
   if (isError) {
     return (
       <ErrorMessage
-        message="Não foi possível carregar as instituições."
+        message="NÃ£o foi possÃ­vel carregar as instituiÃ§Ãµes."
         onRetry={() => refetch()}
       />
     );
@@ -256,18 +256,18 @@ export default function AdminInstitutionsPage() {
   const hasNextPage = instList.length === PAGE_SIZE;
   const currentPage = page + 1;
 
-  const handleCreate = async (data: any) => {
+  const handleCreate = async (data: InstitutionCreate) => {
     setModalError('');
     try {
       await createMutation.mutateAsync(data);
       setShowCreateModal(false);
     } catch (err) {
       const axiosErr = err as AxiosError<{ detail: string }>;
-      setModalError(axiosErr.response?.data?.detail || 'Erro ao criar instituição.');
+      setModalError(axiosErr.response?.data?.detail || 'Erro ao criar instituiÃ§Ã£o.');
     }
   };
 
-  const handleUpdate = async (data: any) => {
+  const handleUpdate = async (data: InstitutionUpdate) => {
     if (!editingInst) return;
     setModalError('');
     try {
@@ -278,7 +278,7 @@ export default function AdminInstitutionsPage() {
       setEditingInst(null);
     } catch (err) {
       const axiosErr = err as AxiosError<{ detail: string }>;
-      setModalError(axiosErr.response?.data?.detail || 'Erro ao atualizar instituição.');
+      setModalError(axiosErr.response?.data?.detail || 'Erro ao atualizar instituiÃ§Ã£o.');
     }
   };
 
@@ -307,9 +307,9 @@ export default function AdminInstitutionsPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Instituições</h1>
+          <h1 className="text-2xl font-bold text-gray-900">InstituiÃ§Ãµes</h1>
           <p className="text-sm text-gray-500 mt-1">
-            Gerencie as instituições de ensino ou públicas da plataforma.
+            Gerencie as instituiÃ§Ãµes de ensino ou pÃºblicas da plataforma.
           </p>
         </div>
         <button
@@ -317,16 +317,16 @@ export default function AdminInstitutionsPage() {
           className="inline-flex items-center gap-1.5 btn-primary"
         >
           <Plus size={16} />
-          Nova Instituição
+          Nova InstituiÃ§Ã£o
         </button>
       </div>
 
       {instList.length === 0 && page === 0 ? (
         <EmptyState
           icon={<Building2 className="text-gray-400" size={32} />}
-          title="Nenhuma instituição encontrada"
-          description="Ainda não existem instituições cadastradas no sistema."
-          actionLabel="Criar instituição"
+          title="Nenhuma instituiÃ§Ã£o encontrada"
+          description="Ainda nÃ£o existem instituiÃ§Ãµes cadastradas no sistema."
+          actionLabel="Criar instituiÃ§Ã£o"
           onAction={() => { setModalError(''); setShowCreateModal(true); }}
         />
       ) : (
@@ -339,7 +339,7 @@ export default function AdminInstitutionsPage() {
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome / Sigla</th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">UF</th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                  <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                  <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">AÃ§Ãµes</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -402,9 +402,9 @@ export default function AdminInstitutionsPage() {
             <button onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-100 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent">
               <ChevronLeft size={16} /> Anterior
             </button>
-            <span className="text-sm text-gray-500">Página {currentPage}</span>
+            <span className="text-sm text-gray-500">PÃ¡gina {currentPage}</span>
             <button onClick={() => setPage((p) => p + 1)} disabled={!hasNextPage} className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-100 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent">
-              Próximo <ChevronRight size={16} />
+              PrÃ³ximo <ChevronRight size={16} />
             </button>
           </div>
         </>
@@ -431,8 +431,8 @@ export default function AdminInstitutionsPage() {
 
       {deactivatingInstId !== null && (
         <ConfirmModal
-          title="Desativar instituição"
-          message="Tem certeza que deseja desativar esta instituição? Fontes ligadas a ela continuarão intactas, mas poderão não ser exibidas a usuários finais."
+          title="Desativar instituiÃ§Ã£o"
+          message="Tem certeza que deseja desativar esta instituiÃ§Ã£o? Fontes ligadas a ela continuarÃ£o intactas, mas poderÃ£o nÃ£o ser exibidas a usuÃ¡rios finais."
           confirmLabel="Desativar"
           onConfirm={handleDeactivate}
           onCancel={() => setDeactivatingInstId(null)}

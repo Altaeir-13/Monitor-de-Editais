@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import {
   login as apiLogin,
@@ -7,19 +7,7 @@ import {
   TOKEN_KEY,
 } from '../services/api';
 import type { UserResponse } from '../services/api';
-
-export interface AuthContextType {
-  user: UserResponse | null;
-  token: string | null;
-  isAuthenticated: boolean;
-  isAdmin: boolean;
-  isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (name: string, email: string, password: string) => Promise<void>;
-  logout: () => void;
-}
-
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+import { AuthContext } from './auth-context';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserResponse | null>(null);
@@ -34,23 +22,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // On mount: if token exists, validate by calling GET /users/me
   useEffect(() => {
     const storedToken = localStorage.getItem(TOKEN_KEY);
-    if (storedToken) {
-      setIsLoading(true);
-      getMe()
-        .then((userData) => {
-          setUser(userData);
-          setToken(storedToken);
-        })
-        .catch(() => {
-          // Token invalid — clear
-          localStorage.removeItem(TOKEN_KEY);
-          setToken(null);
-          setUser(null);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+    if (!storedToken) {
+      return;
     }
+
+    let isMounted = true;
+
+    getMe()
+      .then((userData) => {
+        if (!isMounted) return;
+        setUser(userData);
+        setToken(storedToken);
+      })
+      .catch(() => {
+        if (!isMounted) return;
+        localStorage.removeItem(TOKEN_KEY);
+        setToken(null);
+        setUser(null);
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
