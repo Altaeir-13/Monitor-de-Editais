@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     # CORS Configuration
     BACKEND_CORS_ORIGINS: list[str] = ["http://localhost:5173"]
 
+    # Crawler scheduler
+    CRAWLER_SCHEDULER_ENABLED: bool = False
+    CRAWLER_INTERVAL_MINUTES: int = 360
+
     class Config:
         env_file = ".env"
         extra = "ignore"

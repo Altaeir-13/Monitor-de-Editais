@@ -1,7 +1,7 @@
 # Auditoria de fontes do Nordeste
 
-Gerado em: 2026-06-27 16:22:13 UTC
-Banco usado: `sqlite:///C:/Users/Altair/Documents/Editais/backend/audit_northeast_initial.db`
+Gerado em: 2026-06-27 18:41:49 UTC
+Banco usado: `sqlite:///C:/Users/Altair/Documents/Editais/backend/audit_northeast_final.db`
 
 ## Escopo
 
@@ -11,21 +11,21 @@ Fontes testadas neste relatorio: 27
 
 ## Seed
 
-Primeira execucao: `{"institutions_created": 44, "institutions_updated": 0, "sources_created": 83, "sources_updated": 0}`
-Segunda execucao: `{"institutions_created": 0, "institutions_updated": 44, "sources_created": 0, "sources_updated": 83}`
+Primeira execucao: `{"institutions_created": 44, "institutions_updated": 0, "sources_created": 83, "sources_updated": 0, "sources_replaced": 0}`
+Segunda execucao: `{"institutions_created": 0, "institutions_updated": 44, "sources_created": 0, "sources_updated": 83, "sources_replaced": 0}`
 Idempotencia: ok, sem novas instituicoes/fontes na segunda execucao.
 
 ## Resumo do crawler
 
-Primeira execucao: `{"sources_checked": 27, "items_found": 1534, "new_items": 1256, "failed_sources": 1}`
-Segunda execucao (duplicidade): `{"sources_checked": 27, "items_found": 1534, "new_items": 0, "failed_sources": 1}`
-Instituicoes com pelo menos 1 edital salvo: 14 (IFBA, IFCE, IFPI, IFRN, UEMA, UEPB, UESPI, UFBA, UFC, UFMA, UFPI, UFRN, UNEB, UPE)
-Editais ativos recuperados para o escopo: 1256
-Fontes funcionais: 20
-Fontes funcionais parciais: 4
-Fontes falhas/sem captura util: 3
+Primeira execucao: `{"sources_checked": 27, "items_found": 1727, "new_items": 1418, "failed_sources": 0}`
+Segunda execucao (duplicidade): `{"sources_checked": 27, "items_found": 1727, "new_items": 0, "failed_sources": 0}`
+Instituicoes com pelo menos 1 edital salvo: 15 (IFBA, IFCE, IFPI, IFRN, UEMA, UEPB, UESPI, UFBA, UFC, UFMA, UFPE, UFPI, UFRN, UNEB, UPE)
+Editais ativos recuperados para o escopo: 1418
+Fontes funcionais: 22
+Fontes funcionais parciais: 3
+Fontes falhas/sem captura util: 2
 
-Tipos encontrados: bolsa=71, concurso=118, convocacao=39, edital=529, homologacao=34, licitacao=4, pregao=5, processo_seletivo=300, resultado=125, retificacao=31
+Tipos encontrados: bolsa=72, concurso=118, convocacao=39, edital=626, homologacao=28, licitacao=4, pregao=5, processo_seletivo=368, resultado=130, retificacao=28
 
 ## Amostras de editais salvos
 
@@ -51,16 +51,16 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 
 | notice_type | Registros no escopo | Amostra via listagem publica | Exemplos |
 | --- | ---: | ---: | --- |
-| `edital` | 529 | 5 | Errata do Edital de Procedimento de Heteroidentificação e Verificação; Edital de Procedimento de Heteroidentificação e Verificação; Errata 2 do Edital de Matrícula e Remanejamentos |
+| `edital` | 626 | 5 | Errata do Edital de Procedimento de Heteroidentificação e Verificação; Edital de Procedimento de Heteroidentificação e Verificação; Errata 2 do Edital de Matrícula e Remanejamentos |
 | `concurso` | 118 | 5 | Concursos UPE; UPE lança edital de vídeos sobre sustentabilidade para transformar metas da Agenda 2030 em soluções locais; UPE, Ministério Público do Trabalho e IAUPE firmam par... |
-| `processo_seletivo` | 300 | 5 | Publicação no Diário Oficial de Pernambuco - Aviso de Alteração da Data de Realização de Provas da Seleção Pública para Ingresso nas Esco...; RESOLUÇÃO CONSUN Nº 014/2026 - Regu... |
+| `processo_seletivo` | 368 | 5 | Publicação no Diário Oficial de Pernambuco - Aviso de Alteração da Data de Realização de Provas da Seleção Pública para Ingresso nas Esco...; RESOLUÇÃO CONSUN Nº 014/2026 - Regu... |
 | `licitacao` | 4 | 4 | Licitações, Contratos e Fornecedores; Governo de Pernambuco e UPE anunciam investimentos iniciais de 11,4 milhões para a requalificação do Hospital Universitário Oswaldo Cruz; U... |
 | `pregao` | 5 | 5 | Aviso de licitação do Pregão Eletrônico Nº 013/2022; Errata ao aviso de licitação &#8211; PREGÃO ELETRÔNICO Nº 013/2022; PREGÃO ELETRÔNICO Nº. 014/2022 – FUESPI |
-| `resultado` | 125 | 5 | Resultado Final da Autodeclaração do Processo de Heteroidentificação(Candidatos Remanejáveis); Resultado dos Recursos da Autodeclaração do Processo de Heteroidentificação(Candid... |
-| `retificacao` | 31 | 5 | Retificação do Resultado dos Recursos da Autodeclaração do Processo de Heteroidentificação (Candidatos Remanejáveis); Comunicado Sobre a Prorrogação das Inscrições SSA3; Comunic... |
-| `homologacao` | 34 | 5 | Cláudia Gusmão, primeira mulher indicada como general no Brasil, tem formação na UPE; UPE lança edital de Inovação Pedagógica 2026; UPE divulga edital de Apoio à Vivência de Com... |
+| `resultado` | 130 | 5 | Resultado Final da Autodeclaração do Processo de Heteroidentificação(Candidatos Remanejáveis); Resultado dos Recursos da Autodeclaração do Processo de Heteroidentificação(Candid... |
+| `retificacao` | 28 | 5 | Retificação do Resultado dos Recursos da Autodeclaração do Processo de Heteroidentificação (Candidatos Remanejáveis); Comunicado Sobre a Prorrogação das Inscrições SSA3; Comunic... |
+| `homologacao` | 28 | 5 | Cláudia Gusmão, primeira mulher indicada como general no Brasil, tem formação na UPE; UPE lança edital de Inovação Pedagógica 2026; UPE divulga edital de Apoio à Vivência de Com... |
 | `convocacao` | 39 | 5 | UPE abre inscrições para palestrantes voluntários em ações de qualidade de vida no trabalho; UPE divulga edital PROGRAD nº 12/2026 – Seleção de Estudantes à Mobilidade Acadêmica... |
-| `bolsa` | 71 | 5 | UPE representa universidades estaduais em fórum nacional de pró-reitores em Brasília; UPE abre edital de Auxílio Deslocamento para estudantes de graduação; UPE inicia turmas do... |
+| `bolsa` | 72 | 5 | UPE representa universidades estaduais em fórum nacional de pró-reitores em Brasília; UPE abre edital de Auxílio Deslocamento para estudantes de graduação; UPE inicia turmas do... |
 
 ## Fontes auditadas
 
@@ -227,7 +227,7 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 - Status: `funcional`
 - Pagina abre: True (HTTP 200, final `https://www.uema.br/category/editais/`)
 - Fallback curl por TLS/OpenSSL: False
-- HTML util: True (69839 bytes, 154 links)
+- HTML util: True (69388 bytes, 154 links)
 - Itens encontrados: 13
 - Novos itens salvos: 13
 - Editais validos: 13
@@ -236,8 +236,8 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 - Acao tomada: Mantida; crawler recuperou editais validos.
 - Observacao:
   - `concurso` PAES - https://sigconcursos.uema.br/
+  - `edital` EDITAL N.º 229/2026-GR/UEMA - https://www.uema.br/2026/06/edital-n-o-229-2026-gr-uema/
   - `resultado` EDITAL N.º 222/2026-SUCONS/UEMA RESULTADO DO EDITAL N.º... - https://www.uema.br/2026/06/edital-n-o-222-2026-sucons-uema-resultado-do-edital-n-o-177-2026-sucons-uema-de-processo-seletivo-simplificado-destinado-a-contratacao-de-professor-substituto-da-uema/
-  - `processo_seletivo` RELAÇÃO PRELIMINAR DE CANDIDATOS ISENTOS POR CADÚNICO OU... - https://www.uema.br/2026/06/relacao-preliminar-de-candidatos-isentos-por-cadunico-ou-por-serem-servidores-da-uema-ou-seusdependentes-no-processo-seletivo-simplificado-ead-uema-2026-2-edital-n-o-214-2026-gr-uema/
 
 ### UEMA - SIGConcursos UEMA
 
@@ -271,9 +271,9 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 - Pagina abre: True (HTTP 200, final `https://uepb.edu.br/editais/`)
 - Fallback curl por TLS/OpenSSL: False
 - HTML util: True (133399 bytes, 255 links)
-- Itens encontrados: 122
-- Novos itens salvos: 122
-- Editais validos: 122
+- Itens encontrados: 123
+- Novos itens salvos: 123
+- Editais validos: 123
 - Links de amostra que abriram: 3/3
 - Problemas: -
 - Acao tomada: Mantida; crawler recuperou editais validos.
@@ -293,9 +293,9 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 - Pagina abre: True (HTTP 200, final `https://uepb.edu.br/editais/selecao-professor-substituto/`)
 - Fallback curl por TLS/OpenSSL: False
 - HTML util: True (162405 bytes, 299 links)
-- Itens encontrados: 156
+- Itens encontrados: 157
 - Novos itens salvos: 33
-- Editais validos: 156
+- Editais validos: 157
 - Links de amostra que abriram: 3/3
 - Problemas: -
 - Acao tomada: Mantida; crawler recuperou editais validos.
@@ -314,10 +314,10 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 - Status: `funcional`
 - Pagina abre: True (HTTP 200, final `https://uespi.br/editais/`)
 - Fallback curl por TLS/OpenSSL: False
-- HTML util: True (221741 bytes, 249 links)
-- Itens encontrados: 127
-- Novos itens salvos: 127
-- Editais validos: 127
+- HTML util: True (221742 bytes, 249 links)
+- Itens encontrados: 136
+- Novos itens salvos: 136
+- Editais validos: 136
 - Links de amostra que abriram: 3/3
 - Problemas: -
 - Acao tomada: Mantida; crawler recuperou editais validos.
@@ -413,45 +413,47 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
   - `concurso` Docentes - https://portais.ufma.br/PortalProReitoria/progep/concursos_docentes/
   - `concurso` Técnico-administrativos, Colégio Universitário, Alunos EAD, Residência Médica, etc - http://www.concursos.ufma.br/
 
-### UFPE - Oportunidades UFPE
+### UFPE - Processos seletivos SIGAA UFPE - graduacao
 
 - Instituicao: Universidade Federal de Pernambuco (UFPE)
-- Fonte: Oportunidades UFPE
-- URL: https://www.ufpe.br/oportunidades
-- Tipo configurado: `PAGINATED_HTML`
-- Spider usado: `PaginatedNoticeSpider`
-- Status: `url_invalida`
-- Pagina abre: False (HTTP 404, final `https://www.ufpe.br/oportunidades`)
+- Fonte: Processos seletivos SIGAA UFPE - graduacao
+- URL: https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=G
+- Tipo configurado: `SIGAA`
+- Spider usado: `SigaaNoticeSpider`
+- Status: `exige_spider_especifico`
+- Pagina abre: True (HTTP 200, final `https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=G`)
 - Fallback curl por TLS/OpenSSL: False
-- HTML util: False (146 bytes, 0 links)
-- Itens encontrados: 0
-- Novos itens salvos: 0
-- Editais validos: 0
-- Links de amostra que abriram: 0/0
-- Problemas: 404 Client Error: Not Found for url: https://www.ufpe.br/oportunidades
-- Acao tomada: Requer substituicao por URL oficial funcional.
-- Observacao:
-  - Sem amostra valida capturada.
-
-### UFPE - Site oficial UFPE - descoberta
-
-- Instituicao: Universidade Federal de Pernambuco (UFPE)
-- Fonte: Site oficial UFPE - descoberta
-- URL: https://www.ufpe.br/
-- Tipo configurado: `HTML_STATIC`
-- Spider usado: `GenericNoticeSpider`
-- Status: `exige_javascript`
-- Pagina abre: True (HTTP 200, final `https://www.ufpe.br/`)
-- Fallback curl por TLS/OpenSSL: False
-- HTML util: False (1296 bytes, 0 links)
+- HTML util: True (10247 bytes, 7 links)
 - Itens encontrados: 0
 - Novos itens salvos: 0
 - Editais validos: 0
 - Links de amostra que abriram: 0/0
 - Problemas: -
-- Acao tomada: Requer alternativa oficial sem JavaScript ou spider com renderizacao.
+- Acao tomada: Requer spider especifico ou seletor dedicado.
 - Observacao:
   - Sem amostra valida capturada.
+
+### UFPE - Processos seletivos SIGAA UFPE - stricto sensu
+
+- Instituicao: Universidade Federal de Pernambuco (UFPE)
+- Fonte: Processos seletivos SIGAA UFPE - stricto sensu
+- URL: https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S
+- Tipo configurado: `SIGAA`
+- Spider usado: `SigaaNoticeSpider`
+- Status: `funcional`
+- Pagina abre: True (HTTP 200, final `https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S`)
+- Fallback curl por TLS/OpenSSL: False
+- HTML util: True (245307 bytes, 361 links)
+- Itens encontrados: 118
+- Novos itens salvos: 118
+- Editais validos: 118
+- Links de amostra que abriram: 3/3
+- Problemas: -
+- Acao tomada: Mantida; crawler recuperou editais validos.
+- Observacao:
+  - `edital` Edital nº 01/2026 - https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S
+  - `edital` EDITAL Nº 01/2026 - DOUTORADO PPGEDUC - https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S
+  - `processo_seletivo` Edital de Seleção Discente - PPGEB 2026.2 - https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S
 
 ### UFPI - Concursos UFPI
 
@@ -522,8 +524,8 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 - Instituicao: Universidade Federal do Rio Grande do Norte (UFRN)
 - Fonte: Processos seletivos SIGAA UFRN
 - URL: https://sigaa.ufrn.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S
-- Tipo configurado: `TABLE_HTML`
-- Spider usado: `PaginatedNoticeSpider`
+- Tipo configurado: `SIGAA`
+- Spider usado: `SigaaNoticeSpider`
 - Status: `exige_spider_especifico`
 - Pagina abre: True (HTTP 200, final `https://sigaa.ufrn.br/sigaa/public/servicos_digitais/processo_seletivo/area_do_candidato/login.jsf?servico=inscricao-processo-seletivo-stricto-sensu&redirect=/public/servicos_digitais/processo_seletivo/lista.jsf?nivel=S`)
 - Fallback curl por TLS/OpenSSL: False
@@ -537,42 +539,42 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 - Observacao:
   - Sem amostra valida capturada.
 
-### UNEB - Editais UNEB
+### UNEB - Editais UNEB - tag edital
 
 - Instituicao: Universidade do Estado da Bahia (UNEB)
-- Fonte: Editais UNEB
-- URL: https://portal.uneb.br/category/editais/
+- Fonte: Editais UNEB - tag edital
+- URL: https://portal.uneb.br/tag/edital/
 - Tipo configurado: `WORDPRESS`
 - Spider usado: `WordPressNoticeSpider`
-- Status: `funcional_parcial`
-- Pagina abre: False (HTTP 404, final `https://portal.uneb.br/category/editais/`)
+- Status: `funcional`
+- Pagina abre: True (HTTP 200, final `https://portal.uneb.br/tag/edital/`)
 - Fallback curl por TLS/OpenSSL: False
-- HTML util: False (293866 bytes, 177 links)
-- Itens encontrados: 76
-- Novos itens salvos: 76
-- Editais validos: 76
+- HTML util: True (330447 bytes, 229 links)
+- Itens encontrados: 89
+- Novos itens salvos: 89
+- Editais validos: 89
 - Links de amostra que abriram: 3/3
 - Problemas: -
-- Acao tomada: Mantida parcialmente; requer revisao fina de fonte/spider.
+- Acao tomada: Mantida; crawler recuperou editais validos.
 - Observacao:
   - `resultado` SiSU+ 2026: UNEB divulga resultado e orienta candidatos sobre próximas etapas para ingresso - https://portal.uneb.br/2026/06/27/sisu-2026-uneb-divulga-resultado-e-orienta-candidatos-sobre-proximas-etapas-para-ingresso/
   - `bolsa` UNEB vai abrir inscrições para cursos de idiomas e seleção para bolsas de estudo: 22/06 (Salvador) - https://portal.uneb.br/2026/06/16/uneb-vai-abrir-inscricoes-para-cursos-de-idiomas-e-selecao-para-bolsas-de-estudo-22-06-salvador/
   - `processo_seletivo` UNEB abre seleção (aluno regular) do Mestrado em Letras (Teixeira de Freitas) - https://portal.uneb.br/2026/06/16/uneb-abre-selecao-aluno-regular-do-mestrado-em-letras/
 
-### UNEB - Portal UNEB - descoberta
+### UNEB - Portal UNEB - busca edital
 
 - Instituicao: Universidade do Estado da Bahia (UNEB)
-- Fonte: Portal UNEB - descoberta
-- URL: https://portal.uneb.br/
+- Fonte: Portal UNEB - busca edital
+- URL: https://portal.uneb.br/?s=edital
 - Tipo configurado: `WORDPRESS`
 - Spider usado: `WordPressNoticeSpider`
 - Status: `funcional`
-- Pagina abre: True (HTTP 200, final `https://portal.uneb.br/`)
+- Pagina abre: True (HTTP 200, final `https://portal.uneb.br/?s=edital`)
 - Fallback curl por TLS/OpenSSL: False
-- HTML util: True (599582 bytes, 424 links)
-- Itens encontrados: 78
-- Novos itens salvos: 2
-- Editais validos: 78
+- HTML util: True (331427 bytes, 230 links)
+- Itens encontrados: 89
+- Novos itens salvos: 4
+- Editais validos: 89
 - Links de amostra que abriram: 3/3
 - Problemas: -
 - Acao tomada: Mantida; crawler recuperou editais validos.
@@ -592,9 +594,9 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
 - Pagina abre: True (HTTP 200, final `https://upe.br/editais/concursos/`)
 - Fallback curl por TLS/OpenSSL: False
 - HTML util: True (275886 bytes, 239 links)
-- Itens encontrados: 57
-- Novos itens salvos: 57
-- Editais validos: 29
+- Itens encontrados: 78
+- Novos itens salvos: 78
+- Editais validos: 33
 - Links de amostra que abriram: 3/3
 - Problemas: -
 - Acao tomada: Mantida parcialmente; requer revisao fina de fonte/spider.
@@ -603,20 +605,20 @@ A segunda execucao nao criou novos registros no escopo; nao houve duplicidade in
   - `resultado` UPE é credenciada para integrar o Laboratório InovaSUS Digital do Ministério da Saúde - https://upe.br/upe-inovasus/
   - `resultado` CNPq lança Chamada Universal 2026 com R$ 300 milhões para financiamento de pesquisas - https://upe.br/cnpq-financiamento/
 
-### UPE - Editais UPE
+### UPE - Editais de graduacao UPE
 
 - Instituicao: Universidade de Pernambuco (UPE)
-- Fonte: Editais UPE
-- URL: https://upe.br/editais/
+- Fonte: Editais de graduacao UPE
+- URL: https://upe.br/editais/editais-de-graduacao/
 - Tipo configurado: `WORDPRESS`
 - Spider usado: `WordPressNoticeSpider`
 - Status: `funcional_parcial`
-- Pagina abre: True (HTTP 200, final `https://upe.br/editais/`)
+- Pagina abre: True (HTTP 200, final `https://upe.br/editais/editais-de-graduacao/`)
 - Fallback curl por TLS/OpenSSL: False
-- HTML util: True (281786 bytes, 246 links)
-- Itens encontrados: 58
-- Novos itens salvos: 2
-- Editais validos: 30
+- HTML util: True (274050 bytes, 239 links)
+- Itens encontrados: 77
+- Novos itens salvos: 0
+- Editais validos: 32
 - Links de amostra que abriram: 3/3
 - Problemas: -
 - Acao tomada: Mantida parcialmente; requer revisao fina de fonte/spider.

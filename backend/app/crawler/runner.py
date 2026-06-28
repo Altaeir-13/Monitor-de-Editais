@@ -1,4 +1,4 @@
-import re
+﻿import re
 import unicodedata
 from typing import Iterable, Optional
 
@@ -68,11 +68,13 @@ def persist_crawled_items(db: Session, source: MonitoredSource, raw_items):
     for item in raw_items:
         title = item.get("title", "")
         url = item.get("url", "")
+        dedupe_raw_url = item.get("dedupe_url") or item.get("canonical_url") or url
 
         norm_title = normalize_title(title)
-        norm_url = normalize_url(url, source.url)
+        display_url = normalize_url(url, source.url)
+        norm_url = normalize_url(dedupe_raw_url, source.url)
 
-        if not norm_title or not norm_url:
+        if not norm_title or not display_url or not norm_url:
             continue
 
         fingerprint = generate_fingerprint(source.institution_id, norm_title, norm_url)
@@ -94,7 +96,7 @@ def persist_crawled_items(db: Session, source: MonitoredSource, raw_items):
             source_id=source.id,
             title=title.strip(),
             normalized_title=norm_title,
-            url=norm_url,
+            url=display_url,
             normalized_url=norm_url,
             notice_type=normalize_notice_type(item.get("notice_type", "edital")),
             description=item.get("description"),
@@ -218,3 +220,6 @@ def run_crawler(db: Session, source_ids: Optional[Iterable[int]] = None):
             summary["failed_sources"] += 1
 
     return summary
+
+
+

@@ -123,10 +123,48 @@ As configurações de variáveis para produção devem seguir o modelo fornecido
 
 ---
 
+## Scheduler do Crawler
+
+O backend possui suporte à execução agendada do crawler usando APScheduler.
+
+Por padrão, o scheduler fica desativado para evitar execuções automáticas inesperadas em ambiente de desenvolvimento.
+
+### Variáveis de ambiente
+
+```env
+CRAWLER_SCHEDULER_ENABLED=false
+CRAWLER_INTERVAL_MINUTES=360
+```
+
+### Como ativar
+
+Para ativar a execução automática do crawler, configure:
+
+```env
+CRAWLER_SCHEDULER_ENABLED=true
+CRAWLER_INTERVAL_MINUTES=360
+```
+
+Com essa configuração, o backend executará o crawler automaticamente a cada 360 minutos.
+
+A execução manual continua disponível para administradores pelo endpoint:
+
+```http
+POST /admin/run-crawler
+```
+
+### Observações
+
+- O scheduler usa sessão própria do banco.
+- O job não executa em paralelo com outro job já em andamento.
+- O scheduler é encerrado de forma limpa junto com a aplicação.
+- Em desenvolvimento, recomenda-se manter `CRAWLER_SCHEDULER_ENABLED=false`.
+
+---
 ## Limitações Conhecidas
 
-- **Spiders Reais**: Os conectores específicos de raspagem para portais como UFPI, IFPI, IFMA etc. ainda não foram implementados.
-- **Scheduler Automático**: Rotinas periódicas automatizadas no background não estão habilitadas por padrão.
+- **Spiders Reais**: A camada de spiders já cobre portais genéricos, WordPress, Gov.br, paginados e SIGAA/JSF tabular, mas algumas fontes institucionais ainda podem exigir seletores específicos quando o portal muda ou exige sessão.
+- **Scheduler Automático**: Rotinas periódicas automatizadas no background existem, mas não são habilitadas por padrão; defina `CRAWLER_SCHEDULER_ENABLED=true` para iniciar.
 - **SMTP Real**: O envio de alertas por e-mail ainda carece de parametrização de credenciais ativas reais (está operando via simulações e logs controlados de erros).
 - **Deploy**: Inexistência de configuração de DNS, CDN e certificado HTTPS configurados para um servidor de produção externo na nuvem.
 
