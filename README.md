@@ -1,199 +1,277 @@
 # Monitor de Editais
 
-Plataforma web desenvolvida para centralizar, visualizar e acompanhar editais de instituições públicas. O sistema conta com controle de autenticação, painel administrativo para gestão de fontes e instituições, criação de alertas de usuários, notificações internas e infraestrutura automatizada com Docker.
+Plataforma web para centralizar, visualizar e acompanhar editais de instituições públicas. O sistema inclui autenticação JWT, painel administrativo, catálogo de fontes, crawler institucional, alertas de usuário, notificações internas, scheduler configurável e painel operacional do crawler.
 
 ## Status do Projeto
 
-O **MVP foi concluído e validado** com sucesso em ambiente local-prod. Contudo, atente-se às seguintes condições de contorno nesta etapa:
-- **Crawler real por instituição** ainda não está acoplado (a engine base foi validada via mocks/fixtures).
-- **SMTP real** para envio automático de e-mails ainda precisa ser configurado.
-- **Deploy em nuvem real** (VPS/Cloud) ainda não foi executado.
+O MVP está funcional para a primeira fase de monitoramento das instituições públicas do Nordeste.
 
----
+Entregas atuais:
 
-## Funcionalidades Principais
+- catálogo Nordeste com seed idempotente;
+- crawler em camadas com spiders genérico, WordPress, Gov.br, paginado e SIGAA/JSF;
+- deduplicação por fingerprint e URL normalizada;
+- endpoint manual `POST /admin/run-crawler`;
+- execução por fonte específica no painel operacional;
+- scheduler com APScheduler, desativado por padrão;
+- painel operacional em `/admin/crawler`;
+- auditoria final Nordeste com 1.418 editais recuperados.
 
-- **Autenticação JWT**: Registro e login seguros com níveis de acesso (Admin/User).
-- **Painel Administrativo**: Interface para gerenciar fontes monitoradas e cadastrar instituições.
-- **Engine Base de Crawler**: Normalização de editais, prevenção contra duplicados usando fingerprint (SHA256).
-- **Visualização de Editais**: Listagem responsiva com paginação e filtros (estado, palavras-chave, tipo e data).
-- **Alertas do Usuário**: Parametrização de buscas por palavras-chave, tipo de edital e instituição de interesse.
-- **Notificações Internas**: Acoplamento automático que gera avisos internos quando um edital satisfaz os alertas.
-- **Dispatcher SMTP**: Rotina de envio de e-mails em lote com acionamento manual administrativo para validação.
-- **Tema Claro e Escuro**: Suporte a Dark Mode persistente e com ajustes finos de acessibilidade.
-- **Docker local-prod**: Ambiente de build e orquestração completo para testes de produção local.
+Limitações ainda existentes:
 
----
+- SMTP real ainda precisa ser configurado para entrega efetiva de e-mails;
+- deploy em VPS/cloud ainda não foi executado;
+- algumas fontes externas podem falhar por SSL, conexão, 404, login ou mudanças no portal de origem.
 
-## Stack Tecnológica
+## Requisitos
+
+- Python 3.11 ou superior compatível com as dependências do projeto.
+- Node.js e npm compatíveis com o frontend Vite/React.
+- PostgreSQL para homologação/produção.
+- SQLite apenas para validação local controlada.
+- Docker e Docker Compose, se usar os ambientes conteinerizados.
+
+## Configuração de Ambiente
+
+Nunca versione arquivos `.env` reais com segredos.
+
+Arquivos de exemplo:
+
+- `backend/.env.example`: variáveis do backend para desenvolvimento local.
+- `frontend/.env.example`: URL da API usada pelo frontend em desenvolvimento.
+- `.env.prod.example`: variáveis esperadas no Docker Compose de produção local.
 
 ### Backend
-- **Python 3.11**
-- **FastAPI** (Framework API REST)
-- **SQLAlchemy** (ORM)
-- **Alembic** (Migrações do banco de dados)
-- **PostgreSQL** (Banco de dados relacional)
-- **PyJWT** (Autenticação baseada em tokens JWT)
 
-### Frontend
-- **React 19**
-- **Vite** (Build tool e dev server)
-- **TypeScript** (Tipagem estática)
-- **TailwindCSS 4** (Estilização base e utilitários)
-- **Axios** (Requisições HTTP)
-- **React Router** (Navegação SPA)
-- **TanStack Query** (Gerenciamento de cache e requests)
+Crie `backend/.env` a partir do exemplo:
 
-### Infraestrutura
-- **Docker**
-- **Docker Compose**
-- **Nginx** (Proxy reverso e servidor estático de frontend)
-
----
-
-## Estrutura do Projeto
-
-Uma visão resumida da árvore de arquivos do repositório:
-
-- [backend](file:///c:/Users/handi/Documents/Working/Development/Editais%20com%20Antigravity/backend): Código-fonte da API Python (FastAPI)
-- [frontend](file:///c:/Users/handi/Documents/Working/Development/Editais%20com%20Antigravity/frontend): Interface Web SPA em React
-- [docker-compose.yml](file:///c:/Users/handi/Documents/Working/Development/Editais%20com%20Antigravity/docker-compose.yml): Configuração para ambiente de desenvolvimento
-- [docker-compose.prod.yml](file:///c:/Users/handi/Documents/Working/Development/Editais%20com%20Antigravity/docker-compose.prod.yml): Configuração para ambiente de produção local
-- [docs](file:///c:/Users/handi/Documents/Working/Development/Editais%20com%20Antigravity/docs): Documentação de fechamento e relatórios do projeto
-- [README.md](file:///c:/Users/handi/Documents/Working/Development/Editais%20com%20Antigravity/README.md): Guia principal de início rápido
-
----
-
-## Como Rodar em Desenvolvimento
-
-### 1. Banco de Dados
-Inicie o serviço de banco de dados rodando o container PostgreSQL em background:
-```bash
-docker compose up -d
+```powershell
+copy backend\.env.example backend\.env
 ```
 
+Variáveis principais:
+
+```env
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/monitor_editais
+SECRET_KEY=change-me-generate-a-long-random-secret
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=1440
+BACKEND_CORS_ORIGINS=["http://localhost:5173"]
+CRAWLER_SCHEDULER_ENABLED=false
+CRAWLER_INTERVAL_MINUTES=360
+```
+
+Para validação local com SQLite, use um banco próprio, por exemplo:
+
+```env
+DATABASE_URL=sqlite:///C:/caminho/para/monitor_editais_local.db
+```
+
+Não use `backend/audit_northeast_final.db` como banco padrão. Esse arquivo é artefato local de auditoria.
+
+### Frontend
+
+Crie `frontend/.env` a partir do exemplo:
+
+```powershell
+copy frontend\.env.example frontend\.env
+```
+
+Variável principal:
+
+```env
+VITE_API_URL=http://localhost:8000
+```
+
+## Rodar em Desenvolvimento
+
+### 1. Banco de dados
+
+Com PostgreSQL via Docker Compose:
+
+```powershell
+docker compose up -d db
+```
+
+Ajuste `backend/.env` para apontar `DATABASE_URL` para o PostgreSQL local.
+
 ### 2. Backend
-Navegue para a pasta do backend, configure o ambiente virtual, instale as dependências e inicie o servidor Uvicorn:
-```bash
+
+```powershell
 cd backend
 python -m venv venv
-# No Windows (PowerShell):
 .\venv\Scripts\activate
-# No Linux/macOS:
-source venv/bin/activate
-
 pip install -r requirements.txt
 python -m uvicorn main:app --reload
 ```
 
+O backend ficará em `http://localhost:8000`.
+
 ### 3. Frontend
-Em outro terminal, acesse a pasta do frontend, instale as dependências com npm e execute o dev server:
-```bash
+
+```powershell
 cd frontend
 npm install
 npm run dev
 ```
 
----
+O frontend ficará em `http://localhost:5173`.
 
-## Como Rodar local-prod (Docker Compose)
+## Criar Usuário Admin
 
-Para rodar a aplicação emulando o ambiente de produção localmente, as variáveis de ambiente `SECRET_KEY` e `POSTGRES_PASSWORD` são obrigatórias.
+O projeto ainda não possui comando dedicado de criação de admin. Para homologação, use o fluxo existente dos modelos/serviços do backend em ambiente controlado. Exemplo de script Python a executar com o ambiente do backend configurado:
 
-No terminal (Ex: PowerShell):
-```powershell
-$env:SECRET_KEY="SUA_CHAVE_SUPER_SEGURA"
-$env:POSTGRES_PASSWORD="SENHA_FORTE_DO_BANCO"
-docker compose -f docker-compose.prod.yml up -d --build
+```python
+from app.db.session import SessionLocal
+from app.models.user import User
+from app.schemas.user import UserCreate
+from app.services.user import create_user
+
+db = SessionLocal()
+try:
+    email = "admin@example.com"
+    user = db.query(User).filter(User.email == email).first()
+    if not user:
+        user = create_user(db, UserCreate(name="Admin", email=email, password="change-me"))
+    user.role = "admin"
+    user.is_active = True
+    db.commit()
+finally:
+    db.close()
 ```
-Acesse a aplicação no seu navegador em:
-`http://localhost`
 
-> [!WARNING]
-> **Observação Importante sobre o Banco de Dados (Persistência)**:
-> Se o volume do Postgres (`postgres_prod_data`) já existir de execuções passadas, alterar a variável `POSTGRES_PASSWORD` depois não altera a senha interna do banco de dados automaticamente (o banco aplica o segredo apenas no primeiro boot do volume). Para testar alterações de credenciais em ambiente de testes limpo, pode ser necessário deletar o volume associado executando `docker compose down -v`. Em ambiente de produção real, **nunca** remova volumes sem um backup prévio consolidado.
+Troque e proteja a senha antes de usar em homologação/produção.
 
----
+## Seed Nordeste
 
-## Variáveis de Ambiente
+Com o backend rodando e usuário admin autenticado, execute:
 
-As configurações de variáveis para produção devem seguir o modelo fornecido no arquivo [.env.prod.example](file:///c:/Users/handi/Documents/Working/Development/Editais%20com%20Antigravity/.env.prod.example).
-> [!IMPORTANT]
-> Nunca versione ou suba arquivos `.env` com segredos reais para repositórios públicos.
+```http
+POST /admin/seed-northeast
+```
 
----
+O seed é idempotente: pode ser executado novamente sem duplicar instituições ou fontes. Fontes substituídas via `replaces` são atualizadas/desativadas conforme a regra do catálogo.
+
+## Crawler
+
+Execução manual geral:
+
+```http
+POST /admin/run-crawler
+```
+
+Execução manual por fonte específica:
+
+```http
+POST /admin/run-crawler/source/{source_id}
+```
+
+Painel operacional:
+
+```text
+/admin/crawler
+```
+
+No painel, o administrador acompanha:
+
+- saúde geral do crawler;
+- fontes OK, com erro, sem itens, nunca checadas e inativas;
+- última checagem;
+- último sucesso;
+- último erro;
+- itens encontrados e novos salvos;
+- histórico recente de execuções;
+- execução geral ou por fonte.
 
 ## Scheduler do Crawler
 
-O backend possui suporte à execução agendada do crawler usando APScheduler.
+O backend possui suporte à execução agendada usando APScheduler.
 
-Por padrão, o scheduler fica desativado para evitar execuções automáticas inesperadas em ambiente de desenvolvimento.
-
-### Variáveis de ambiente
+Por padrão, mantenha desativado:
 
 ```env
 CRAWLER_SCHEDULER_ENABLED=false
 CRAWLER_INTERVAL_MINUTES=360
 ```
 
-### Como ativar
-
-Para ativar a execução automática do crawler, configure:
+Para ativar em ambiente controlado:
 
 ```env
 CRAWLER_SCHEDULER_ENABLED=true
 CRAWLER_INTERVAL_MINUTES=360
 ```
 
-Com essa configuração, o backend executará o crawler automaticamente a cada 360 minutos.
+Com essa configuração, o backend executa o crawler automaticamente a cada 360 minutos.
 
-A execução manual continua disponível para administradores pelo endpoint:
+Observações:
 
-```http
-POST /admin/run-crawler
+- o scheduler usa sessão própria do banco;
+- o job usa `max_instances=1` e `coalesce=True`;
+- falhas são registradas em log e não derrubam a aplicação;
+- em desenvolvimento, mantenha `CRAWLER_SCHEDULER_ENABLED=false`.
+
+## Rodar Local-Prod com Docker Compose
+
+Configure as variáveis obrigatórias e suba o ambiente:
+
+```powershell
+$env:SECRET_KEY="SUA_CHAVE_FORTE"
+$env:POSTGRES_PASSWORD="SENHA_FORTE_DO_BANCO"
+docker compose -f docker-compose.prod.yml up -d --build
 ```
 
-### Observações
+Acesse:
 
-- O scheduler usa sessão própria do banco.
-- O job não executa em paralelo com outro job já em andamento.
-- O scheduler é encerrado de forma limpa junto com a aplicação.
-- Em desenvolvimento, recomenda-se manter `CRAWLER_SCHEDULER_ENABLED=false`.
+```text
+http://localhost
+```
 
----
-## Limitações Conhecidas
+Se o volume do Postgres já existir, alterar `POSTGRES_PASSWORD` não altera a senha interna do banco. Para testes limpos, remova volumes somente quando não houver dados relevantes.
 
-- **Spiders Reais**: A camada de spiders já cobre portais genéricos, WordPress, Gov.br, paginados e SIGAA/JSF tabular, mas algumas fontes institucionais ainda podem exigir seletores específicos quando o portal muda ou exige sessão.
-- **Scheduler Automático**: Rotinas periódicas automatizadas no background existem, mas não são habilitadas por padrão; defina `CRAWLER_SCHEDULER_ENABLED=true` para iniciar.
-- **SMTP Real**: O envio de alertas por e-mail ainda carece de parametrização de credenciais ativas reais (está operando via simulações e logs controlados de erros).
-- **Deploy**: Inexistência de configuração de DNS, CDN e certificado HTTPS configurados para um servidor de produção externo na nuvem.
+## Testes e Validações
 
----
+Backend:
 
-## Roadmap
+```powershell
+cd backend
+venv\Scripts\python.exe tests\test_crawler.py
+```
 
-- [ ] Desenvolvimento de crawlers/spiders reais com seletores específicos por instituição.
-- [ ] Configuração de SMTP real para entrega efetiva de e-mails de notificação.
-- [ ] Ativação do scheduler automático (APScheduler) no container de backend.
-- [ ] Implementação de suporte a HTTPS (certificados SSL via Let's Encrypt).
-- [ ] Configuração de rotina automatizada de backup de banco de dados.
-- [ ] Criação de pipeline de CI/CD para deploy contínuo.
-- [ ] Deploy definitivo do ambiente Dockerizado em servidor Cloud/VPS.
+Frontend:
 
----
+```powershell
+cd frontend
+npm run lint
+npm run build
+```
+
+Auditoria Nordeste em banco controlado:
+
+```powershell
+cd backend
+venv\Scripts\python.exe scripts\audit_northeast_sources.py --database-url sqlite:///C:/caminho/para/audit_northeast_final.db
+```
+
+Não versione bancos de auditoria.
+
+## Documentação Operacional
+
+- `docs/operacao.md`: guia de operação do crawler e interpretação do painel.
+- `docs/checklist_homologacao.md`: checklist para homologação.
+- `docs/auditoria_fontes_nordeste.md`: relatório da auditoria final das fontes Nordeste.
+
+## Não Versionar
+
+- `.env` reais;
+- `venv/`;
+- `node_modules/`;
+- `dist/`;
+- `__pycache__/`;
+- bancos SQLite locais (`*.db`, `*.sqlite`, `*.sqlite3`);
+- bancos de auditoria temporários.
 
 ## Licença
 
 Este projeto é disponibilizado sob a Licença de Uso Não Comercial — Monitor de Editais.
 
-O uso é permitido para fins pessoais, acadêmicos, educacionais e de pesquisa, desde que haja atribuição à autora. Uso comercial, empresarial, monetização, revenda ou incorporação em produto/serviço pago exige autorização prévia.
-
-Consulte o arquivo LICENSE.md para os termos completos.
-
----
-
-
-## Documentação de Fechamento
-
-Para informações técnicas completas sobre cada etapa, modelagem, decisões de arquitetura e validações detalhadas do MVP, consulte:
-- [docs/Resumo_Final_MVP.md](file:///c:/Users/handi/Documents/Working/Development/Editais%20com%20Antigravity/docs/Resumo_Final_MVP.md)
+Consulte `LICENSE.md` para os termos completos.

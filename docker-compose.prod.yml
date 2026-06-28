@@ -28,6 +28,8 @@ services:
       SMTP_PASSWORD: ${SMTP_PASSWORD:-}
       EMAILS_FROM_EMAIL: ${EMAILS_FROM_EMAIL:-no-reply@example.com}
       BACKEND_CORS_ORIGINS: ${BACKEND_CORS_ORIGINS:-["http://localhost", "http://localhost:80"]}
+      CRAWLER_SCHEDULER_ENABLED: ${CRAWLER_SCHEDULER_ENABLED:-false}
+      CRAWLER_INTERVAL_MINUTES: ${CRAWLER_INTERVAL_MINUTES:-360}
     depends_on:
       - db
 
