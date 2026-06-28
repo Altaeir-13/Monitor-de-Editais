@@ -357,8 +357,80 @@ export interface CrawlerRunSummary {
   failed_sources: number;
 }
 
+export interface CrawlerRunInstitution {
+  id: number;
+  name: string;
+  initials: string;
+}
+
+export interface CrawlerRunResponse {
+  id: number;
+  source_id: number;
+  source_name: string;
+  source_url: string;
+  institution: CrawlerRunInstitution;
+  status: string;
+  items_found: number;
+  new_items: number;
+  error_message: string | null;
+  started_at: string;
+  finished_at: string | null;
+}
+
+export interface CrawlerSourceStatusResponse {
+  source_id: number;
+  source_name: string;
+  source_url: string;
+  source_type: string;
+  institution_id: number;
+  institution_name: string;
+  institution_initials: string;
+  is_active: boolean;
+  last_checked_at: string | null;
+  last_success_at: string | null;
+  last_error_message: string | null;
+  health_status: 'inactive' | 'never_checked' | 'error' | 'warning' | 'ok';
+  last_run: CrawlerRunResponse | null;
+}
+
+export interface CrawlerStatusResponse {
+  total_sources: number;
+  active_sources: number;
+  inactive_sources: number;
+  ok_sources: number;
+  warning_sources: number;
+  error_sources: number;
+  never_checked_sources: number;
+  total_active_notices: number;
+  last_run: CrawlerRunResponse | null;
+  last_run_items_found: number;
+  last_run_new_items: number;
+}
+
 export async function runAdminCrawler(): Promise<CrawlerRunSummary> {
   const response = await api.post<CrawlerRunSummary>('/admin/run-crawler');
+  return response.data;
+}
+
+export async function runAdminCrawlerSource(sourceId: number): Promise<CrawlerRunSummary> {
+  const response = await api.post<CrawlerRunSummary>(`/admin/run-crawler/source/${sourceId}`);
+  return response.data;
+}
+
+export async function getCrawlerStatus(): Promise<CrawlerStatusResponse> {
+  const response = await api.get<CrawlerStatusResponse>('/admin/crawler/status');
+  return response.data;
+}
+
+export async function getCrawlerSourcesStatus(): Promise<CrawlerSourceStatusResponse[]> {
+  const response = await api.get<CrawlerSourceStatusResponse[]>('/admin/crawler/sources-status');
+  return response.data;
+}
+
+export async function getCrawlerRuns(skip = 0, limit = 20): Promise<CrawlerRunResponse[]> {
+  const response = await api.get<CrawlerRunResponse[]>('/admin/crawler/runs', {
+    params: { skip, limit },
+  });
   return response.data;
 }
 export { TOKEN_KEY };
