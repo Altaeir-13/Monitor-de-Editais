@@ -3,6 +3,7 @@ import os
 import json
 import uuid
 import tempfile
+from datetime import datetime, timezone
 
 
 USING_TEMP_SQLITE = "DATABASE_URL" not in os.environ
@@ -223,6 +224,48 @@ try:
         crawler_scheduler.settings.CRAWLER_SCHEDULER_ENABLED = original_scheduler_enabled
         crawler_scheduler.settings.CRAWLER_INTERVAL_MINUTES = original_scheduler_interval
 
+    now = datetime.now(timezone.utc)
+    never_source = MonitoredSource(
+        institution_id=inst.id,
+        name="Crawler Never Checked Source",
+        url="https://never.example.edu.br/editais/",
+        source_type="HTML_STATIC",
+        check_frequency_minutes=1440,
+        is_active=True,
+    )
+    inactive_source = MonitoredSource(
+        institution_id=inst.id,
+        name="Crawler Inactive Source",
+        url="https://inactive.example.edu.br/editais/",
+        source_type="HTML_STATIC",
+        check_frequency_minutes=1440,
+        is_active=False,
+    )
+    warning_source = MonitoredSource(
+        institution_id=inst.id,
+        name="Crawler Warning Source",
+        url="https://warning.example.edu.br/editais/",
+        source_type="HTML_STATIC",
+        check_frequency_minutes=1440,
+        is_active=True,
+        last_checked_at=now,
+        last_success_at=now,
+    )
+    db.add_all([never_source, inactive_source, warning_source])
+    db.commit()
+    created_source_ids.extend([never_source.id, inactive_source.id, warning_source.id])
+
+    warning_run = CrawlerRun(
+        source_id=warning_source.id,
+        status="completed",
+        items_found=0,
+        new_items=0,
+        started_at=now,
+        finished_at=now,
+    )
+    db.add(warning_run)
+    db.commit()
+
     suffix = uuid.uuid4().hex
     common_email = f"crawler_common_{suffix}@example.com"
     admin_email = f"crawler_admin_{suffix}@example.com"
@@ -242,6 +285,86 @@ try:
     admin_login = client.post("/auth/login", data={"username": admin_email, "password": "123"})
     common_headers = {"Authorization": f"Bearer {common_login.json().get('access_token')}"}
     admin_headers = {"Authorization": f"Bearer {admin_login.json().get('access_token')}"}
+
+    protected_requests = [
+        ("get", "/admin/crawler/status"),
+        ("get", "/admin/crawler/sources-status"),
+        ("get", "/admin/crawler/runs"),
+        ("post", f"/admin/run-crawler/source/{success_source.id}"),
+    ]
+    results["30_admin_crawler_endpoints_require_token"] = all(
+        getattr(client, method)(path).status_code == 401
+        for method, path in protected_requests
+    )
+    results["31_admin_crawler_endpoints_require_admin"] = all(
+        getattr(client, method)(path, headers=common_headers).status_code == 403
+        for method, path in protected_requests
+    )
+
+    fail_runs_before_source_endpoint = db.query(CrawlerRun).filter(CrawlerRun.source_id == fail_source.id).count()
+    source_run_response = client.post(f"/admin/run-crawler/source/{success_source.id}", headers=admin_headers)
+    fail_runs_after_source_endpoint = db.query(CrawlerRun).filter(CrawlerRun.source_id == fail_source.id).count()
+    missing_source_response = client.post("/admin/run-crawler/source/999999", headers=admin_headers)
+    inactive_source_response = client.post(f"/admin/run-crawler/source/{inactive_source.id}", headers=admin_headers)
+
+    latest_global_at = datetime.now(timezone.utc)
+    latest_global_run = CrawlerRun(
+        source_id=fail_source.id,
+        status="failed",
+        items_found=0,
+        new_items=0,
+        error_message="Latest global failure",
+        started_at=latest_global_at,
+        finished_at=latest_global_at,
+    )
+    fail_source.last_checked_at = latest_global_at
+    fail_source.last_error_message = "Latest global failure"
+    db.add(latest_global_run)
+    db.commit()
+
+    status_response = client.get("/admin/crawler/status", headers=admin_headers)
+    sources_status_response = client.get("/admin/crawler/sources-status", headers=admin_headers)
+    runs_response = client.get("/admin/crawler/runs", headers=admin_headers)
+    status_payload = status_response.json()
+    sources_status_payload = sources_status_response.json()
+    runs_payload = runs_response.json()
+
+    source_status_by_id = {item["source_id"]: item for item in sources_status_payload}
+    results["32_admin_crawler_status_summary"] = (
+        status_response.status_code == 200
+        and status_payload["total_sources"] >= 5
+        and status_payload["error_sources"] >= 1
+        and status_payload["warning_sources"] >= 1
+        and status_payload["never_checked_sources"] >= 1
+        and status_payload["inactive_sources"] >= 1
+        and status_payload["total_active_notices"] >= 1
+    )
+    results["33_admin_crawler_sources_status_uses_source_latest_run"] = (
+        sources_status_response.status_code == 200
+        and source_status_by_id[success_source.id]["last_run"]["source_id"] == success_source.id
+        and runs_payload[0]["source_id"] == fail_source.id
+    )
+    results["34_admin_crawler_health_status_priority"] = (
+        source_status_by_id[inactive_source.id]["health_status"] == "inactive"
+        and source_status_by_id[never_source.id]["health_status"] == "never_checked"
+        and source_status_by_id[fail_source.id]["health_status"] == "error"
+        and source_status_by_id[warning_source.id]["health_status"] == "warning"
+        and source_status_by_id[success_source.id]["health_status"] == "ok"
+    )
+    results["35_admin_crawler_runs_history"] = (
+        runs_response.status_code == 200
+        and len(runs_payload) >= 1
+        and runs_payload[0]["source_id"] == fail_source.id
+        and runs_payload[0]["institution"]["id"] == inst.id
+    )
+    results["36_admin_crawler_source_run_only_one_source"] = (
+        source_run_response.status_code == 200
+        and source_run_response.json()["sources_checked"] == 1
+        and source_run_response.json()["failed_sources"] == 0
+        and fail_runs_before_source_endpoint == fail_runs_after_source_endpoint
+    )
+    results["37_admin_crawler_source_missing_404"] = missing_source_response.status_code == 404
+    results["38_admin_crawler_source_inactive_400"] = inactive_source_response.status_code == 400
 
     fake_summary = {
         "sources_checked": 3,
