@@ -6,6 +6,7 @@ import {
   AlertTriangle,
   LogOut,
   Shield,
+  Activity,
   FileText,
   Menu,
   X,
@@ -71,6 +72,7 @@ const adminNavItems = [
   { to: '/admin', label: 'Admin', icon: Shield },
   { to: '/admin/institutions', label: 'InstituiÃ§Ãµes', icon: Shield },
   { to: '/admin/sources', label: 'Fontes', icon: Shield },
+  { to: '/admin/crawler', label: 'Crawler', icon: Activity },
 ];
 
 export default function Layout() {

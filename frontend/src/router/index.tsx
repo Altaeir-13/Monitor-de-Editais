@@ -12,6 +12,7 @@ import NotificationsPage from '../pages/user/NotificationsPage';
 import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
 import AdminInstitutionsPage from '../pages/admin/AdminInstitutionsPage';
 import AdminSourcesPage from '../pages/admin/AdminSourcesPage';
+import AdminCrawlerPage from '../pages/admin/AdminCrawlerPage';
 
 const router = createBrowserRouter([
   // Public routes (Auth)
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
           {
             path: '/admin/sources',
             element: <AdminSourcesPage />,
+          },
+          {
+            path: '/admin/crawler',
+            element: <AdminCrawlerPage />,
           },
         ],
       },
