@@ -12,3 +12,6 @@ backend/.cache/
 dist/
 build/
 .DS_Store
+*.sqlite
+*.sqlite3
+*.db
