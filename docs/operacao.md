@@ -2,6 +2,8 @@
 
 Este guia descreve como operar o crawler e interpretar o painel administrativo `/admin/crawler` em homologação ou produção.
 
+Para validação local rápida do backend, use `backend/.env.local.example`, que aponta para SQLite (`sqlite:///./app.db`) e mantém o scheduler desativado. O arquivo `backend/.env.example` aponta para PostgreSQL e exige PostgreSQL rodando, banco criado e credenciais compatíveis.
+
 ## Painel Operacional do Crawler
 
 Acesse como usuário admin:
