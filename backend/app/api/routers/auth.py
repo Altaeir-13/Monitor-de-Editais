@@ -1,7 +1,9 @@
+import logging
 from datetime import timedelta
 from typing import Any
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from app.api import deps
@@ -11,6 +13,7 @@ from app.schemas.auth_token import Token
 from app.schemas.user import UserCreate, UserResponse
 from app.services import user as user_service
 
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 @router.post("/register", response_model=UserResponse)
@@ -23,9 +26,24 @@ def register(
     if user:
         raise HTTPException(
             status_code=400,
-            detail="The user with this email already exists in the system.",
+            detail="Este e-mail já está cadastrado.",
         )
-    user = user_service.create_user(db, user_in=user_in)
+    try:
+        user = user_service.create_user(db, user_in=user_in)
+    except SQLAlchemyError:
+        db.rollback()
+        logger.exception("Falha de banco ao criar usuário.")
+        raise HTTPException(
+            status_code=500,
+            detail="Falha ao salvar usuário. Verifique os logs do backend.",
+        )
+    except Exception:
+        db.rollback()
+        logger.exception("Erro inesperado ao criar usuário.")
+        raise HTTPException(
+            status_code=500,
+            detail="Erro interno ao criar usuário. Verifique os logs do backend.",
+        )
     return user
 
 @router.post("/login", response_model=Token)
@@ -39,11 +57,11 @@ def login_access_token(
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password",
+            detail="E-mail ou senha incorretos.",
             headers={"WWW-Authenticate": "Bearer"},
         )
     elif not user.is_active:
-        raise HTTPException(status_code=400, detail="Inactive user")
+        raise HTTPException(status_code=400, detail="Usuário inativo.")
     
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     return {

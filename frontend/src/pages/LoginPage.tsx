@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { FileText, Eye, EyeOff } from 'lucide-react';
-import type { AxiosError } from 'axios';
+import { getApiErrorMessage } from '../utils/apiError';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -23,10 +23,10 @@ export default function LoginPage() {
       await login(email, password);
       navigate('/dashboard', { replace: true });
     } catch (err) {
-      const axiosError = err as AxiosError<{ detail: string }>;
-      setError(
-        axiosError.response?.data?.detail || 'Erro ao fazer login. Tente novamente.'
-      );
+      if (import.meta.env.DEV) {
+        console.error('Erro ao fazer login:', err);
+      }
+      setError(getApiErrorMessage(err));
     } finally {
       setIsLoading(false);
     }
