@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { FileText, Eye, EyeOff } from 'lucide-react';
-import type { AxiosError } from 'axios';
+import { getApiErrorMessage } from '../utils/apiError';
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -36,10 +36,10 @@ export default function RegisterPage() {
       await register(name, email, password);
       navigate('/dashboard', { replace: true });
     } catch (err) {
-      const axiosError = err as AxiosError<{ detail: string }>;
-      setError(
-        axiosError.response?.data?.detail || 'Erro ao criar conta. Tente novamente.'
-      );
+      if (import.meta.env.DEV) {
+        console.error('Erro ao criar conta:', err);
+      }
+      setError(getApiErrorMessage(err));
     } finally {
       setIsLoading(false);
     }
