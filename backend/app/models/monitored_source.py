@@ -1,5 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, text
 from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
@@ -16,8 +15,8 @@ class MonitoredSource(Base):
     last_success_at = Column(DateTime(timezone=True), nullable=True)
     last_error_message = Column(String, nullable=True)
     is_active = Column(Boolean, default=True, nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now(), nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=text("CURRENT_TIMESTAMP"), nullable=False)
+    updated_at = Column(DateTime(timezone=True), onupdate=text("CURRENT_TIMESTAMP"), nullable=True)
 
     institution = relationship("Institution", back_populates="monitored_sources")
     notices = relationship("Notice", back_populates="source", cascade="all, delete-orphan")

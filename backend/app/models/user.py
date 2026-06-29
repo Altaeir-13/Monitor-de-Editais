@@ -1,5 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, text
 from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
@@ -12,8 +11,8 @@ class User(Base):
     password_hash = Column(String, nullable=False)
     role = Column(String, default="user", nullable=False)
     is_active = Column(Boolean, default=True, nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now(), nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=text("CURRENT_TIMESTAMP"), nullable=False)
+    updated_at = Column(DateTime(timezone=True), onupdate=text("CURRENT_TIMESTAMP"), nullable=True)
 
     alerts = relationship("UserAlert", back_populates="user", cascade="all, delete-orphan")
     notifications = relationship("Notification", back_populates="user", cascade="all, delete-orphan")

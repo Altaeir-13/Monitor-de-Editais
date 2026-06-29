@@ -1,5 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, text
 from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
@@ -14,6 +13,6 @@ class CrawlerRun(Base):
     error_message = Column(String, nullable=True)
     started_at = Column(DateTime(timezone=True), nullable=False)
     finished_at = Column(DateTime(timezone=True), nullable=True)
-    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=text("CURRENT_TIMESTAMP"), nullable=False)
 
     source = relationship("MonitoredSource", back_populates="crawler_runs")

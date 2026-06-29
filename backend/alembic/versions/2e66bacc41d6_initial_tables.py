@@ -29,7 +29,7 @@ def upgrade() -> None:
     sa.Column('official_site_url', sa.String(), nullable=False),
     sa.Column('logo_url', sa.String(), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -43,7 +43,7 @@ def upgrade() -> None:
     sa.Column('password_hash', sa.String(), nullable=False),
     sa.Column('role', sa.String(), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -60,7 +60,7 @@ def upgrade() -> None:
     sa.Column('last_success_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('last_error_message', sa.String(), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['institution_id'], ['institutions.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -74,7 +74,7 @@ def upgrade() -> None:
     sa.Column('institution_id', sa.Integer(), nullable=True),
     sa.Column('notice_type', sa.String(), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['institution_id'], ['institutions.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
@@ -92,7 +92,7 @@ def upgrade() -> None:
     sa.Column('error_message', sa.String(), nullable=True),
     sa.Column('started_at', sa.DateTime(timezone=True), nullable=False),
     sa.Column('finished_at', sa.DateTime(timezone=True), nullable=True),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.ForeignKeyConstraint(['source_id'], ['monitored_sources.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -113,7 +113,7 @@ def upgrade() -> None:
     sa.Column('content_hash', sa.String(), nullable=True),
     sa.Column('fingerprint', sa.String(), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['institution_id'], ['institutions.id'], ),
     sa.ForeignKeyConstraint(['source_id'], ['monitored_sources.id'], ),
@@ -132,7 +132,7 @@ def upgrade() -> None:
     sa.Column('status', sa.String(), nullable=False),
     sa.Column('sent_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('error_message', sa.String(), nullable=True),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['notice_id'], ['notices.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
