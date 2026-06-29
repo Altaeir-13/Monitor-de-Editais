@@ -1,5 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, UniqueConstraint
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, UniqueConstraint, text
 from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
@@ -12,8 +11,8 @@ class Notification(Base):
     status = Column(String, nullable=False, default="pending")
     sent_at = Column(DateTime(timezone=True), nullable=True)
     error_message = Column(String, nullable=True)
-    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now(), nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=text("CURRENT_TIMESTAMP"), nullable=False)
+    updated_at = Column(DateTime(timezone=True), onupdate=text("CURRENT_TIMESTAMP"), nullable=True)
 
     __table_args__ = (
         UniqueConstraint('user_id', 'notice_id', name='uq_notification_user_notice'),
