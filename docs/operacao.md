@@ -200,3 +200,22 @@ Remove-Item Env:\SMOKE_ADMIN_PASSWORD
 ```
 
 Nao registre senhas, tokens, `SECRET_KEY`, credenciais SMTP ou `DATABASE_URL` com senha em logs ou tickets. Para diagnostico, registre apenas status HTTP, contadores e mensagens operacionais sem segredo.
+
+## Validacao controlada do scheduler
+
+Mantenha `CRAWLER_SCHEDULER_ENABLED=false` por padrao. Habilite o scheduler apenas depois de validar manualmente seed, painel e crawler por uma unica fonte.
+
+Para teste controlado em Docker descartavel, use temporariamente:
+
+```env
+CRAWLER_SCHEDULER_ENABLED=true
+CRAWLER_INTERVAL_MINUTES=1
+```
+
+Regras operacionais:
+
+- execute apenas uma instancia do backend quando o scheduler estiver habilitado;
+- nao rode multiplos workers ou replicas com scheduler ativo, porque cada processo pode iniciar seu proprio APScheduler;
+- confirme nos logs `Crawler scheduler job registered`, `Crawler scheduler started`, `Scheduled crawler started`, `Scheduled crawler completed` ou `Scheduled crawler failed`;
+- em caso de comportamento inesperado, volte `CRAWLER_SCHEDULER_ENABLED=false` e recrie o backend;
+- o job usa `max_instances=1` e `coalesce=True` para evitar sobreposicao dentro do mesmo processo.

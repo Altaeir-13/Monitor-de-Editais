@@ -145,3 +145,14 @@ Novos itens:
 Fontes com falha:
 Editais salvos:
 ```
+
+## Checklist de Validacao do Scheduler
+
+- [ ] `CRAWLER_SCHEDULER_ENABLED=false` continua sendo o padrao nos arquivos de exemplo.
+- [ ] Teste automatizado confirma que scheduler desativado nao registra job.
+- [ ] Teste automatizado confirma um unico job com `max_instances=1` e `coalesce=True`.
+- [ ] Teste automatizado confirma que falha do crawler e registrada e nao escapa do job.
+- [ ] Teste automatizado confirma fechamento da sessao de banco no `finally`.
+- [ ] Teste automatizado confirma shutdown idempotente.
+- [ ] Validacao Docker foi feita em banco descartavel e encerrada com remocao do volume.
+- [ ] Scheduler habilitado somente com uma instancia do backend.
