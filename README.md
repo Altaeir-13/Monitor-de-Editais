@@ -448,3 +448,14 @@ docker compose -f docker-compose.prod.yml restart backend
 ```
 
 Rollback destrutivo de banco deve ser feito apenas com aprovacao explicita e backup conferido.
+
+### Validacao controlada do scheduler
+
+O scheduler deve permanecer desativado por padrao. Quando for necessario validar agendamento, use um ambiente descartavel, uma unica instancia do backend e intervalo curto temporario:
+
+```env
+CRAWLER_SCHEDULER_ENABLED=true
+CRAWLER_INTERVAL_MINUTES=1
+```
+
+Verifique os logs do backend para confirmar registro do job, inicio, conclusao, falha e encerramento. Nao habilite o scheduler em multiplos workers ou replicas sem coordenacao externa, pois cada processo pode iniciar um APScheduler proprio.
