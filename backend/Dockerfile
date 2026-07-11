@@ -1,10 +1,10 @@
 FROM python:3.11-slim
 
-# Evita a gravação de arquivos compilados (.pyc) e desativa o buffering de logs
+# Evita a gravacao de arquivos compilados (.pyc) e desativa o buffering de logs
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Instala dependências nativas para psycopg2 e comunicação com Postgres
+# Instala dependencias nativas para psycopg2 e comunicacao com Postgres
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gcc libpq-dev \
     && apt-get clean \
@@ -12,15 +12,15 @@ RUN apt-get update \
 
 WORKDIR /app
 
-# Instala dependências do python
+# Instala dependencias do python
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia a aplicação inteira
+# Copia a aplicacao inteira
 COPY . .
 
-# Permissão de execução no entrypoint
-RUN chmod +x entrypoint.sh
+# Normaliza line endings do entrypoint para Linux e aplica permissao de execucao
+RUN sed -i 's/\r$//' entrypoint.sh && chmod +x entrypoint.sh
 
 EXPOSE 8000
 

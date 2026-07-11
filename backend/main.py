@@ -1,11 +1,14 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
+from sqlalchemy.exc import SQLAlchemyError
 
 from app.api.routers import auth, users, admin_institutions, admin_sources, notices, alerts, notifications, admin_match, admin_crawler
 from app.core.config import settings
 from app.core.scheduler import shutdown_crawler_scheduler, start_crawler_scheduler
+from app.db.session import engine
 
 
 @asynccontextmanager
@@ -37,6 +40,21 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     return {"message": "Monitor de Editais API is running"}
+
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
+
+@app.get("/ready")
+def readiness_check():
+    try:
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+    except SQLAlchemyError:
+        raise HTTPException(status_code=503, detail={"status": "error"})
+    return {"status": "ok"}
 
 
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
