@@ -103,7 +103,7 @@ ValidaÃ§Ã£o registrada nesta fase:
 
 ## Checklist de Homologacao PostgreSQL Reproduzivel
 
-- [ ] Branch usada: `chore/staging-readiness`.
+- [ ] Branch usada: `chore/remote-staging-deployment`.
 - [ ] `git status --short` limpo antes das alteracoes.
 - [ ] `.env` criado a partir de `.env.prod.example` e nao versionado.
 - [ ] `POSTGRES_PASSWORD` real definido somente no `.env` local/ambiente.
@@ -156,3 +156,48 @@ Editais salvos:
 - [ ] Teste automatizado confirma shutdown idempotente.
 - [ ] Validacao Docker foi feita em banco descartavel e encerrada com remocao do volume.
 - [ ] Scheduler habilitado somente com uma instancia do backend.
+
+## Checklist de homologacao remota HTTPS
+
+### Antes do deploy
+
+- [ ] Branch local e `git status --short` foram conferidos.
+- [ ] Dominio real foi definido e DNS A/AAAA aponta para o servidor correto.
+- [ ] Somente portas 80 e 443 estao publicas para a aplicacao.
+- [ ] `.env.prod` nao esta versionado e nao contem placeholders.
+- [ ] `SECRET_KEY` e senha PostgreSQL sao valores aleatorios.
+- [ ] CORS contem apenas a origem HTTPS esperada e `API_ROOT_PATH=/api`.
+- [ ] OpenAPI corresponde a decisao operacional.
+- [ ] Scheduler esta false, intervalo 360 e worker igual a um.
+- [ ] Diretorio TLS externo contem `fullchain.pem` e `privkey.pem`.
+
+### Compose e runtime
+
+- [ ] `config --quiet` e builds passaram.
+- [ ] `migrate` terminou zero e esta em Alembic head.
+- [ ] Backend e PostgreSQL nao possuem port binding.
+- [ ] Volume PostgreSQL e persistente e project-scoped.
+- [ ] Rede `data` e interna.
+- [ ] HTTP redireciona para HTTPS.
+- [ ] Health/readiness funcionam na raiz e em `/api`.
+- [ ] `/api` nunca retorna `index.html`.
+- [ ] Refresh de rota SPA profunda funciona.
+- [ ] Headers operacionais aparecem nas respostas HTTPS.
+
+### Aplicacao e operacao
+
+- [ ] Admin foi criado/promovido sem senha na saida.
+- [ ] Seed foi executado duas vezes sem aumentar contagens.
+- [ ] Smoke remoto passou sem executar crawler.
+- [ ] Logs foram revisados sem segredos.
+- [ ] Backup externo timestampado foi criado.
+- [ ] Restore foi validado em banco controlado.
+- [ ] Rollback e commit/imagem anterior foram registrados.
+
+### Validacao local
+
+- [ ] Testes backend obrigatorios e novos passaram.
+- [ ] `npm ci`, lint, build e audit passaram dentro de `frontend`.
+- [ ] Compose config/build e ambiente descartavel passaram.
+- [ ] `git diff --check`, status e diff stat passaram.
+- [ ] Nenhum env, certificado, banco, dump ou backup apareceu no Git.

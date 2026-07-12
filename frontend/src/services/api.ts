@@ -141,7 +141,7 @@ export async function getNotices(filters: NoticesFilters = {}): Promise<NoticeRe
   if (filters.skip !== undefined) params.skip = filters.skip;
   if (filters.limit !== undefined) params.limit = filters.limit;
 
-  const response = await api.get<NoticeResponse[]>('/notices', { params });
+  const response = await api.get<NoticeResponse[]>('/notices/', { params });
   return response.data;
 }
 
@@ -183,7 +183,7 @@ export interface UserAlertUpdate {
  * Authenticated — lists all alerts for the current user.
  */
 export async function getAlerts(skip = 0, limit = 50): Promise<UserAlertResponse[]> {
-  const response = await api.get<UserAlertResponse[]>('/alerts', {
+  const response = await api.get<UserAlertResponse[]>('/alerts/', {
     params: { skip, limit },
   });
   return response.data;
@@ -194,7 +194,7 @@ export async function getAlerts(skip = 0, limit = 50): Promise<UserAlertResponse
  * Authenticated — creates a new alert.
  */
 export async function createAlert(data: UserAlertCreate): Promise<UserAlertResponse> {
-  const response = await api.post<UserAlertResponse>('/alerts', data);
+  const response = await api.post<UserAlertResponse>('/alerts/', data);
   return response.data;
 }
 
@@ -233,7 +233,7 @@ export interface NotificationResponse {
  * Authenticated — lists notifications for the current user.
  */
 export async function getNotifications(skip = 0, limit = 50): Promise<NotificationResponse[]> {
-  const response = await api.get<NotificationResponse[]>('/notifications', {
+  const response = await api.get<NotificationResponse[]>('/notifications/', {
     params: { skip, limit },
   });
   return response.data;
@@ -272,14 +272,14 @@ export interface InstitutionUpdate {
 }
 
 export async function getAdminInstitutions(skip = 0, limit = 20): Promise<InstitutionResponse[]> {
-  const response = await api.get<InstitutionResponse[]>('/admin/institutions', {
+  const response = await api.get<InstitutionResponse[]>('/admin/institutions/', {
     params: { skip, limit },
   });
   return response.data;
 }
 
 export async function createAdminInstitution(data: InstitutionCreate): Promise<InstitutionResponse> {
-  const response = await api.post<InstitutionResponse>('/admin/institutions', data);
+  const response = await api.post<InstitutionResponse>('/admin/institutions/', data);
   return response.data;
 }
 
@@ -329,14 +329,14 @@ export interface MonitoredSourceUpdate {
 }
 
 export async function getAdminSources(skip = 0, limit = 20): Promise<MonitoredSourceResponse[]> {
-  const response = await api.get<MonitoredSourceResponse[]>('/admin/sources', {
+  const response = await api.get<MonitoredSourceResponse[]>('/admin/sources/', {
     params: { skip, limit },
   });
   return response.data;
 }
 
 export async function createAdminSource(data: MonitoredSourceCreate): Promise<MonitoredSourceResponse> {
-  const response = await api.post<MonitoredSourceResponse>('/admin/sources', data);
+  const response = await api.post<MonitoredSourceResponse>('/admin/sources/', data);
   return response.data;
 }
 

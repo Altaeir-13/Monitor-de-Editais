@@ -219,3 +219,13 @@ Regras operacionais:
 - confirme nos logs `Crawler scheduler job registered`, `Crawler scheduler started`, `Scheduled crawler started`, `Scheduled crawler completed` ou `Scheduled crawler failed`;
 - em caso de comportamento inesperado, volte `CRAWLER_SCHEDULER_ENABLED=false` e recrie o backend;
 - o job usa `max_instances=1` e `coalesce=True` para evitar sobreposicao dentro do mesmo processo.
+
+## Operacao da homologacao remota
+
+Use `docs/deploy_homologacao_remota.md` como fonte canonica para a stack
+remota. O guia cobre HTTPS de mesma origem, variaveis, migrations, admin, seed,
+smoke, logs, backup, restore, rollback e scheduler.
+
+Comandos operacionais devem informar `--env-file`, `-f` e um project name
+conhecido. Nao execute `docker compose config` sem `--quiet` com segredos e
+nao use `down -v` fora de ambiente descartavel criado pela mesma tarefa.

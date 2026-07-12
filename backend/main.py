@@ -5,7 +5,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.api.routers import auth, users, admin_institutions, admin_sources, notices, alerts, notifications, admin_match, admin_crawler
+from app.api.routers import (
+    admin_crawler,
+    admin_institutions,
+    admin_match,
+    admin_sources,
+    alerts,
+    auth,
+    notices,
+    notifications,
+    users,
+)
 from app.core.config import settings
 from app.core.scheduler import shutdown_crawler_scheduler, start_crawler_scheduler
 from app.db.session import engine
@@ -26,6 +36,10 @@ app = FastAPI(
     description="API para o MVP da plataforma Monitor de Editais",
     version="1.0.0",
     lifespan=lifespan,
+    root_path=settings.API_ROOT_PATH,
+    openapi_url="/openapi.json" if settings.OPENAPI_ENABLED else None,
+    docs_url="/docs" if settings.OPENAPI_ENABLED else None,
+    redoc_url="/redoc" if settings.OPENAPI_ENABLED else None,
 )
 
 app.add_middleware(

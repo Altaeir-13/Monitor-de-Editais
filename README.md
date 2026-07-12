@@ -150,30 +150,15 @@ npm run dev
 
 O frontend ficarÃƒÂ¡ em `http://localhost:5173`.
 
-## Criar UsuÃƒÂ¡rio Admin
+## Criar usuario admin
 
-O projeto ainda nÃƒÂ£o possui comando dedicado de criaÃƒÂ§ÃƒÂ£o de admin. Para homologaÃƒÂ§ÃƒÂ£o, use o fluxo existente dos modelos/serviÃƒÂ§os do backend em ambiente controlado. Exemplo de script Python a executar com o ambiente do backend configurado:
+Use o script idempotente do backend:
 
-```python
-from app.db.session import SessionLocal
-from app.models.user import User
-from app.schemas.user import UserCreate
-from app.services.user import create_user
-
-db = SessionLocal()
-try:
-    email = "admin@example.com"
-    user = db.query(User).filter(User.email == email).first()
-    if not user:
-        user = create_user(db, UserCreate(name="Admin", email=email, password="change-me"))
-    user.role = "admin"
-    user.is_active = True
-    db.commit()
-finally:
-    db.close()
+```powershell
+python scripts/create_admin.py --name "Administrador" --email "admin@example.com"
 ```
 
-Troque e proteja a senha antes de usar em homologaÃƒÂ§ÃƒÂ£o/produÃƒÂ§ÃƒÂ£o.
+Forneca ADMIN_PASSWORD apenas pelo ambiente do processo. O script cria, promove ou reativa o usuario e nunca imprime a senha.
 
 ## Seed Nordeste
 
@@ -459,3 +444,27 @@ CRAWLER_INTERVAL_MINUTES=1
 ```
 
 Verifique os logs do backend para confirmar registro do job, inicio, conclusao, falha e encerramento. Nao habilite o scheduler em multiplos workers ou replicas sem coordenacao externa, pois cada processo pode iniciar um APScheduler proprio.
+
+## Homologacao remota com HTTPS
+
+O fluxo remoto canonico esta em
+[`docs/deploy_homologacao_remota.md`](docs/deploy_homologacao_remota.md).
+Ele define Nginx como proxy unico, frontend buildado, API em `/api`,
+PostgreSQL interno, migration one-shot, certificados externos, scripts de
+deploy/smoke/backup/restore e rollback controlado.
+
+Validacao local declarativa:
+
+```powershell
+docker compose --env-file .env.prod.example -f docker-compose.prod.yml config --quiet
+docker compose --env-file .env.prod.example -f docker-compose.prod.yml build
+```
+
+Para implantacao futura, copie o exemplo para `.env.prod`, substitua todos os
+placeholders, forneca os certificados fora do Git e use:
+
+```powershell
+pwsh -File scripts/deploy.ps1 -EnvFile .env.prod -ProjectName monitor-editais-staging
+```
+
+Deploy real, DNS, certificado, commit e push permanecem acoes manuais.
