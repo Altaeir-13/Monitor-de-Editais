@@ -1,4 +1,6 @@
-.env
+/.env
+/.env.*
+!/.env.prod.example
 backend/.env
 frontend/.env
 venv/
@@ -15,3 +17,7 @@ build/
 *.sqlite
 *.sqlite3
 *.db
+*.dump
+backups/
+deploy/certs/*
+!deploy/certs/README.md
