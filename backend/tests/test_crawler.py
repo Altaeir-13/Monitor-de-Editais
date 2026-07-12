@@ -6,6 +6,8 @@ import tempfile
 from datetime import datetime, timezone
 
 
+os.environ.pop("DATABASE_URL", None)
+os.environ["ENVIRONMENT"] = "test"
 USING_TEMP_SQLITE = "DATABASE_URL" not in os.environ
 TEST_DB_PATH = os.path.join(tempfile.gettempdir(), f"monitor_editais_test_crawler_{os.getpid()}.db")
 
@@ -13,7 +15,7 @@ os.environ.setdefault("POSTGRES_USER", "test")
 os.environ.setdefault("POSTGRES_PASSWORD", "test")
 os.environ.setdefault("POSTGRES_DB", "monitor_editais_test")
 os.environ.setdefault("DATABASE_URL", f"sqlite:///{TEST_DB_PATH.replace(os.sep, '/')}")
-os.environ.setdefault("SECRET_KEY", "test-secret-key-for-crawler-tests-12345")
+os.environ["SECRET_KEY"] = "test-secret-key-for-crawler-tests-12345"
 os.environ.setdefault("ALGORITHM", "HS256")
 os.environ.setdefault("ACCESS_TOKEN_EXPIRE_MINUTES", "30")
 backend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -413,3 +415,6 @@ finally:
             os.remove(TEST_DB_PATH)
 
 print(json.dumps(results, indent=2))
+failures = {name: value for name, value in results.items() if value is not True}
+assert "error" not in results, results.get("error")
+assert not failures, failures

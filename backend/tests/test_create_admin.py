@@ -3,29 +3,43 @@ import io
 import json
 import os
 import sys
+import tempfile
+from pathlib import Path
+from uuid import uuid4
 
-backend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+backend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if backend_path not in sys.path:
     sys.path.insert(0, backend_path)
 
-from app.db.session import SessionLocal
+test_db_path = Path(tempfile.gettempdir()) / f"monitor_editais_create_admin_{uuid4().hex}.db"
+os.environ.update(
+    {
+        "ENVIRONMENT": "test",
+        "DATABASE_URL": f"sqlite:///{test_db_path.as_posix()}",
+        "SECRET_KEY": "test-secret-key-for-admin-tests-123456789",
+        "ALGORITHM": "HS256",
+        "ACCESS_TOKEN_EXPIRE_MINUTES": "30",
+        "CRAWLER_SCHEDULER_ENABLED": "false",
+    }
+)
+
+from app.db.base import Base
+from app.db.session import SessionLocal, engine
 from app.models.user import User
 from app.schemas.user import UserCreate
 from app.services.user import create_user
 from scripts.create_admin import create_or_promote_admin
 
 
+Base.metadata.create_all(bind=engine)
 db = SessionLocal()
-results = {}
+results: dict[str, bool] = {}
 
 admin_email = "admin_script_test@example.com"
 common_email = "common_script_test@example.com"
 secret_password = "SenhaAdminSuperSecreta123"
 
 try:
-    db.query(User).filter(User.email.in_([admin_email, common_email])).delete(synchronize_session=False)
-    db.commit()
-
     output = io.StringIO()
     with contextlib.redirect_stdout(output), contextlib.redirect_stderr(output):
         status_created, admin_id = create_or_promote_admin(
@@ -87,6 +101,9 @@ finally:
     db.query(User).filter(User.email.in_([admin_email, common_email])).delete(synchronize_session=False)
     db.commit()
     db.close()
+    engine.dispose()
+    test_db_path.unlink(missing_ok=True)
 
 print(json.dumps(results, indent=2))
-assert all(results.values()), results
+failures = {name: value for name, value in results.items() if value is not True}
+assert not failures, failures
