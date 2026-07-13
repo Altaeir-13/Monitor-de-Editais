@@ -1,470 +1,479 @@
 # Monitor de Editais
 
-Plataforma web para centralizar, visualizar e acompanhar editais de instituiÃƒÂ§ÃƒÂµes pÃƒÂºblicas. O sistema inclui autenticaÃƒÂ§ÃƒÂ£o JWT, painel administrativo, catÃƒÂ¡logo de fontes, crawler institucional, alertas de usuÃƒÂ¡rio, notificaÃƒÂ§ÃƒÂµes internas, scheduler configurÃƒÂ¡vel e painel operacional do crawler.
+Aplicação web para reunir editais publicados por instituições públicas em fontes oficiais, reduzir a dispersão das consultas e apoiar o acompanhamento operacional da coleta. O projeto atende pessoas interessadas em oportunidades públicas e equipes responsáveis pelo cadastro de instituições, fontes e rotinas de monitoramento.
 
-## Status do Projeto
+O sistema está em estágio de MVP funcional. A topologia de homologação com PostgreSQL, FastAPI, React, Nginx e HTTPS foi preparada e validada localmente; a implantação em um servidor remoto ainda depende de DNS, certificado, segredos e operação do ambiente. Isso não representa uma produção concluída.
 
-O MVP estÃƒÂ¡ funcional para a primeira fase de monitoramento das instituiÃƒÂ§ÃƒÂµes pÃƒÂºblicas do Nordeste.
+## Principais funcionalidades
 
-Entregas atuais:
+- catálogo de instituições e fontes oficiais, com seed idempotente para a região Nordeste;
+- crawlers genérico, WordPress, Gov.br, paginado e SIGAA/JSF;
+- normalização de títulos e URLs, fingerprint SHA-256 e deduplicação;
+- classificação normalizada por tipo de edital e filtros de consulta;
+- endpoints públicos da API para listar e detalhar editais;
+- autenticação JWT, cadastro de usuários e controle de acesso administrativo;
+- alertas por palavra-chave e tipo de edital, notificações internas e suporte a SMTP;
+- administração de instituições e fontes monitoradas;
+- painel operacional do crawler em `/admin/crawler`;
+- execução manual geral ou por fonte;
+- scheduler com APScheduler, configurável e desativado por padrão.
 
-- catÃƒÂ¡logo Nordeste com seed idempotente;
-- crawler em camadas com spiders genÃƒÂ©rico, WordPress, Gov.br, paginado e SIGAA/JSF;
-- deduplicaÃƒÂ§ÃƒÂ£o por fingerprint e URL normalizada;
-- endpoint manual `POST /admin/run-crawler`;
-- execuÃƒÂ§ÃƒÂ£o por fonte especÃƒÂ­fica no painel operacional;
-- scheduler com APScheduler, desativado por padrÃƒÂ£o;
-- painel operacional em `/admin/crawler`;
-- auditoria final Nordeste com 1.418 editais recuperados.
+A API `GET /notices/` e o detalhe `GET /notices/{notice_id}` não exigem autenticação. Na SPA atual, porém, as páginas `/notices` e `/notices/:id` ficam em uma rota protegida e exigem login; somente `/login` e `/register` são páginas públicas.
 
-LimitaÃƒÂ§ÃƒÂµes ainda existentes:
+## Arquitetura
 
-- SMTP real ainda precisa ser configurado para entrega efetiva de e-mails;
-- deploy em VPS/cloud ainda nÃƒÂ£o foi executado;
-- algumas fontes externas podem falhar por SSL, conexÃƒÂ£o, 404, login ou mudanÃƒÂ§as no portal de origem.
-
-## Requisitos
-
-- Python 3.11 ou superior compatÃƒÂ­vel com as dependÃƒÂªncias do projeto.
-- Node.js e npm compatÃƒÂ­veis com o frontend Vite/React.
-- PostgreSQL para homologaÃƒÂ§ÃƒÂ£o/produÃƒÂ§ÃƒÂ£o.
-- SQLite apenas para validaÃƒÂ§ÃƒÂ£o local controlada.
-- Docker e Docker Compose, se usar os ambientes conteinerizados.
-
-## ConfiguraÃƒÂ§ÃƒÂ£o de Ambiente
-
-Nunca versione arquivos `.env` reais com segredos.
-
-Arquivos de exemplo:
-
-- `backend/.env.local.example`: variÃƒÂ¡veis do backend para desenvolvimento local rÃƒÂ¡pido com SQLite.
-- `backend/.env.example`: variÃƒÂ¡veis do backend para PostgreSQL em homologaÃƒÂ§ÃƒÂ£o ou produÃƒÂ§ÃƒÂ£o local.
-- `frontend/.env.example`: URL da API usada pelo frontend em desenvolvimento.
-- `.env.prod.example`: variÃƒÂ¡veis esperadas no Docker Compose de produÃƒÂ§ÃƒÂ£o local.
-
-### Backend Local com SQLite
-
-Use este modo para validaÃƒÂ§ÃƒÂ£o local rÃƒÂ¡pida, sem PostgreSQL instalado ou configurado:
-
-```powershell
-cd C:\Users\Altair\Documents\Working\Development\Monitor\ de\ Editais\backend
-copy .env.local.example .env
-venv\Scripts\activate
-pip install -r requirements.txt
-python -m alembic upgrade head
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```text
+Internet
+  |
+HTTPS / Nginx
+  +-- React SPA
+  +-- /api -> FastAPI
+                  |
+               PostgreSQL
 ```
 
-Se o ambiente virtual ainda nÃƒÂ£o existir, crie antes de ativar:
+Na topologia de homologação:
 
-```powershell
-python -m venv venv
-```
+- Nginx é o único serviço público e publica as portas 80 e 443;
+- HTTP é redirecionado para HTTPS;
+- a SPA e a API usam a mesma origem, com `VITE_API_URL=/api` e `API_ROOT_PATH=/api`;
+- FastAPI não publica porta no host e participa das redes `edge` e `data`;
+- PostgreSQL não publica porta e fica na rede interna `data`;
+- o volume do PostgreSQL é persistente e escopado pelo project name do Compose;
+- o serviço one-shot `migrate` executa `alembic upgrade head` antes do backend;
+- `/health` verifica o processo e `/ready` também verifica a conexão com o banco;
+- OpenAPI é configurável e começa desabilitado na configuração remota de exemplo;
+- o scheduler começa desativado.
 
-O backend ficarÃƒÂ¡ em `http://127.0.0.1:8000` e a documentaÃƒÂ§ÃƒÂ£o Swagger em `http://127.0.0.1:8000/docs`.
+SQLite é destinado ao desenvolvimento e aos testes locais isolados. Homologação compartilhada e produção usam PostgreSQL.
 
-VariÃƒÂ¡veis principais do modo SQLite:
+## Tecnologias
 
-```env
-DATABASE_URL=sqlite:///./app.db
-SECRET_KEY=dev-local-change-me
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=1440
-BACKEND_CORS_ORIGINS=["http://localhost:5173","http://127.0.0.1:5173"]
-CRAWLER_SCHEDULER_ENABLED=false
-CRAWLER_INTERVAL_MINUTES=360
-```
+### Backend
 
-O arquivo `backend/.env.local.example` tambÃƒÂ©m mantÃƒÂ©m valores locais inofensivos para `POSTGRES_USER`, `POSTGRES_PASSWORD` e `POSTGRES_DB`, porque as configuraÃƒÂ§ÃƒÂµes atuais do backend ainda exigem essas variÃƒÂ¡veis. Elas nÃƒÂ£o sÃƒÂ£o usadas quando `DATABASE_URL` aponta para SQLite.
-
-NÃƒÂ£o use `backend/audit_northeast_final.db` como banco padrÃƒÂ£o. Esse arquivo ÃƒÂ© artefato local de auditoria.
-
-### Backend com PostgreSQL
-
-Use este modo quando quiser validar em um ambiente prÃƒÂ³ximo de homologaÃƒÂ§ÃƒÂ£o:
-
-```powershell
-cd C:\Users\Altair\Documents\Working\Development\Monitor\ de\ Editais\backend
-copy .env.example .env
-venv\Scripts\activate
-pip install -r requirements.txt
-python -m alembic upgrade head
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
-
-Ao usar `backend/.env.example`, tenha antes:
-
-- PostgreSQL rodando em `localhost:5432`, ou ajuste `DATABASE_URL`;
-- banco `monitor_editais` criado, ou ajuste `POSTGRES_DB` e `DATABASE_URL`;
-- usuÃƒÂ¡rio e senha compatÃƒÂ­veis com `POSTGRES_USER`, `POSTGRES_PASSWORD` e `DATABASE_URL`.
-
-Exemplo de URL PostgreSQL:
-
-```env
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/monitor_editais
-```
-
-Se preferir subir apenas o banco pelo Docker Compose:
-
-```powershell
-cd C:\Users\Altair\Documents\Working\Development\Monitor\ de\ Editais
-docker compose up -d db
-```
+- Python e FastAPI;
+- Uvicorn;
+- SQLAlchemy e Alembic;
+- Pydantic Settings;
+- autenticação JWT;
+- APScheduler;
+- Requests e Beautiful Soup para coleta e parsing.
 
 ### Frontend
 
-Crie `frontend/.env` a partir do exemplo:
+- React 19;
+- React Router 7;
+- TypeScript 6;
+- Vite 8;
+- Axios;
+- TanStack Query;
+- Tailwind CSS 4.
 
-```powershell
-copy frontend\.env.example frontend\.env
+### Banco e infraestrutura
+
+- SQLite para desenvolvimento e testes locais;
+- PostgreSQL 15 na imagem do Compose;
+- Docker e Docker Compose;
+- Nginx para SPA, TLS e proxy reverso;
+- scripts PowerShell para deploy, smoke, backup e restauração.
+
+### Validação
+
+- scripts de teste Python com bancos SQLite temporários;
+- ESLint, TypeScript e build Vite;
+- healthchecks do Compose;
+- smoke test autenticado sem execução do crawler geral.
+
+## Estrutura do projeto
+
+```text
+.
+|-- backend/
+|   |-- app/                 # API, modelos, serviços, crawler e configuração
+|   |-- alembic/             # migrations
+|   |-- scripts/             # admin, smoke e auditoria controlada
+|   +-- tests/               # suíte backend
+|-- frontend/
+|   |-- public/
+|   |-- src/                 # páginas, componentes, hooks e serviços
+|   |-- Dockerfile
+|   +-- nginx.conf
+|-- deploy/certs/            # ponto local ignorado para certificados de validação
+|-- docs/                    # guias operacionais e de homologação
+|-- scripts/                 # deploy, smoke, backup e restauração PostgreSQL
+|-- docker-compose.yml       # apoio ao desenvolvimento
+|-- docker-compose.prod.yml  # topologia de homologação/produção
+|-- .env.prod.example
++-- AGENTS.md
 ```
 
-VariÃƒÂ¡vel principal:
+## Requisitos
 
-```env
-VITE_API_URL=http://localhost:8000
-```
+- Python 3.11 para reproduzir o runtime do container. A suíte também foi validada localmente com Python 3.14.5.
+- Node.js 22.12 ou superior da linha 22. O Vite atual aceita `^20.19.0` ou `>=22.12.0`, e o Dockerfile usa Node 22.
+- npm compatível com a versão do Node.js e com o `package-lock.json`. A validação local usou npm 11.13.0.
+- Docker Engine com o plugin Docker Compose v2 para os ambientes conteinerizados.
+- Windows PowerShell 5.1 para os scripts locais validados. Em servidores Linux, instale PowerShell 7 e use `pwsh`.
+- PostgreSQL somente quando o backend for executado fora do Compose com a configuração PostgreSQL.
 
-## Rodar em Desenvolvimento
+## Execução local
 
-### 1. Backend
+Execute os comandos desta seção a partir da raiz do repositório, salvo indicação em contrário.
 
-```powershell
-cd C:\Users\Altair\Documents\Working\Development\Monitor\ de\ Editais\backend
-copy .env.local.example .env
-venv\Scripts\activate
-pip install -r requirements.txt
-python -m alembic upgrade head
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
-
-Por padrÃƒÂ£o, o comando acima usa SQLite em `backend/app.db`.
-
-### 2. Frontend
+### Backend com SQLite
 
 ```powershell
-cd C:\Users\Altair\Documents\Working\Development\Monitor\ de\ Editais\frontend
-npm install
+Set-Location .\backend
+
+if (-not (Test-Path .\.env)) {
+    Copy-Item .\.env.local.example .\.env
+}
+
+if (-not (Test-Path .\venv)) {
+    python -m venv venv
+}
+
+.\venv\Scripts\python.exe -m pip install -r .\requirements.txt
+.\venv\Scripts\python.exe -m alembic upgrade head
+.\venv\Scripts\python.exe -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
+
+O exemplo local usa `DATABASE_URL=sqlite:///./app.db`. O arquivo `backend/.env` e o banco local são ignorados pelo Git. Não use bancos de auditoria como banco padrão.
+
+Com o backend em execução:
+
+- API: `http://127.0.0.1:8000`;
+- health: `http://127.0.0.1:8000/health`;
+- readiness: `http://127.0.0.1:8000/ready`;
+- Swagger local: `http://127.0.0.1:8000/docs`.
+
+### Criar ou atualizar o administrador
+
+A partir de `backend`:
+
+```powershell
+.\venv\Scripts\python.exe .\scripts\create_admin.py --name "Administrador" --email "admin@example.com"
+```
+
+O script solicita a senha sem exibi-la, é idempotente e pode criar, promover ou reativar o usuário. Não grave a senha no comando nem no Git.
+
+### Aplicar o seed Nordeste
+
+Com um administrador criado e o backend local em execução:
+
+```powershell
+$AdminSecret = Read-Host "Senha do administrador" -AsSecureString
+$AdminPassword = [Net.NetworkCredential]::new("", $AdminSecret).Password
+try {
+    $Login = Invoke-RestMethod `
+        -Method Post `
+        -Uri "http://127.0.0.1:8000/auth/login" `
+        -ContentType "application/x-www-form-urlencoded" `
+        -Body @{ username = "admin@example.com"; password = $AdminPassword }
+
+    $Headers = @{ Authorization = "Bearer $($Login.access_token)" }
+
+    Invoke-RestMethod `
+        -Method Post `
+        -Uri "http://127.0.0.1:8000/admin/seed-northeast" `
+        -Headers $Headers
+}
+finally {
+    Remove-Variable AdminPassword, AdminSecret, Login, Headers -ErrorAction SilentlyContinue
+}
+```
+
+O seed pode ser repetido sem duplicar instituições ou fontes. Na topologia Nginx, acrescente o prefixo `/api` às rotas da API.
+
+### Frontend local
+
+Em outro terminal, a partir da raiz:
+
+```powershell
+Set-Location .\frontend
+
+if (-not (Test-Path .\.env)) {
+    Copy-Item .\.env.example .\.env
+}
+
+npm ci
 npm run dev
 ```
 
-O frontend ficarÃƒÂ¡ em `http://localhost:5173`.
+`frontend/.env.example` define `VITE_API_URL=http://localhost:8000`. O Vite disponibiliza a aplicação em `http://localhost:5173` por padrão.
 
-## Criar usuario admin
+## Execução com Docker, PostgreSQL e HTTPS
 
-Use o script idempotente do backend:
+A topologia de `docker-compose.prod.yml` exige TLS inclusive na validação local.
 
-```powershell
-python scripts/create_admin.py --name "Administrador" --email "admin@example.com"
-```
+### 1. Preparar configuração e certificado
 
-Forneca ADMIN_PASSWORD apenas pelo ambiente do processo. O script cria, promove ou reativa o usuario e nunca imprime a senha.
-
-## Seed Nordeste
-
-Com o backend rodando e usuÃƒÂ¡rio admin autenticado, execute:
-
-```http
-POST /admin/seed-northeast
-```
-
-O seed ÃƒÂ© idempotente: pode ser executado novamente sem duplicar instituiÃƒÂ§ÃƒÂµes ou fontes. Fontes substituÃƒÂ­das via `replaces` sÃƒÂ£o atualizadas/desativadas conforme a regra do catÃƒÂ¡logo.
-
-## Crawler
-
-ExecuÃƒÂ§ÃƒÂ£o manual geral:
-
-```http
-POST /admin/run-crawler
-```
-
-ExecuÃƒÂ§ÃƒÂ£o manual por fonte especÃƒÂ­fica:
-
-```http
-POST /admin/run-crawler/source/{source_id}
-```
-
-Painel operacional:
-
-```text
-/admin/crawler
-```
-
-No painel, o administrador acompanha:
-
-- saÃƒÂºde geral do crawler;
-- fontes OK, com erro, sem itens, nunca checadas e inativas;
-- ÃƒÂºltima checagem;
-- ÃƒÂºltimo sucesso;
-- ÃƒÂºltimo erro;
-- itens encontrados e novos salvos;
-- histÃƒÂ³rico recente de execuÃƒÂ§ÃƒÂµes;
-- execuÃƒÂ§ÃƒÂ£o geral ou por fonte.
-
-## Scheduler do Crawler
-
-O backend possui suporte ÃƒÂ  execuÃƒÂ§ÃƒÂ£o agendada usando APScheduler.
-
-Por padrÃƒÂ£o, mantenha desativado:
-
-```env
-CRAWLER_SCHEDULER_ENABLED=false
-CRAWLER_INTERVAL_MINUTES=360
-```
-
-Para ativar em ambiente controlado:
-
-```env
-CRAWLER_SCHEDULER_ENABLED=true
-CRAWLER_INTERVAL_MINUTES=360
-```
-
-Com essa configuraÃƒÂ§ÃƒÂ£o, o backend executa o crawler automaticamente a cada 360 minutos.
-
-ObservaÃƒÂ§ÃƒÂµes:
-
-- o scheduler usa sessÃƒÂ£o prÃƒÂ³pria do banco;
-- o job usa `max_instances=1` e `coalesce=True`;
-- falhas sÃƒÂ£o registradas em log e nÃƒÂ£o derrubam a aplicaÃƒÂ§ÃƒÂ£o;
-- em desenvolvimento, mantenha `CRAWLER_SCHEDULER_ENABLED=false`.
-
-## Rodar Local-Prod com Docker Compose
-
-Configure as variÃƒÂ¡veis obrigatÃƒÂ³rias e suba o ambiente:
+A partir da raiz:
 
 ```powershell
-$env:SECRET_KEY="SUA_CHAVE_FORTE"
-$env:POSTGRES_PASSWORD="SENHA_FORTE_DO_BANCO"
-docker compose -f docker-compose.prod.yml up -d --build
+if (-not (Test-Path .\.env.prod)) {
+    Copy-Item .\.env.prod.example .\.env.prod
+}
 ```
 
-Acesse:
+Edite `.env.prod` e substitua todos os placeholders. No mínimo:
 
-```text
-http://localhost
-```
+- use `ENVIRONMENT=staging`;
+- defina `POSTGRES_PASSWORD` e `SECRET_KEY` com valores não-placeholder;
+- mantenha `API_ROOT_PATH=/api` e `VITE_API_URL=/api`;
+- use origens HTTPS explícitas em `BACKEND_CORS_ORIGINS`;
+- mantenha `UVICORN_WORKERS=1`;
+- mantenha `CRAWLER_SCHEDULER_ENABLED=false`;
+- ajuste `STAGING_DOMAIN`, `HTTP_PORT` e `HTTPS_PORT`;
+- aponte `TLS_CERT_DIRECTORY` para um diretório com `fullchain.pem` e `privkey.pem`.
 
-Se o volume do Postgres jÃƒÂ¡ existir, alterar `POSTGRES_PASSWORD` nÃƒÂ£o altera a senha interna do banco. Para testes limpos, remova volumes somente quando nÃƒÂ£o houver dados relevantes.
+Certificados e chaves nunca devem entrar no Git. Para uma validação local descartável, consulte [o ponto de montagem TLS](deploy/certs/README.md). Em homologação pública, use um certificado válido emitido para o domínio.
 
-## Testes e ValidaÃƒÂ§ÃƒÂµes
-
-Backend:
+### 2. Validar, construir e subir
 
 ```powershell
-cd backend
-venv\Scripts\python.exe tests\test_crawler.py
+docker compose --env-file .env.prod -f docker-compose.prod.yml config --quiet
+docker compose --env-file .env.prod -f docker-compose.prod.yml build
+docker compose --env-file .env.prod -f docker-compose.prod.yml up -d --wait
+docker compose --env-file .env.prod -f docker-compose.prod.yml ps
+docker compose --env-file .env.prod -f docker-compose.prod.yml logs --tail=100 migrate backend frontend
 ```
 
-Frontend:
+O serviço `migrate` termina com código zero antes de o backend iniciar. O frontend só inicia depois que o backend está saudável.
+
+Com as portas padrão e um certificado local autoassinado:
 
 ```powershell
-cd frontend
+curl.exe -I http://localhost/health
+curl.exe -k https://localhost/health
+curl.exe -k https://localhost/ready
+curl.exe -k https://localhost/api/
+```
+
+Use `-k` somente em validação local com certificado autoassinado. Não desabilite a verificação TLS na homologação pública.
+
+`OPENAPI_ENABLED=false` é o padrão remoto; nesse caso, `/api/openapi.json`, `/api/docs` e `/api/redoc` retornam 404. Habilite OpenAPI apenas quando houver uma decisão operacional explícita.
+
+### 3. Encerrar sem apagar dados
+
+```powershell
+docker compose --env-file .env.prod -f docker-compose.prod.yml down
+```
+
+Esse comando remove containers e redes do projeto, mas preserva o volume nomeado. Não use `down -v` como encerramento padrão. A remoção de volumes exige project name conhecido, backup conferido e autorização explícita.
+
+## Homologação remota
+
+O procedimento canônico está em [Deploy de homologação remota](docs/deploy_homologacao_remota.md). O fluxo, sem duplicar o guia, é:
+
+1. apontar o DNS do domínio para o servidor;
+2. liberar somente as portas 80 e 443;
+3. instalar Docker e disponibilizar `pwsh`;
+4. colocar `fullchain.pem` e `privkey.pem` fora do Git;
+5. criar `.env.prod` com domínio, TLS, banco, autenticação, CORS e smoke;
+6. validar e executar `scripts/deploy.ps1`;
+7. confirmar a migration one-shot, health e readiness;
+8. criar o administrador;
+9. aplicar o seed Nordeste;
+10. executar o smoke remoto;
+11. criar e testar backup;
+12. manter o scheduler desativado na validação inicial.
+
+Com as entradas operacionais prontas:
+
+```powershell
+pwsh -NoProfile -File .\scripts\deploy.ps1 `
+    -EnvFile .\.env.prod `
+    -ProjectName monitor-editais-staging
+```
+
+DNS, certificado real, segredos, acesso ao servidor e decisão de ativar o scheduler são ações manuais. O preparo do repositório não significa que a implantação remota já ocorreu.
+
+## Variáveis de ambiente
+
+Os exemplos versionados são `backend/.env.local.example`, `backend/.env.example`, `frontend/.env.example` e `.env.prod.example`.
+
+| Categoria | Variáveis principais | Observações |
+|---|---|---|
+| Aplicação | `ENVIRONMENT`, `LOG_LEVEL` | `staging` e `production` ativam validações mais rígidas. |
+| Banco | `DATABASE_URL`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` | O Compose monta `DATABASE_URL` para o backend. |
+| Autenticação | `SECRET_KEY`, `ALGORITHM`, `ACCESS_TOKEN_EXPIRE_MINUTES` | A chave remota deve ter pelo menos 32 caracteres e não pode ser placeholder. |
+| CORS | `BACKEND_CORS_ORIGINS` | Em ambiente remoto, use somente origens HTTPS explícitas. |
+| API e proxy | `API_ROOT_PATH`, `OPENAPI_ENABLED`, `UVICORN_WORKERS`, `FORWARDED_ALLOW_IPS` | A topologia documentada usa `API_ROOT_PATH=/api`. |
+| Frontend | `VITE_API_URL` | Use `/api` no build de mesma origem. |
+| Compose | `COMPOSE_PROJECT_NAME`, `IMAGE_TAG`, `STAGING_DOMAIN`, `HTTP_PORT`, `HTTPS_PORT` | O project name também escopa o volume. |
+| TLS | `TLS_CERT_DIRECTORY` | Deve conter `fullchain.pem` e `privkey.pem` fora do Git. |
+| Administrador | `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Forneça a senha apenas pelo processo ou prompt. |
+| SMTP | `SMTP_TLS`, `SMTP_PORT`, `SMTP_HOST`, `SMTP_USER`, `SMTP_PASSWORD`, `EMAILS_FROM_EMAIL` | Entrega real depende de um provedor configurado. |
+| Scheduler | `CRAWLER_SCHEDULER_ENABLED`, `CRAWLER_INTERVAL_MINUTES` | Começa desativado. |
+| Smoke | `SMOKE_BASE_URL`, `SMOKE_API_PREFIX`, `SMOKE_ADMIN_EMAIL`, `SMOKE_ADMIN_PASSWORD`, `SMOKE_EXPECT_OPENAPI`, `SMOKE_TLS_VERIFY`, `SMOKE_TIMEOUT` | `SMOKE_BASE_URL` recebe somente a origem, sem `/api`. |
+
+Nunca coloque valores reais de `SECRET_KEY`, `POSTGRES_PASSWORD`, `ADMIN_PASSWORD`, `SMOKE_ADMIN_PASSWORD` ou `SMTP_PASSWORD` em arquivos versionados ou no histórico do shell.
+
+## Testes
+
+### Backend
+
+Execute a partir de `backend`. Cada teste que grava dados seleciona um SQLite temporário isolado antes de importar as configurações.
+
+```powershell
+.\venv\Scripts\python.exe -m compileall app tests scripts
+.\venv\Scripts\python.exe tests\test_scheduler.py
+.\venv\Scripts\python.exe tests\test_sqlite_compatibility.py
+.\venv\Scripts\python.exe tests\test_auth.py
+.\venv\Scripts\python.exe tests\test_crawler.py
+.\venv\Scripts\python.exe tests\test_create_admin.py
+.\venv\Scripts\python.exe tests\test_health.py
+.\venv\Scripts\python.exe tests\test_config.py
+.\venv\Scripts\python.exe tests\test_smoke_test.py
+.\venv\Scripts\python.exe tests\test_seed.py
+.\venv\Scripts\python.exe tests\test_notices.py
+.\venv\Scripts\python.exe tests\test_email_dispatcher.py
+.\venv\Scripts\python.exe tests\test_alerts.py
+.\venv\Scripts\python.exe tests\test_admin.py
+```
+
+Os testes do crawler usam mocks e fixtures. Não execute o crawler geral contra fontes externas como parte da suíte.
+
+### Frontend
+
+Execute a partir de `frontend`:
+
+```powershell
+npm ci
 npm run lint
 npm run build
+npm audit
 ```
 
-Auditoria Nordeste em banco controlado:
+### Docker
 
-```powershell
-cd backend
-venv\Scripts\python.exe scripts\audit_northeast_sources.py --database-url sqlite:///C:/caminho/para/audit_northeast_final.db
-```
-
-NÃƒÂ£o versione bancos de auditoria.
-
-## DocumentaÃƒÂ§ÃƒÂ£o Operacional
-
-- `docs/operacao.md`: guia de operaÃƒÂ§ÃƒÂ£o do crawler e interpretaÃƒÂ§ÃƒÂ£o do painel.
-- `docs/checklist_homologacao.md`: checklist para homologaÃƒÂ§ÃƒÂ£o.
-- `docs/auditoria_fontes_nordeste.md`: relatÃƒÂ³rio da auditoria final das fontes Nordeste.
-
-## NÃƒÂ£o Versionar
-
-- `.env` reais;
-- `venv/`;
-- `node_modules/`;
-- `dist/`;
-- `__pycache__/`;
-- bancos SQLite locais (`*.db`, `*.sqlite`, `*.sqlite3`);
-- bancos de auditoria temporÃƒÂ¡rios.
-
-## LicenÃƒÂ§a
-
-Este projeto ÃƒÂ© disponibilizado sob a LicenÃƒÂ§a de Uso NÃƒÂ£o Comercial Ã¢â‚¬â€ Monitor de Editais.
-
-Consulte `LICENSE.md` para os termos completos.
-
-## Homologacao com Docker e PostgreSQL
-
-Este fluxo valida um ambiente reproduzivel com PostgreSQL, migrations Alembic, backend FastAPI, frontend buildado, seed Nordeste, admin, crawler manual e scheduler desligado por padrao.
-
-### 1. Preparar variaveis
-
-```powershell
-cd "C:\Users\Altair\Documents\Working\Development\Monitor de Editais"
-copy .env.prod.example .env
-notepad .env
-```
-
-Antes de subir o ambiente, substitua no `.env`:
-
-- `POSTGRES_PASSWORD` por uma senha real;
-- `SECRET_KEY` por um valor longo e aleatorio;
-- `BACKEND_CORS_ORIGINS` pelos dominios reais de homologacao;
-- `ADMIN_EMAIL` pelo e-mail do administrador;
-- `ADMIN_PASSWORD` somente se preferir automacao local. Para uso interativo, deixe vazio e digite a senha no prompt.
-
-Mantenha inicialmente:
-
-```env
-CRAWLER_SCHEDULER_ENABLED=false
-CRAWLER_INTERVAL_MINUTES=360
-```
-
-### 2. Validar Compose e subir
-
-```powershell
-docker compose -f docker-compose.prod.yml config
-docker compose -f docker-compose.prod.yml build
-docker compose -f docker-compose.prod.yml up -d db
-docker compose -f docker-compose.prod.yml up -d backend frontend
-docker compose -f docker-compose.prod.yml ps
-docker compose -f docker-compose.prod.yml logs backend --tail=100
-```
-
-O backend executa `alembic upgrade head` no `entrypoint.sh`. O PostgreSQL possui health check com `pg_isready`; o backend aguarda o banco saudavel e expoe `/ready`; o frontend aguarda o backend saudavel e serve o build de producao via Nginx.
-
-### 3. Criar administrador
-
-Com senha interativa:
-
-```powershell
-docker compose -f docker-compose.prod.yml exec backend python scripts/create_admin.py --name "Administrador" --email "admin@example.com"
-```
-
-Ou com senha por variavel de ambiente local, sem exibir a senha no comando:
-
-```powershell
-$env:ADMIN_PASSWORD = Read-Host "Senha admin"
-docker compose -f docker-compose.prod.yml exec -e ADMIN_PASSWORD=$env:ADMIN_PASSWORD backend python scripts/create_admin.py --name "Administrador" --email "admin@example.com"
-Remove-Item Env:\ADMIN_PASSWORD
-```
-
-O script e idempotente: cria o admin, nao duplica se ja existir e promove usuario existente para `admin` quando necessario.
-
-### 4. Validar saude e API
-
-```powershell
-Invoke-RestMethod http://localhost/api/health
-Invoke-RestMethod http://localhost/api/ready
-Invoke-RestMethod http://localhost/api/openapi.json
-```
-
-### 5. Executar smoke test
-
-```powershell
-$env:SMOKE_BASE_URL = "http://localhost/api"
-$env:SMOKE_ADMIN_EMAIL = "admin@example.com"
-$env:SMOKE_ADMIN_PASSWORD = Read-Host "Senha admin"
-docker compose -f docker-compose.prod.yml exec -e SMOKE_BASE_URL=$env:SMOKE_BASE_URL -e SMOKE_ADMIN_EMAIL=$env:SMOKE_ADMIN_EMAIL -e SMOKE_ADMIN_PASSWORD=$env:SMOKE_ADMIN_PASSWORD backend python scripts/smoke_test.py
-Remove-Item Env:\SMOKE_BASE_URL
-Remove-Item Env:\SMOKE_ADMIN_EMAIL
-Remove-Item Env:\SMOKE_ADMIN_PASSWORD
-```
-
-O smoke test verifica `/health`, `/ready`, OpenAPI, login admin, listagem de fontes, status do crawler e listagem publica de editais. Ele nao executa crawler geral.
-
-### 6. Seed Nordeste e crawler manual
-
-Use o token do login admin ou a interface administrativa.
-
-```powershell
-$login = Invoke-RestMethod -Method Post -Uri http://localhost/api/auth/login -ContentType "application/x-www-form-urlencoded" -Body @{ username = "admin@example.com"; password = "SENHA_ADMIN" }
-$headers = @{ Authorization = "Bearer $($login.access_token)" }
-
-Invoke-RestMethod -Method Post -Uri http://localhost/api/admin/seed-northeast -Headers $headers
-Invoke-RestMethod -Method Post -Uri http://localhost/api/admin/seed-northeast -Headers $headers
-Invoke-RestMethod -Uri http://localhost/api/admin/sources -Headers $headers
-Invoke-RestMethod -Uri http://localhost/api/admin/crawler/status -Headers $headers
-Invoke-RestMethod -Uri http://localhost/api/admin/crawler/sources-status -Headers $headers
-```
-
-Para validar uma fonte especifica, escolha um `source_id` ativo e execute:
-
-```powershell
-Invoke-RestMethod -Method Post -Uri http://localhost/api/admin/run-crawler/source/ID_DA_FONTE -Headers $headers
-Invoke-RestMethod -Uri http://localhost/api/admin/crawler/runs -Headers $headers
-Invoke-RestMethod -Uri http://localhost/api/notices/
-```
-
-Registre os numeros retornados nesta homologacao: instituicoes, fontes, fontes ativas, fontes verificadas, itens encontrados, novos itens, fontes com falha e editais salvos. Nao reutilize numeros historicos da auditoria Nordeste como resultado novo.
-
-### 7. Testar scheduler somente depois
-
-Depois de validar seed, painel e crawler manual, edite `.env`:
-
-```env
-CRAWLER_SCHEDULER_ENABLED=true
-CRAWLER_INTERVAL_MINUTES=360
-```
-
-Recrie apenas o backend:
-
-```powershell
-docker compose -f docker-compose.prod.yml up -d --build backend
-docker compose -f docker-compose.prod.yml logs backend --tail=200
-```
-
-Confirme nos logs inicio e fim do scheduler. Mantenha uma unica instancia do backend quando o scheduler estiver habilitado.
-
-### 8. Backup e rollback basicos
-
-Backup:
-
-```powershell
-docker compose -f docker-compose.prod.yml exec db pg_dump -U postgres -d monitor_editais > backup_monitor_editais.sql
-```
-
-Rollback operacional simples:
-
-```powershell
-docker compose -f docker-compose.prod.yml logs backend --tail=200
-docker compose -f docker-compose.prod.yml restart backend
-```
-
-Rollback destrutivo de banco deve ser feito apenas com aprovacao explicita e backup conferido.
-
-### Validacao controlada do scheduler
-
-O scheduler deve permanecer desativado por padrao. Quando for necessario validar agendamento, use um ambiente descartavel, uma unica instancia do backend e intervalo curto temporario:
-
-```env
-CRAWLER_SCHEDULER_ENABLED=true
-CRAWLER_INTERVAL_MINUTES=1
-```
-
-Verifique os logs do backend para confirmar registro do job, inicio, conclusao, falha e encerramento. Nao habilite o scheduler em multiplos workers ou replicas sem coordenacao externa, pois cada processo pode iniciar um APScheduler proprio.
-
-## Homologacao remota com HTTPS
-
-O fluxo remoto canonico esta em
-[`docs/deploy_homologacao_remota.md`](docs/deploy_homologacao_remota.md).
-Ele define Nginx como proxy unico, frontend buildado, API em `/api`,
-PostgreSQL interno, migration one-shot, certificados externos, scripts de
-deploy/smoke/backup/restore e rollback controlado.
-
-Validacao local declarativa:
+Execute a partir da raiz. Esses dois comandos podem usar o arquivo de exemplo porque não iniciam a stack:
 
 ```powershell
 docker compose --env-file .env.prod.example -f docker-compose.prod.yml config --quiet
 docker compose --env-file .env.prod.example -f docker-compose.prod.yml build
 ```
 
-Para implantacao futura, copie o exemplo para `.env.prod`, substitua todos os
-placeholders, forneca os certificados fora do Git e use:
+Para uma validação de runtime, use um `.env.prod` sem placeholders, certificado local e um project name exclusivo.
+
+### Smoke
+
+O smoke valida health, readiness, OpenAPI conforme configuração, login administrativo, fontes, status do crawler e listagem de editais. Ele não executa o crawler geral.
+
+Os exemplos de smoke, backup e restauração abaixo usam Windows PowerShell local. Em um servidor Linux com PowerShell 7, substitua `powershell.exe` por `pwsh`.
 
 ```powershell
-pwsh -File scripts/deploy.ps1 -EnvFile .env.prod -ProjectName monitor-editais-staging
+$SmokeSecret = Read-Host "Senha do administrador" -AsSecureString
+$env:SMOKE_ADMIN_PASSWORD = [Net.NetworkCredential]::new("", $SmokeSecret).Password
+try {
+    powershell.exe -NoProfile -File .\scripts\remote-smoke-test.ps1 `
+        -EnvFile .\.env.prod `
+        -ProjectName monitor-editais-staging
+}
+finally {
+    Remove-Item Env:\SMOKE_ADMIN_PASSWORD -ErrorAction SilentlyContinue
+    Remove-Variable SmokeSecret -ErrorAction SilentlyContinue
+}
 ```
 
-Deploy real, DNS, certificado, commit e push permanecem acoes manuais.
+No `.env.prod`, `SMOKE_BASE_URL` deve conter somente a origem HTTPS; `SMOKE_API_PREFIX=/api` adiciona o prefixo.
+
+## Crawler e scheduler
+
+A execução manual exige administrador:
+
+- geral: `POST /admin/run-crawler`;
+- por fonte: `POST /admin/run-crawler/source/{source_id}`;
+- painel: `/admin/crawler`;
+- status: `GET /admin/crawler/status`;
+- fontes: `GET /admin/crawler/sources-status`;
+- histórico: `GET /admin/crawler/runs`.
+
+Sob Nginx, use o prefixo público `/api`. O painel permite acompanhar última checagem, último sucesso, erros, itens encontrados, novos itens e histórico recente.
+
+O scheduler deve permanecer inicialmente com:
+
+```env
+CRAWLER_SCHEDULER_ENABLED=false
+CRAWLER_INTERVAL_MINUTES=360
+UVICORN_WORKERS=1
+```
+
+Se for habilitado depois, exatamente um processo e uma instância do backend devem ser responsáveis por ele. `max_instances=1` evita sobreposição dentro de um scheduler, mas não coordena múltiplos processos ou réplicas.
+
+## Backup e restauração
+
+O backup usa formato custom do PostgreSQL e deve ser gravado fora do repositório:
+
+```powershell
+$BackupDirectory = Read-Host "Diretório externo para o backup"
+
+powershell.exe -NoProfile -File .\scripts\backup-postgres.ps1 `
+    -BackupDirectory $BackupDirectory `
+    -EnvFile .\.env.prod `
+    -ProjectName monitor-editais-staging
+```
+
+Para validar uma restauração, escolha um banco separado, previamente criado e vazio. O script de restauração não cria o banco alvo.
+
+```powershell
+$PostgresUser = Read-Host "POSTGRES_USER configurado em .env.prod"
+docker compose --env-file .env.prod -f docker-compose.prod.yml exec -T db createdb --username $PostgresUser monitor_editais_restore_test
+
+$BackupPath = Read-Host "Caminho completo do arquivo .dump"
+
+powershell.exe -NoProfile -File .\scripts\restore-postgres.ps1 `
+    -BackupPath $BackupPath `
+    -TargetDatabase monitor_editais_restore_test `
+    -ConfirmDatabase monitor_editais_restore_test `
+    -EnvFile .\.env.prod `
+    -ProjectName monitor-editais-staging
+```
+
+O script recusa restaurar no banco principal configurado. Restaurações devem ocorrer de forma controlada, com banco alvo vazio e `TargetDatabase` e `ConfirmDatabase` idênticos. Não sobrescreva o banco principal sem confirmação explícita, janela operacional e backup previamente conferido.
+
+## Documentação
+
+- [Operação do crawler e painel](docs/operacao.md)
+- [Checklist de homologação](docs/checklist_homologacao.md)
+- [Deploy de homologação remota](docs/deploy_homologacao_remota.md)
+- [Auditoria das fontes Nordeste](docs/auditoria_fontes_nordeste.md)
+- [Instruções para agentes e contribuidores](AGENTS.md)
+
+## Segurança operacional
+
+- mantenha segredos e arquivos `.env` reais fora do Git;
+- mantenha certificados e chaves privadas fora do Git;
+- não versione bancos, dumps, backups, logs ou artefatos de build;
+- exponha apenas o Nginx; backend e PostgreSQL permanecem internos;
+- use TLS válido na homologação pública;
+- mantenha OpenAPI conforme a decisão operacional do ambiente;
+- mantenha o scheduler desativado até a validação manual;
+- quando ativado, use uma única instância responsável;
+- armazene backups fora do repositório e teste restaurações em banco separado.
+
+## Status do projeto
+
+Confirmado nesta fase:
+
+- backend, migrations, autenticação, health, readiness, seed, scheduler desativado e suíte Python;
+- frontend, lint, build e auditoria de dependências;
+- Compose, imagens, PostgreSQL, migration one-shot, Nginx, HTTPS, proxy e fallback SPA;
+- administrador e seed idempotentes;
+- smoke, backup e restauração em ambiente descartável.
+
+Pendente para uma homologação remota real:
+
+- servidor e acesso remoto;
+- DNS;
+- certificado público;
+- segredos reais;
+- configuração SMTP, se necessária;
+- execução do deploy e observação operacional.
+
+Não há declaração de produção concluída.
+
+## Licença
+
+Este projeto é disponibilizado sob a Licença de Uso Não Comercial — Monitor de Editais. Consulte [LICENSE.md](LICENSE.md) para os termos completos.

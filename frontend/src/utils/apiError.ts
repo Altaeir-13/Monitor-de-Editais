@@ -11,7 +11,7 @@ interface ApiErrorData {
 }
 
 const API_UNAVAILABLE_MESSAGE =
-  'Não foi possível conectar à API. Verifique se o backend está rodando em http://127.0.0.1:8000 e se VITE_API_URL está correto.';
+  'Não foi possível conectar à API. Verifique sua conexão e a disponibilidade do serviço.';
 
 function formatStatusMessage(status: number | undefined, message: string): string {
   return status ? `Erro ${status}: ${message}` : message;

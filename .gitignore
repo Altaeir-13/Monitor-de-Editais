@@ -13,6 +13,7 @@ backend/audit_northeast*.db
 backend/.cache/
 dist/
 build/
+/temp_assets/
 .DS_Store
 *.sqlite
 *.sqlite3
