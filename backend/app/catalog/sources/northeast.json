@@ -1,0 +1,2603 @@
+{
+  "schema_version": 1,
+  "region": "Nordeste",
+  "verified_at": "2026-07-13",
+  "institutions": [
+    {
+      "official_code": "3",
+      "official_site_url": "https://www.ufs.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-3-processos-seletivos-sigaa-ufs-cea9a10ed2",
+          "name": "Processos seletivos SIGAA UFS",
+          "url": "https://www.sigaa.ufs.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S",
+          "source_type": "TABLE_HTML",
+          "content_type": "TABLE HTML",
+          "recommended_spider": "sigaa",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "TABLE_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-3-site-oficial-ufs-descoberta-b818a787a0",
+          "name": "Site oficial UFS - descoberta",
+          "url": "https://www.ufs.br",
+          "source_type": "HTML_STATIC",
+          "content_type": "HTML STATIC",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "HTML_STATIC"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "5",
+      "official_site_url": "https://ufpi.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-5-concursos-ufpi-177de2e3a7",
+          "name": "Concursos UFPI",
+          "url": "http://www.ufpi.br/concursos",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-5-editais-ufpi-67f1b7c091",
+          "name": "Editais UFPI",
+          "url": "https://ufpi.br/editais",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "24",
+      "official_site_url": "https://www.uesc.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-24-selecao-publica-uesc-f7a1152519",
+          "name": "Selecao publica UESC",
+          "url": "https://www.uesc.br/selecao_publica/index.php?item=conteudo_prof_substituto.php",
+          "source_type": "TABLE_HTML",
+          "content_type": "TABLE HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "TABLE_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-24-selecoes-e-concursos-uesc-cfae678e8e",
+          "name": "Selecoes e concursos UESC",
+          "url": "https://www.uesc.br/selecoes_e_concursos",
+          "source_type": "TABLE_HTML",
+          "content_type": "TABLE HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "TABLE_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "29",
+      "official_site_url": "https://www.uece.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-29-cev-uece-6d856c430a",
+          "name": "CEV UECE",
+          "url": "https://www.uece.br/cev",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-29-editais-uece-f21de337e9",
+          "name": "Editais UECE",
+          "url": "https://www.uece.br/material/editais",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "32",
+      "official_site_url": "https://www.uncisal.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-32-editais-uncisal-f5f78074bb",
+          "name": "Editais UNCISAL",
+          "url": "https://www.uncisal.edu.br/editais",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "40",
+      "official_site_url": "https://portal.uneb.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-40-editais-uneb-tag-edital-0c8e3d295c",
+          "name": "Editais UNEB - tag edital",
+          "url": "https://portal.uneb.br/tag/edital",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://portal.uneb.br/category/editais"
+          ]
+        },
+        {
+          "catalog_source_id": "inep-40-portal-uneb-busca-edital-43ea3a9cf7",
+          "name": "Portal UNEB - busca edital",
+          "url": "https://portal.uneb.br?s=edital",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://portal.uneb.br"
+          ]
+        }
+      ]
+    },
+    {
+      "official_code": "71",
+      "official_site_url": "https://portal.uern.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-71-editais-proeg-uern-212112f8bc",
+          "name": "Editais PROEG UERN",
+          "url": "https://portal.uern.br/proeg/editais",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "72",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "73",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "95",
+      "official_site_url": "https://www.uva.ce.gov.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-95-ceps-uva-a9c6e775c9",
+          "name": "CEPS UVA",
+          "url": "https://ww2.uva.ce.gov.br/apps/view/ceps_inscricoes.php",
+          "source_type": "TABLE_HTML",
+          "content_type": "TABLE HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "TABLE_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-95-processo-seletivo-uva-cb91d3d88e",
+          "name": "Processo seletivo UVA",
+          "url": "https://www.uva.ce.gov.br/category/processo-seletivo",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "409",
+      "official_site_url": "https://upe.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-409-concursos-upe-4aaa7bce65",
+          "name": "Concursos UPE",
+          "url": "https://upe.br/editais/concursos",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-409-editais-de-graduacao-upe-3ef4bc6daa",
+          "name": "Editais de graduacao UPE",
+          "url": "https://upe.br/editais/editais-de-graduacao",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://upe.br/editais"
+          ]
+        },
+        {
+          "catalog_source_id": "inep-409-processo-de-ingresso-upe-5eb4382da3",
+          "name": "Processo de ingresso UPE",
+          "url": "https://processodeingresso.upe.pe.gov.br",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "548",
+      "official_site_url": "https://portalpadrao.ufma.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-548-editais-ufma-529903aee0",
+          "name": "Editais UFMA",
+          "url": "https://portalpadrao.ufma.br/site/editais",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "550",
+      "official_site_url": "https://uepb.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-550-editais-uepb-c7b025383a",
+          "name": "Editais UEPB",
+          "url": "https://uepb.edu.br/editais",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-550-professor-substituto-uepb-c84c0f3ab2",
+          "name": "Professor substituto UEPB",
+          "url": "https://uepb.edu.br/editais/selecao-professor-substituto",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "568",
+      "official_site_url": "https://www.uema.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-568-editais-uema-723ff521f7",
+          "name": "Editais UEMA",
+          "url": "https://www.uema.br/category/editais",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-568-sigconcursos-uema-fcb51c0639",
+          "name": "SIGConcursos UEMA",
+          "url": "https://sigconcursos.uema.br",
+          "source_type": "TABLE_HTML",
+          "content_type": "TABLE HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "TABLE_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "570",
+      "official_site_url": "https://www.ufrn.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-570-concursos-ufrn-31416b8aa7",
+          "name": "Concursos UFRN",
+          "url": "https://www.ufrn.br/institucional/concursos",
+          "source_type": "HTML_STATIC",
+          "content_type": "HTML STATIC",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "HTML_STATIC"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-570-processos-seletivos-sigaa-ufrn-d756edb225",
+          "name": "Processos seletivos SIGAA UFRN",
+          "url": "https://sigaa.ufrn.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S",
+          "source_type": "SIGAA",
+          "content_type": "SIGAA",
+          "recommended_spider": "sigaa",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "SIGAA"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "577",
+      "official_site_url": "https://ufal.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-577-chamadas-internas-ufal-3685a803fc",
+          "name": "Chamadas internas UFAL",
+          "url": "https://ufal.br/ufal/pesquisa-e-inovacao/chamadas",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-577-concursos-publicos-ufal-cf780a2e3f",
+          "name": "Concursos publicos UFAL",
+          "url": "https://ufal.br/servidor/admissao/concursos-publicos",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-577-editais-ufal-199f8688e1",
+          "name": "Editais UFAL",
+          "url": "https://editais.ufal.br",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "578",
+      "official_site_url": "https://www.ufba.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-578-portal-de-concursos-ufba-e86b9ffbbc",
+          "name": "Portal de concursos UFBA",
+          "url": "https://concursos.ufba.br",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "579",
+      "official_site_url": "https://www.ufpb.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-579-concursos-progep-ufpb-d4e4ee9959",
+          "name": "Concursos PROGEP UFPB",
+          "url": "https://progep.ufpb.br/progep/contents/menu/Institucional/concursos",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-579-editais-prg-ufpb-e54b0efd1e",
+          "name": "Editais PRG UFPB",
+          "url": "https://www.prg.ufpb.br/editais/ingressantes",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-579-processos-seletivos-sigaa-ufpb-de05c8a124",
+          "name": "Processos seletivos SIGAA UFPB",
+          "url": "https://sigaa.ufpb.br/sigaa/public/processo_seletivo/lista.jsf?nivel=S&aba=p-stricto",
+          "source_type": "TABLE_HTML",
+          "content_type": "TABLE HTML",
+          "recommended_spider": "sigaa",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "TABLE_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "580",
+      "official_site_url": "https://www.ufpe.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-580-processos-seletivos-sigaa-ufpe-graduacao-af0928f161",
+          "name": "Processos seletivos SIGAA UFPE - graduacao",
+          "url": "https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=G",
+          "source_type": "SIGAA",
+          "content_type": "SIGAA",
+          "recommended_spider": "sigaa",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "SIGAA"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://www.ufpe.br"
+          ]
+        },
+        {
+          "catalog_source_id": "inep-580-processos-seletivos-sigaa-ufpe-stricto-sensu-4b44d775b3",
+          "name": "Processos seletivos SIGAA UFPE - stricto sensu",
+          "url": "https://sigaa.ufpe.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S",
+          "source_type": "SIGAA",
+          "content_type": "SIGAA",
+          "recommended_spider": "sigaa",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "SIGAA"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://www.ufpe.br/oportunidades"
+          ]
+        }
+      ]
+    },
+    {
+      "official_code": "583",
+      "official_site_url": "https://www.ufc.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-583-editais-e-concursos-ufc-518779f3d6",
+          "name": "Editais e concursos UFC",
+          "url": "https://www.ufc.br/editais-e-concursos/graduacao",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-583-noticias-e-editais-de-concursos-e-selecoes-ufc-05c9e943ca",
+          "name": "Noticias e editais de concursos e selecoes UFC",
+          "url": "https://www.ufc.br/noticias/noticias-e-editais-de-concursos-e-selecoes",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "587",
+      "official_site_url": "https://www.ufrpe.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-587-concursos-ufrpe-4590d00f33",
+          "name": "Concursos UFRPE",
+          "url": "http://ufrpe.br/concursos",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-587-editais-ufrpe-e1543d8172",
+          "name": "Editais UFRPE",
+          "url": "http://ufrpe.br/editais",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "589",
+      "official_site_url": "https://ufersa.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-589-concursos-ufersa-cpps-daa67bf3c7",
+          "name": "Concursos UFERSA CPPS",
+          "url": "https://cpps.ufersa.edu.br",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-589-processos-seletivos-ufersa-ca68596f14",
+          "name": "Processos seletivos UFERSA",
+          "url": "https://ufersa.edu.br/portal/categoria/processos-seletivos",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "599",
+      "official_site_url": "https://portal.ifba.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-599-ifba-proen-editais",
+          "name": "Editais PROEN IFBA",
+          "url": "https://portal.ifba.edu.br/proen/editais",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://portal.ifba.edu.br/proen/editais",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Página temática oficial de editais do IFBA; substitui a homepage genérica do seed legado.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "ensino"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-599-ifba-proex-editais",
+          "name": "Editais PROEX IFBA",
+          "url": "https://portal.ifba.edu.br/proex/editais",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://portal.ifba.edu.br/proex/editais",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Página temática oficial de editais do IFBA; substitui a homepage genérica do seed legado.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "extensao"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://portal.ifba.edu.br",
+            "inep-599-portal-ifba-descoberta-888f106c66"
+          ]
+        },
+        {
+          "catalog_source_id": "inep-599-ifba-prpgi-editais-2026",
+          "name": "Editais 2026 PRPGI IFBA",
+          "url": "https://portal.ifba.edu.br/prpgi/editais/2026",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://portal.ifba.edu.br/prpgi/editais/2026",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Página temática oficial de editais do IFBA; substitui a homepage genérica do seed legado.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "pesquisa-e-pos-graduacao"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "600",
+      "official_site_url": "https://portal.ifma.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-600-concursos-e-seletivos-ifma-3fc35e332e",
+          "name": "Concursos e seletivos IFMA",
+          "url": "https://portal.ifma.edu.br/concursos-e-seletivos",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "657",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "666",
+      "official_site_url": "https://www.uefs.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-666-selecoes-e-concursos-uefs-092bf87271",
+          "name": "Selecoes e concursos UEFS",
+          "url": "http://csa.uefs.br",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-666-site-oficial-uefs-descoberta-87560ebf26",
+          "name": "Site oficial UEFS - descoberta",
+          "url": "https://www.uefs.br",
+          "source_type": "HTML_STATIC",
+          "content_type": "HTML STATIC",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "HTML_STATIC"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "674",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "685",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "686",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "688",
+      "official_site_url": "https://www.uesb.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-688-concursos-e-selecoes-uesb-4e5f5e7354",
+          "name": "Concursos e selecoes UESB",
+          "url": "http://www2.uesb.br/concursos",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-688-editais-uesb-960d796a72",
+          "name": "Editais UESB",
+          "url": "https://www.uesb.br/editais",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "692",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "701",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "702",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "703",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "704",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "720",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "746",
+      "official_site_url": "https://www.urca.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-746-concursos-urca-49be8306be",
+          "name": "Concursos URCA",
+          "url": "https://www.urca.br/concursos",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-746-editais-internos-urca-66f5c517c4",
+          "name": "Editais internos URCA",
+          "url": "https://www.urca.br/editais-internos",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "753",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "756",
+      "official_site_url": "https://uespi.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-756-editais-uespi-763283543b",
+          "name": "Editais UESPI",
+          "url": "https://uespi.br/editais",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1012",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "1082",
+      "official_site_url": "https://portal.ifrn.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1082-processos-seletivos-ifrn-c7b2d04820",
+          "name": "Processos seletivos IFRN",
+          "url": "https://processoseletivo.ifrn.edu.br",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://portal.ifrn.edu.br/processos-seletivos/buscar"
+          ]
+        },
+        {
+          "catalog_source_id": "inep-1082-trabalhe-no-ifrn-bb2bc92c19",
+          "name": "Trabalhe no IFRN",
+          "url": "https://portal.ifrn.edu.br/processos-seletivos/buscar?tipo=8",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1166",
+      "official_site_url": "https://www.ifpb.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1166-concursos-ifpb-1b71de77a5",
+          "name": "Concursos IFPB",
+          "url": "https://www.ifpb.edu.br/concursopublico",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-1166-editais-ifpb-6d511a19b2",
+          "name": "Editais IFPB",
+          "url": "https://www.ifpb.edu.br/editais",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-1166-processos-seletivos-estudante-ifpb-73e907fa81",
+          "name": "Processos seletivos estudante IFPB",
+          "url": "https://estudante.ifpb.edu.br/processoseletivo",
+          "source_type": "TABLE_HTML",
+          "content_type": "TABLE HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "TABLE_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1807",
+      "official_site_url": "https://portal.ifce.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1807-processos-seletivos-ifce-aaf936ab1c",
+          "name": "Processos seletivos IFCE",
+          "url": "https://portal.ifce.edu.br/processos-seletivos/buscar",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-1807-trabalhe-no-ifce-a73de9ead9",
+          "name": "Trabalhe no IFCE",
+          "url": "https://portal.ifce.edu.br/processos-seletivos/buscar?tipo=3",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1809",
+      "official_site_url": "https://portal.ifpe.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1809-concurso-professor-ifpe-f490352547",
+          "name": "Concurso professor IFPE",
+          "url": "https://portal.ifpe.edu.br/ingresso/trabalhe-no-ifpe/concurso-professor",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-1809-concurso-tecnico-administrativo-ifpe-1d32dc2d56",
+          "name": "Concurso tecnico-administrativo IFPE",
+          "url": "https://portal.ifpe.edu.br/ingresso/trabalhe-no-ifpe/concurso-tecnico-administrativo",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-1809-editais-extensao-ifpe-41ec4dce8f",
+          "name": "Editais extensao IFPE",
+          "url": "https://portal.ifpe.edu.br/o-ifpe/extensao/editais",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1820",
+      "official_site_url": "https://www.ifpi.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1820-chamadas-publicas-ifpi-12b3423082",
+          "name": "Chamadas publicas IFPI",
+          "url": "https://www.ifpi.edu.br/chamadas-publicas",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-1820-concursos-ifpi-a4adbd1a3b",
+          "name": "Concursos IFPI",
+          "url": "https://www.ifpi.edu.br/processos-seletivos/concursos",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-1820-seletivos-ifpi-d86fc31fd2",
+          "name": "Seletivos IFPI",
+          "url": "https://www.ifpi.edu.br/processos-seletivos/concursos-e-seletivos",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "2564",
+      "official_site_url": "https://www.gov.br/ufcg/pt-br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-2564-processos-seletivos-ufcg-002e828f2f",
+          "name": "Processos seletivos UFCG",
+          "url": "https://www.gov.br/ufcg/pt-br/assuntos/processos-seletivos",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3160",
+      "official_site_url": "https://www2.ifal.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-3160-editais-ifal-bd2f1c131c",
+          "name": "Editais IFAL",
+          "url": "https://www2.ifal.edu.br/o-ifal/editais",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3161",
+      "official_site_url": "https://ifsertaope.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-3161-ifsertaope-editais",
+          "name": "Editais IFSertãoPE",
+          "url": "https://ifsertaope.edu.br/editais",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ifsertaope.edu.br/editais",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Página oficial dedicada a editais do IFSertãoPE.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "editais",
+            "ensino",
+            "pesquisa",
+            "extensao"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://ifsertaope.edu.br",
+            "inep-3161-site-oficial-if-sertao-pe-descoberta-7471db8f40"
+          ]
+        }
+      ]
+    },
+    {
+      "official_code": "3183",
+      "official_site_url": "https://www.ifs.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-3183-ifs-editais-propex",
+          "name": "Editais PROPEX IFS",
+          "url": "https://www.ifs.edu.br/editais-propex",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.ifs.edu.br/editais-propex",
+          "redirect_chain": [],
+          "page_title": "Editais PROPEX",
+          "verification_evidence": "Página oficial dedicada aos editais da Pró-Reitoria de Pesquisa e Extensão do IFS.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "pesquisa",
+            "extensao"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://www.ifs.edu.br/orgaos-colegiados/conselho-superior/chamada-publica-consup.html",
+            "https://www.ifs.edu.br/orgaos-colegiados/conselho-superior/editais-consup.html",
+            "inep-3183-chamadas-publicas-ifs-75452bf50a",
+            "inep-3183-editais-consup-ifs-e352e3b498"
+          ]
+        }
+      ]
+    },
+    {
+      "official_code": "3360",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "3984",
+      "official_site_url": "https://portais.univasf.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-3984-concursos-univasf-1a8aeacc34",
+          "name": "Concursos UNIVASF",
+          "url": "https://portais.univasf.edu.br/servicos/concursos",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-3984-processos-seletivos-univasf-ba6ce8bfd0",
+          "name": "Processos seletivos UNIVASF",
+          "url": "https://portais.univasf.edu.br/servicos/processos-seletivos",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "4356",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "4503",
+      "official_site_url": "https://ufrb.edu.br/portal",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-4503-concursos-progep-ufrb-7be9c47665",
+          "name": "Concursos PROGEP UFRB",
+          "url": "https://ufrb.edu.br/progep/concursos",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-4503-concursos-ufrb-cb4447c539",
+          "name": "Concursos UFRB",
+          "url": "https://ufrb.edu.br/portal/concursos",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "4858",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "5242",
+      "official_site_url": "https://www.uneal.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-5242-concurso-uneal-b3cd819c00",
+          "name": "Concurso UNEAL",
+          "url": "https://www.uneal.edu.br/concurso",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-5242-editais-uneal-88c3aee0b6",
+          "name": "Editais UNEAL",
+          "url": "https://www.uneal.edu.br/editais",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "5664",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "14509",
+      "official_site_url": "https://ifbaiano.edu.br/portal",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-14509-ifbaiano-concursos-selecoes",
+          "name": "Concursos e Seleções IF Baiano",
+          "url": "https://ifbaiano.edu.br/portal/concursos",
+          "source_type": "concursos_e_selecoes",
+          "content_type": "concursos, chamadas e seleções",
+          "recommended_spider": "wordpress",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ifbaiano.edu.br/portal/concursos",
+          "redirect_chain": [],
+          "page_title": "Concursos e Seleções",
+          "verification_evidence": "Página institucional oficial reúne concursos e seleções por ano e categoria.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "concursos",
+            "pessoal",
+            "bolsas",
+            "assistencia-estudantil"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-14509-ifbaiano-ingresso-editais",
+          "name": "Editais de Processo Seletivo - Portal de Ingresso IF Baiano",
+          "url": "https://ingresso.ifbaiano.edu.br/concursos",
+          "source_type": "processos_seletivos",
+          "content_type": "editais de ingresso",
+          "recommended_spider": "wordpress",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ingresso.ifbaiano.edu.br/concursos",
+          "redirect_chain": [],
+          "page_title": "Editais de Processos Seletivos",
+          "verification_evidence": "Portal oficial de ingresso lista processos, incluindo graduação, com acesso aos editais.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "ingresso",
+            "graduacao",
+            "cursos-tecnicos"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://concurso.ifbaiano.edu.br/portal",
+            "https://ifbaiano.edu.br/portal",
+            "inep-14509-concursos-if-baiano-78be0ff32d",
+            "inep-14509-portal-if-baiano-descoberta-d6b6b04a85"
+          ]
+        }
+      ]
+    },
+    {
+      "official_code": "15410",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "15497",
+      "official_site_url": "https://unilab.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-15497-concursos-e-selecoes-unilab-e5941d821d",
+          "name": "Concursos e selecoes Unilab",
+          "url": "https://unilab.edu.br/category/concursos-e-selecoes",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-15497-editais-unilab-2f2ddc0c88",
+          "name": "Editais Unilab",
+          "url": "https://unilab.edu.br/editais-unilab",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "17775",
+      "official_site_url": null,
+      "coverage_status": "source_not_found",
+      "coverage_notes": "Instituição presente no inventário oficial, mas sem fonte oficial de editais localizada nesta rodada.",
+      "sources": []
+    },
+    {
+      "official_code": "18506",
+      "official_site_url": "https://ufob.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-18506-chamadas-externas-ufob-4823292d0b",
+          "name": "Chamadas externas UFOB",
+          "url": "https://ufob.edu.br/pesquisa/chamadas-externas",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-18506-editais-ufob-884c56775b",
+          "name": "Editais UFOB",
+          "url": "https://ufob.edu.br/a-ufob/editais",
+          "source_type": "GOVBR",
+          "content_type": "GOVBR",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "GOVBR"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "18759",
+      "official_site_url": "https://www.ufca.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-18759-concursos-e-selecoes-ufca-2b593e8eb2",
+          "name": "Concursos e selecoes UFCA",
+          "url": "https://www.ufca.edu.br/admissao/concursos-e-selecoes",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        },
+        {
+          "catalog_source_id": "inep-18759-editais-vigentes-ufca-3d1000e40d",
+          "name": "Editais vigentes UFCA",
+          "url": "https://www.ufca.edu.br/admissao/concursos-e-selecoes/docentes/efetivo/editais-vigentes",
+          "source_type": "WORDPRESS",
+          "content_type": "WORDPRESS",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "WORDPRESS"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "18812",
+      "official_site_url": "https://ufsb.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-18812-concursos-ufsb-e3f04c6473",
+          "name": "Concursos UFSB",
+          "url": "https://ufsb.edu.br/concursos",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "PAGINATED HTML",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": null,
+          "http_status": null,
+          "final_url": null,
+          "redirect_chain": [],
+          "page_title": null,
+          "verification_evidence": "Migrada do seed Nordeste anterior; confirmação de domínio não equivale a verificação estrutural atual.",
+          "verification_notes": "Mantida como partial até auditoria HTTP e validação controlada de captura.",
+          "priority": 2,
+          "categories": [
+            "PAGINATED_HTML"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "23410",
+      "official_site_url": "https://www.uemasul.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Fontes migradas do seed regional e mantidas como partial até auditoria estrutural controlada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-23410-uemasul-publicacoes-editais",
+          "name": "Publicações - Editais UEMASUL",
+          "url": "https://www.uemasul.edu.br/publicacoes?td=1",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.uemasul.edu.br/publicacoes?td=1",
+          "redirect_chain": [],
+          "page_title": "Publicações",
+          "verification_evidence": "Filtro oficial de publicações direcionado a editais da UEMASUL.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "editais"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": [
+            "https://www.uemasul.edu.br",
+            "https://www.uemasul.edu.br/editais",
+            "inep-23410-editais-uemasul-a950fb0caf",
+            "inep-23410-site-oficial-uemasul-descoberta-3195feac65"
+          ]
+        }
+      ]
+    },
+    {
+      "official_code": "25275",
+      "official_site_url": "https://ufape.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Instituição ausente no seed legado; fonte oficial localizada e mantida partial até validação de captura.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-25275-ufape-editais-selecoes",
+          "name": "Editais e Seleções UFAPE",
+          "url": "https://ufape.edu.br/editais-e-sele%C3%A7%C3%B5es",
+          "source_type": "editais",
+          "content_type": "editais e seleções institucionais",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ufape.edu.br/editais-e-sele%C3%A7%C3%B5es",
+          "redirect_chain": [],
+          "page_title": "Editais e Seleções",
+          "verification_evidence": "Página oficial apresentou editais e seleções correntes em 2026.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "assistencia-estudantil",
+            "ingresso",
+            "ensino"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "25277",
+      "official_site_url": "https://ufdpar.edu.br",
+      "coverage_status": "partial",
+      "coverage_notes": "Instituição ausente no seed legado; fonte oficial localizada e mantida partial até validação de captura.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-25277-ufdpar-editais",
+          "name": "Editais UFDPar",
+          "url": "https://ufdpar.edu.br/ufdpar/editais-1",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "govbr",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ufdpar.edu.br/ufdpar/editais-1",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Índice oficial paginado apresentou editais correntes de 2026 de diferentes pró-reitorias.",
+          "verification_notes": "URL oficial confirmada; cobertura temática parcial e captura ainda não validada.",
+          "priority": 2,
+          "categories": [
+            "ensino",
+            "pesquisa",
+            "extensao",
+            "assistencia-estudantil",
+            "pessoal"
+          ],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    }
+  ]
+}
