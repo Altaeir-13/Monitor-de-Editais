@@ -10,6 +10,7 @@ import DashboardPage from '../pages/user/DashboardPage';
 import AlertsPage from '../pages/user/AlertsPage';
 import NotificationsPage from '../pages/user/NotificationsPage';
 import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
+import AdminCoveragePage from '../pages/admin/AdminCoveragePage';
 import AdminInstitutionsPage from '../pages/admin/AdminInstitutionsPage';
 import AdminSourcesPage from '../pages/admin/AdminSourcesPage';
 import AdminCrawlerPage from '../pages/admin/AdminCrawlerPage';
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
           {
             path: '/admin',
             element: <AdminDashboardPage />,
+          },
+          {
+            path: '/admin/coverage',
+            element: <AdminCoveragePage />,
           },
           {
             path: '/admin/institutions',

@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "generated_at": "2026-07-14T14:45:02.656699Z",
+    "inventory_reference_date": "2024-12-31",
+    "max_samples": 5,
+    "network_scope": "selected_landing_pages_and_robots_only",
+    "policy": {
+      "max_body_bytes": 1000000,
+      "max_connections_per_host": 2,
+      "max_redirects": 5,
+      "max_retries": 2,
+      "min_host_interval_seconds": 1.0,
+      "obey_robots": true,
+      "robots_user_agent": "MonitorDeEditaisSourceAudit",
+      "timeout_seconds": 8.0,
+      "user_agent": "MonitorDeEditaisSourceAudit/1.0 (+https://github.com/Altaeir-13/Monitor-de-Editais)"
+    },
+    "selected_regions": [
+      "Norte",
+      "Nordeste",
+      "Centro-Oeste",
+      "Sudeste",
+      "Sul"
+    ]
+  },
+  "results": [
+    {
+      "attempts": 1,
+      "checked_at": "2026-07-14T14:44:57.563149Z",
+      "content_type": "text/html",
+      "dns_addresses": [
+        "18.229.254.214",
+        "56.124.9.104"
+      ],
+      "domain_matches_institution": true,
+      "error_code": null,
+      "evidence": "HTML, título, termos de editais e elementos esperados confirmados; compatibilidade do spider é provável, sem executar coleta",
+      "expected_elements_found": true,
+      "final_url": "https://compec.ufam.edu.br/",
+      "html_valid": true,
+      "http_status": 200,
+      "institution_code": "4",
+      "institution_name": "UNIVERSIDADE FEDERAL DO AMAZONAS",
+      "notice_terms_found": true,
+      "observations": [],
+      "page_title": "Página inicial",
+      "recommended_spider": "generic",
+      "redirect_chain": [],
+      "region": "Norte",
+      "requested_url": "https://compec.ufam.edu.br",
+      "source_id": "inep-4-ufam-compec",
+      "state": "AM",
+      "status": "verified"
+    },
+    {
+      "attempts": 0,
+      "checked_at": "2026-07-14T14:44:58.011215Z",
+      "content_type": null,
+      "dns_addresses": [],
+      "domain_matches_institution": null,
+      "error_code": "robots_disallowed",
+      "evidence": "robots.txt não permite esta URL para o agente da auditoria",
+      "expected_elements_found": false,
+      "final_url": null,
+      "html_valid": false,
+      "http_status": null,
+      "institution_code": "3",
+      "institution_name": "UNIVERSIDADE FEDERAL DE SERGIPE",
+      "notice_terms_found": false,
+      "observations": [],
+      "page_title": null,
+      "recommended_spider": "sigaa",
+      "redirect_chain": [],
+      "region": "Nordeste",
+      "requested_url": "https://www.sigaa.ufs.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S",
+      "source_id": "inep-3-processos-seletivos-sigaa-ufs-cea9a10ed2",
+      "state": "SE",
+      "status": "manual_review"
+    },
+    {
+      "attempts": 1,
+      "checked_at": "2026-07-14T14:44:59.562346Z",
+      "content_type": "text/html",
+      "dns_addresses": [
+        "45.183.244.105"
+      ],
+      "domain_matches_institution": true,
+      "error_code": "structure_partial",
+      "evidence": "HTML acessível, mas faltam: elementos esperados para spider pagination",
+      "expected_elements_found": false,
+      "final_url": "https://www.ueg.br/editais",
+      "html_valid": true,
+      "http_status": 200,
+      "institution_code": "47",
+      "institution_name": "UNIVERSIDADE ESTADUAL DE GOIÁS",
+      "notice_terms_found": true,
+      "observations": [],
+      "page_title": "::.Universidade Estadual de Goiás.::",
+      "recommended_spider": "pagination",
+      "redirect_chain": [],
+      "region": "Centro-Oeste",
+      "requested_url": "https://www.ueg.br/editais",
+      "source_id": "inep-47-ueg-editais",
+      "state": "GO",
+      "status": "partial"
+    },
+    {
+      "attempts": 1,
+      "checked_at": "2026-07-14T14:45:00.741990Z",
+      "content_type": "text/html",
+      "dns_addresses": [
+        "104.21.69.156",
+        "172.67.209.165"
+      ],
+      "domain_matches_institution": true,
+      "error_code": null,
+      "evidence": "HTML, título, termos de editais e elementos esperados confirmados; compatibilidade do spider é provável, sem executar coleta",
+      "expected_elements_found": true,
+      "final_url": "https://fae.br/novo/editais",
+      "html_valid": true,
+      "http_status": 200,
+      "institution_code": "217",
+      "institution_name": "CENTRO UNIVERSITÁRIO DAS FACULDADES ASSOCIADAS DE ENSINO - FAE",
+      "notice_terms_found": true,
+      "observations": [],
+      "page_title": "Editais - UNIFAE SÃO JOÃO DA BOA VISTA",
+      "recommended_spider": "wordpress",
+      "redirect_chain": [],
+      "region": "Sudeste",
+      "requested_url": "https://fae.br/novo/editais",
+      "source_id": "inep-217-editais-unifae",
+      "state": "SP",
+      "status": "verified"
+    },
+    {
+      "attempts": 1,
+      "checked_at": "2026-07-14T14:45:02.606040Z",
+      "content_type": "text/html",
+      "dns_addresses": [
+        "200.134.17.4"
+      ],
+      "domain_matches_institution": true,
+      "error_code": "structure_partial",
+      "evidence": "HTML acessível, mas faltam: elementos esperados para spider govbr",
+      "expected_elements_found": false,
+      "final_url": "https://www.utfpr.edu.br/cursos/estudenautfpr/vestibular",
+      "html_valid": true,
+      "http_status": 200,
+      "institution_code": "588",
+      "institution_name": "UNIVERSIDADE TECNOLÓGICA FEDERAL DO PARANÁ",
+      "notice_terms_found": true,
+      "observations": [],
+      "page_title": "Vestibular",
+      "recommended_spider": "govbr",
+      "redirect_chain": [],
+      "region": "Sul",
+      "requested_url": "https://www.utfpr.edu.br/cursos/estudenautfpr/vestibular",
+      "source_id": "inep-588-utfpr-vestibular",
+      "state": "PR",
+      "status": "partial"
+    }
+  ],
+  "schema_version": 1,
+  "selection": {
+    "missing_regions": [],
+    "missing_spiders": [],
+    "represented_regions": [
+      "Centro-Oeste",
+      "Nordeste",
+      "Norte",
+      "Sudeste",
+      "Sul"
+    ],
+    "represented_spiders": [
+      "generic",
+      "govbr",
+      "pagination",
+      "sigaa",
+      "wordpress"
+    ],
+    "selected_count": 5,
+    "selections": [
+      {
+        "catalog_source_id": "inep-4-ufam-compec",
+        "institution": "UNIVERSIDADE FEDERAL DO AMAZONAS",
+        "official_code": "4",
+        "recommended_spider": "generic",
+        "region": "Norte",
+        "source_status": "verified",
+        "state": "AM",
+        "url": "https://compec.ufam.edu.br"
+      },
+      {
+        "catalog_source_id": "inep-3-processos-seletivos-sigaa-ufs-cea9a10ed2",
+        "institution": "UNIVERSIDADE FEDERAL DE SERGIPE",
+        "official_code": "3",
+        "recommended_spider": "sigaa",
+        "region": "Nordeste",
+        "source_status": "partial",
+        "state": "SE",
+        "url": "https://www.sigaa.ufs.br/sigaa/public/processo_seletivo/lista.jsf?aba=p-processo&nivel=S"
+      },
+      {
+        "catalog_source_id": "inep-47-ueg-editais",
+        "institution": "UNIVERSIDADE ESTADUAL DE GOIÁS",
+        "official_code": "47",
+        "recommended_spider": "pagination",
+        "region": "Centro-Oeste",
+        "source_status": "verified",
+        "state": "GO",
+        "url": "https://www.ueg.br/editais"
+      },
+      {
+        "catalog_source_id": "inep-217-editais-unifae",
+        "institution": "CENTRO UNIVERSITÁRIO DAS FACULDADES ASSOCIADAS DE ENSINO - FAE",
+        "official_code": "217",
+        "recommended_spider": "wordpress",
+        "region": "Sudeste",
+        "source_status": "verified",
+        "state": "SP",
+        "url": "https://fae.br/novo/editais"
+      },
+      {
+        "catalog_source_id": "inep-588-utfpr-vestibular",
+        "institution": "UNIVERSIDADE TECNOLÓGICA FEDERAL DO PARANÁ",
+        "official_code": "588",
+        "recommended_spider": "govbr",
+        "region": "Sul",
+        "source_status": "verified",
+        "state": "PR",
+        "url": "https://www.utfpr.edu.br/cursos/estudenautfpr/vestibular"
+      }
+    ],
+    "target_regions": [
+      "Norte",
+      "Nordeste",
+      "Centro-Oeste",
+      "Sudeste",
+      "Sul"
+    ],
+    "target_spiders": [
+      "generic",
+      "govbr",
+      "pagination",
+      "sigaa",
+      "wordpress"
+    ]
+  },
+  "status_counts": {
+    "manual_review": 1,
+    "partial": 2,
+    "verified": 2
+  }
+}

@@ -1,0 +1,727 @@
+{
+  "schema_version": 1,
+  "region": "Norte",
+  "verified_at": "2026-07-13",
+  "institutions": [
+    {
+      "official_code": "4",
+      "official_site_url": "https://www.ufam.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-4-ufam-compec",
+          "name": "Comissão Permanente de Concursos da UFAM",
+          "url": "https://compec.ufam.edu.br/",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://compec.ufam.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Página inicial",
+          "verification_evidence": "Página oficial da COMPEC com processos seletivos e concursos atuais da UFAM.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "38",
+      "official_site_url": "https://www.uepa.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-38-uepa-editais",
+          "name": "Editais da UEPA",
+          "url": "https://www.uepa.br/pt-br/editais/",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.uepa.br/pt-br/editais/",
+          "redirect_chain": [],
+          "page_title": "Editais | Universidade do Estado do Pará",
+          "verification_evidence": "Listagem oficial com busca, filtro por ano, paginação e editais atuais.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "scholarships", "student_assistance", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "549",
+      "official_site_url": "https://www.ufac.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-549-ufac-editais-2026",
+          "name": "Portal de Editais da UFAC 2026",
+          "url": "https://www3.ufac.br/prograd/2026",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www3.ufac.br/prograd/2026",
+          "redirect_chain": [],
+          "page_title": "2026 — Portal de Editais",
+          "verification_evidence": "Página oficial com editais atuais de graduação e outras seleções institucionais.",
+          "verification_notes": "URL organizada por ano; deve ser reavaliada na atualização anual.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "scholarships", "student_assistance", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "569",
+      "official_site_url": "https://ufpa.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-569-ufpa-ceps",
+          "name": "Centro de Processos Seletivos da UFPA",
+          "url": "https://www.ceps.ufpa.br/",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.ceps.ufpa.br/",
+          "redirect_chain": [],
+          "page_title": "CEPS/UFPA :: Página inicial",
+          "verification_evidence": "Portal oficial do CEPS com processos seletivos, editais e avisos de ingresso.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "590",
+      "official_site_url": "https://novo.ufra.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-590-ufra-editais-selecoes",
+          "name": "Editais, Programas e Seleções da UFRA",
+          "url": "https://novo.ufra.edu.br/index.php?Itemid=549&id=83&option=com_content&view=category",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://novo.ufra.edu.br/index.php?Itemid=549&id=83&option=com_content&view=category",
+          "redirect_chain": [],
+          "page_title": "UFRA - Universidade Federal Rural da Amazônia - EDITAIS, PROGRAMAS E SELEÇÕES",
+          "verification_evidence": "Categoria institucional oficial com editais, programas e seleções.",
+          "verification_notes": "A UFRA também mantém processos seletivos de pós-graduação no SIGAA.",
+          "priority": 1,
+          "categories": ["graduate_admission", "scholarships", "internships", "public_calls", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "699",
+      "official_site_url": "https://www.unir.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "Portal oficial localizado, mas a estrutura aparenta depender de JavaScript e requer validação manual de compatibilidade.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-699-unir-portal-editais",
+          "name": "Portal de Editais da UNIR",
+          "url": "https://editais.unir.br/homepage",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://editais.unir.br/homepage",
+          "redirect_chain": [],
+          "page_title": "Portal de Editais",
+          "verification_evidence": "A página inicial oficial da UNIR aponta para este portal de editais; URL e título responderam.",
+          "verification_notes": "O HTML obtido parece ser um shell de aplicação e não expôs os itens esperados sem execução de JavaScript.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes", "public_calls"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "750",
+      "official_site_url": "https://www.unirg.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-750-unirg-vestibular-gurupi",
+          "name": "Vestibular UnirG - Gurupi",
+          "url": "https://www.unirg.edu.br/vestibular/gurupi",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.unirg.edu.br/vestibular/gurupi",
+          "redirect_chain": [],
+          "page_title": "UnirG - Universidade de Gurupi",
+          "verification_evidence": "Página oficial com editais atuais de vestibular, reingresso e resultados.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "789",
+      "official_site_url": "https://ufrr.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-789-ufrr-cpv",
+          "name": "Editais CPV/UFRR",
+          "url": "https://editais.ufrr.br/cpv",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://editais.ufrr.br/cpv",
+          "redirect_chain": [],
+          "page_title": "Editais UFRR | Publico/Pages",
+          "verification_evidence": "Portal oficial com publicações organizadas por ano para vestibular e seleções especiais.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "829",
+      "official_site_url": "https://www.unitins.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-829-unitins-concursos-selecoes",
+          "name": "Concursos e Seleções da Unitins",
+          "url": "https://www.unitins.br/Concursos/Publico/Home",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.unitins.br/Concursos/Publico/Home",
+          "redirect_chain": [],
+          "page_title": "Concursos e Seleções - Concursos e Seleções",
+          "verification_evidence": "Portal oficial com seções de vestibular, extensão, pesquisa e seleções gerais.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "research", "extension", "public_calls"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "830",
+      "official_site_url": "https://www.unifap.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-830-unifap-depsec",
+          "name": "Departamento de Processos Seletivos e Concursos da UNIFAP",
+          "url": "https://depsec.unifap.br/concursos/",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://depsec.unifap.br/concursos/",
+          "redirect_chain": [],
+          "page_title": "DEPSEC",
+          "verification_evidence": "Portal oficial do DEPSEC com processos seletivos e concursos atuais.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1812",
+      "official_site_url": "https://www.ifam.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "Página anual oficial localizada, mas houve comportamento divergente entre clientes HTTP.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1812-ifam-processo-seletivo-2026",
+          "name": "Processo Seletivo IFAM 2026",
+          "url": "https://portal.ifam.edu.br/estude-no-ifam/processo-seletivo-2026/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://portal.ifam.edu.br/estude-no-ifam/processo-seletivo-2026/",
+          "redirect_chain": [],
+          "page_title": "Instituto Federal do Amazonas — Processo Seletivo 2026",
+          "verification_evidence": "HEAD respondeu 200 e a indexação oficial confirma editais para as modalidades do IFAM.",
+          "verification_notes": "Outro cliente recebeu 403; a URL é anual e precisa de revalidação periódica.",
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "graduate_admission", "distance_education"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1813",
+      "official_site_url": "https://ifpa.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-1813-ifpa-prosel",
+          "name": "PROSEL IFPA",
+          "url": "https://prosel.ifpa.edu.br/",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://prosel.ifpa.edu.br/",
+          "redirect_chain": [],
+          "page_title": "PROSEL | Página Inicial",
+          "verification_evidence": "Portal oficial com seleções abertas, em andamento e encerradas por modalidade.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "graduate_admission", "mobility", "public_calls"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3172",
+      "official_site_url": "https://www.uea.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-3172-uea-concursos-selecoes",
+          "name": "Concursos e Seleções da UEA",
+          "url": "https://selecao1.uea.edu.br/",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://selecao1.uea.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Concursos & Seleções",
+          "verification_evidence": "Portal oficial com processos atuais e páginas de detalhe.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "extension", "internships", "scholarships", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3184",
+      "official_site_url": "https://www.ifrr.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-3184-ifrr-seletivos",
+          "name": "Seletivos e Editais do IFRR",
+          "url": "https://www.ifrr.edu.br/seletivos/",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.ifrr.edu.br/seletivos/",
+          "redirect_chain": [],
+          "page_title": "Seletivos e Editais",
+          "verification_evidence": "Listagem oficial paginada, com filtros e processos atuais.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "short_courses", "scholarships", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3849",
+      "official_site_url": "https://www.uft.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "Estrutura oficial confirmada por acesso alternativo, mas o probe controlado retornou indisponibilidade temporária.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-3849-uft-concursos-selecoes",
+          "name": "Concursos e Seleções da UFT",
+          "url": "https://www.uft.edu.br/concursos-e-selecoes",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 503,
+          "final_url": "https://www.uft.edu.br/concursos-e-selecoes",
+          "redirect_chain": [],
+          "page_title": "Concursos e Seleções",
+          "verification_evidence": "Acesso web no mesmo dia confirmou as seções de ingresso, concursos e seleções simplificadas.",
+          "verification_notes": "O cliente de auditoria recebeu HTTP 503 em HEAD e GET limitado.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "4785",
+      "official_site_url": "https://portal.ifro.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-4785-ifro-portal-selecao",
+          "name": "Portal de Seleção IFRO",
+          "url": "https://selecao.ifro.edu.br/",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://selecao.ifro.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Portal de Seleção IFRO",
+          "verification_evidence": "Portal oficial com seleções unificadas, especiais, pós-graduação e concursos.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "graduate_admission", "short_courses", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "4786",
+      "official_site_url": "https://portal.ifto.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-4786-ifto-editais",
+          "name": "Concursos e Seleções do IFTO",
+          "url": "https://portal.ifto.edu.br/editais",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://portal.ifto.edu.br/editais",
+          "redirect_chain": [],
+          "page_title": "Concursos e Seleções do IFTO — Instituto Federal do Tocantins",
+          "verification_evidence": "Página oficial com editais abertos, encerrados e filtros.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "graduate_admission", "scholarships", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "5077",
+      "official_site_url": "https://uerr.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-5077-uerr-cpcv",
+          "name": "Comissão Permanente de Concursos e Vestibulares da UERR",
+          "url": "https://cpc.uerr.edu.br/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://cpc.uerr.edu.br/",
+          "redirect_chain": [],
+          "page_title": "CPCV/UERR",
+          "verification_evidence": "Portal oficial da comissão com blocos de processos e publicações atuais.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "residency", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "5701",
+      "official_site_url": "https://ueap.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-5701-ueap-processos-seletivos",
+          "name": "Processos Seletivos da UEAP",
+          "url": "https://ueap.edu.br/pagina/processos-seletivos-ueap.html",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ueap.edu.br/pagina/processos-seletivos-ueap.html",
+          "redirect_chain": [],
+          "page_title": "Ueap - Ueap | Página",
+          "verification_evidence": "Página oficial com processos de 2026 e arquivos de anos anteriores.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "scholarships", "public_calls", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "15059",
+      "official_site_url": "https://www.ufopa.edu.br/ufopa/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-15059-ufopa-processos-seletivos",
+          "name": "Processos Seletivos da PROEN/UFOPA",
+          "url": "https://proen.ufopa.edu.br/proen/processos-seletivos/",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://proen.ufopa.edu.br/proen/processos-seletivos/",
+          "redirect_chain": [],
+          "page_title": "PROEN - Pró-Reitoria de Ensino de Graduação",
+          "verification_evidence": "Página oficial que organiza processos regulares e especiais de ingresso.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "affirmative_action", "mobility", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "15507",
+      "official_site_url": "https://www.ifac.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-15507-ifac-editais-ingresso",
+          "name": "Editais de Ingresso do IFAC",
+          "url": "https://editais.ifac.edu.br/quero-estudar-no-ifac/editais/",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://editais.ifac.edu.br/quero-estudar-no-ifac/editais/",
+          "redirect_chain": [],
+          "page_title": "Editais do IFAC",
+          "verification_evidence": "Listagem oficial com filtros, paginação e editais atuais.",
+          "verification_notes": "HEAD retornou 405, mas GET controlado respondeu 200.",
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "graduate_admission", "short_courses"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "15522",
+      "official_site_url": "https://ifap.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-15522-ifap-sistema-selecao",
+          "name": "Sistema de Seleção do IFAP",
+          "url": "https://processoseletivo.ifap.edu.br/",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://processoseletivo.ifap.edu.br/ps/",
+          "redirect_chain": ["https://processoseletivo.ifap.edu.br/", "https://processoseletivo.ifap.edu.br/ps/"],
+          "page_title": "Sistema de Seleção do IFAP",
+          "verification_evidence": "Portal oficial com processos atuais de cursos técnicos, graduação, pós-graduação e Pronera.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "graduate_admission", "affirmative_action"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "18440",
+      "official_site_url": "https://www.unifesspa.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-18440-unifesspa-portal-editais",
+          "name": "Portal de Editais da Unifesspa",
+          "url": "https://editais.unifesspa.edu.br/",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://editais.unifesspa.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Portal de Editais da Unifesspa |",
+          "verification_evidence": "Portal central pesquisável com tipo, órgão, errata, resultado e publicações atuais.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "research", "extension", "student_assistance", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "29118",
+      "official_site_url": "https://ufnt.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-29118-ufnt-processos-seletivos",
+          "name": "Sistema de Gestão de Processos Seletivos da UFNT",
+          "url": "https://sistemas.ufnt.edu.br/seletivos",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://sistemas.ufnt.edu.br/seletivos",
+          "redirect_chain": [],
+          "page_title": "Portal de Sistemas UFNT",
+          "verification_evidence": "Plataforma oficial centralizada com processos seletivos em andamento.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import {
   AlertTriangle,
   LogOut,
   Shield,
+  Gauge,
   Activity,
   FileText,
   Menu,
@@ -65,12 +66,13 @@ const userNavItems = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/notices', label: 'Editais', icon: FileText },
   { to: '/alerts', label: 'Meus Alertas', icon: AlertTriangle },
-  { to: '/notifications', label: 'NotificaÃ§Ãµes', icon: Bell },
+  { to: '/notifications', label: 'Notificações', icon: Bell },
 ];
 
 const adminNavItems = [
   { to: '/admin', label: 'Admin', icon: Shield },
-  { to: '/admin/institutions', label: 'InstituiÃ§Ãµes', icon: Shield },
+  { to: '/admin/coverage', label: 'Cobertura', icon: Gauge },
+  { to: '/admin/institutions', label: 'Instituições', icon: Shield },
   { to: '/admin/sources', label: 'Fontes', icon: Shield },
   { to: '/admin/crawler', label: 'Crawler', icon: Activity },
 ];
@@ -170,7 +172,7 @@ export default function Layout() {
               <>
                 <div className={`pt-4 pb-2 ${isCollapsed ? 'lg:flex lg:justify-center' : ''}`}>
                   <p className={`px-3 text-xs font-semibold text-[var(--theme-muted)] uppercase tracking-wider ${isCollapsed ? 'lg:hidden' : ''}`}>
-                    AdministraÃ§Ã£o
+                    Administração
                   </p>
                   <div className={`hidden ${isCollapsed ? 'lg:block' : ''} w-8 h-px bg-[var(--theme-border)]`} />
                 </div>

@@ -1,0 +1,1005 @@
+{
+  "schema_version": 1,
+  "region": "Sul",
+  "verified_at": "2026-07-13",
+  "institutions": [
+    {
+      "official_code": "9",
+      "official_site_url": "https://www.uel.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "A fonte oficial foi confirmada por conteúdo web, mas o probe HTTP controlado não completou a conexão.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-9-uel-cops",
+          "name": "Coordenadoria de Processos Seletivos da UEL",
+          "url": "https://cops.uel.br/",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "final_url": "https://cops.uel.br/",
+          "redirect_chain": [],
+          "page_title": "COPS - Coordenadoria de Processos Seletivos",
+          "verification_evidence": "Página oficial com vestibular, concursos e processos seletivos atuais.",
+          "verification_notes": "O cliente curl não obteve status HTTP; a estrutura foi confirmada por acesso web oficial.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "12",
+      "official_site_url": "https://www.furg.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-12-furg-coperse",
+          "name": "Comissão Permanente de Processos Seletivos da FURG",
+          "url": "https://coperse.furg.br/",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://coperse.furg.br/",
+          "redirect_chain": [],
+          "page_title": "PÁGINA INICIAL - COPERSE - Comissão Permanente do Processo Seletivo - FURG",
+          "verification_evidence": "Portal oficial com editais, cronogramas, resultados e processos atuais.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "distance_education", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "43",
+      "official_site_url": "https://www.udesc.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-43-udesc-covest",
+          "name": "Coordenadoria de Vestibulares e Concursos da UDESC",
+          "url": "https://www.udesc.br/vestibular",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://www.udesc.br/vestibular",
+          "redirect_chain": [],
+          "page_title": "COVEST",
+          "verification_evidence": "Página oficial de vestibular indicada pela própria UDESC, com chamadas e editais atuais.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "57",
+      "official_site_url": "https://www.uem.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-57-uem-cvu",
+          "name": "Comissão do Vestibular Unificado da UEM",
+          "url": "https://www.vestibular.uem.br/",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.vestibular.uem.br/",
+          "redirect_chain": [],
+          "page_title": "CVU - Comissão do Vestibular Unificado da UEM",
+          "verification_evidence": "Portal oficial da CVU para vestibulares e processos de ingresso.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "76",
+      "official_site_url": "https://www.furb.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-76-furb-ingresso",
+          "name": "Inscrições e Processos Seletivos da FURB",
+          "url": "https://ingressar1.furb.br/index/1/",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ingressar1.furb.br/index/1/",
+          "redirect_chain": [],
+          "page_title": "Inscrições FURB",
+          "verification_evidence": "Portal oficial com processos seletivos abertos, em andamento e finalizados.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "441",
+      "official_site_url": "https://unc.br/",
+      "coverage_status": "manual_review",
+      "coverage_notes": "Registro mantido apenas para documentar a divergência com o recorte bruto do Censo 2024.",
+      "eligibility_status": "excluded_scope_manual_review",
+      "eligibility_reason": "A classificação especial no Censo 2024 e a natureza jurídica comunitária exigem revisão manual de escopo; a instituição permanece no inventário bruto sem inclusão automática no alvo operacional.",
+      "sources": []
+    },
+    {
+      "official_code": "535",
+      "official_site_url": "https://fafiman.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "O vestibular está confirmado no site oficial, mas não foi localizada uma página central estável de editais de ingresso.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-535-fafiman-institucional",
+          "name": "Portal Institucional da FAFIMAN",
+          "url": "https://fafiman.br/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://fafiman.br/",
+          "redirect_chain": [],
+          "page_title": "FAFIMAN – Faculdade de Filosofia, Ciências e Letras de Mandaguari",
+          "verification_evidence": "Portal oficial e calendário acadêmico confirmam vestibular agendado em 2026.",
+          "verification_notes": "HTTP 206 decorre do probe limitado; a fonte ainda é ampla e exige revisão manual para extração.",
+          "priority": 2,
+          "categories": ["undergraduate_admission", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "571",
+      "official_site_url": "https://ufpr.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-571-ufpr-nucleo-concursos",
+          "name": "Portal do Núcleo de Concursos da UFPR",
+          "url": "https://servicos.nc.ufpr.br/PortalNC/",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://servicos.nc.ufpr.br/PortalNC/",
+          "redirect_chain": [],
+          "page_title": "Portal NC/UFPR",
+          "verification_evidence": "Portal oficial responsável por vestibulares, concursos e processos seletivos da UFPR.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "581",
+      "official_site_url": "https://www.ufrgs.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-581-ufrgs-coperse",
+          "name": "Comissão Permanente de Seleção da UFRGS",
+          "url": "https://www.ufrgs.br/coperse/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://www.ufrgs.br/coperse/",
+          "redirect_chain": [],
+          "page_title": "Comissão Permanente de Seleção",
+          "verification_evidence": "Portal oficial com vestibular, PSU, seleções especiais e edições atuais.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "affirmative_action", "distance_education", "residency"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "582",
+      "official_site_url": "https://www.ufsm.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-582-ufsm-processos-seletivos",
+          "name": "Processos Seletivos da PROGRAD/UFSM",
+          "url": "https://www.ufsm.br/pro-reitorias/prograd/ingresse-na-ufsm/processos-seletivos",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.ufsm.br/pro-reitorias/prograd/ingresse-na-ufsm/processos-seletivos",
+          "redirect_chain": [],
+          "page_title": "Processos Seletivos – PROGRAD",
+          "verification_evidence": "Página oficial com PSS, vestibular, SiSU e processos específicos.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes", "affirmative_action"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "585",
+      "official_site_url": "https://ufsc.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-585-ufsc-coperve",
+          "name": "Vestibular UFSC/Coperve",
+          "url": "https://vestibular.coperve.ufsc.br/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://vestibular.coperve.ufsc.br/",
+          "redirect_chain": [],
+          "page_title": "Vestibular UFSC/Coperve",
+          "verification_evidence": "Portal oficial com múltiplos processos seletivos atuais e áreas do candidato.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "affirmative_action", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "588",
+      "official_site_url": "https://www.utfpr.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-588-utfpr-vestibular",
+          "name": "Vestibular UTFPR",
+          "url": "https://www.utfpr.edu.br/cursos/estudenautfpr/vestibular",
+          "source_type": "GOVBR",
+          "content_type": "public_notices",
+          "recommended_spider": "govbr",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://www.utfpr.edu.br/cursos/estudenautfpr/vestibular",
+          "redirect_chain": [],
+          "page_title": "Vestibular",
+          "verification_evidence": "Portal institucional oficial de processos seletivos de ingresso da UTFPR.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "technical_education", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "601",
+      "official_site_url": "https://ifrs.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-601-ifrs-ingresso-editais",
+          "name": "Editais do Processo Seletivo IFRS",
+          "url": "https://ingresso.ifrs.edu.br/2026/editais/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ingresso.ifrs.edu.br/2026/editais/",
+          "redirect_chain": [],
+          "page_title": "Editais - Processo Seletivo IFRS 2026/1",
+          "verification_evidence": "Página oficial com editais de ingresso por modalidade e publicação.",
+          "verification_notes": "URL organizada por edição; deve ser reavaliada na atualização anual.",
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "affirmative_action"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "609",
+      "official_site_url": "https://www.unioeste.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-609-unioeste-editais-internos",
+          "name": "Editais Internos da Unioeste",
+          "url": "https://www.unioeste.br/portal/editais-resolucoes-e-formularios/editais-internos",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.unioeste.br/portal/editais-resolucoes-e-formularios/editais-internos",
+          "redirect_chain": [],
+          "page_title": "Editais Internos - Unioeste",
+          "verification_evidence": "Página oficial com editais atuais de pesquisa, bolsas e seleções institucionais.",
+          "verification_notes": null,
+          "priority": 2,
+          "categories": ["research", "scholarships", "public_calls", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "634",
+      "official_site_url": "https://portal.ufpel.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "O índice oficial foi confirmado por acesso web, mas o cliente de auditoria recebeu HTTP 403.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-634-ufpel-editais",
+          "name": "Índice de Editais da UFPel",
+          "url": "https://portal.ufpel.edu.br/editais/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 403,
+          "final_url": "https://portal.ufpel.edu.br/editais/",
+          "redirect_chain": [],
+          "page_title": "Editais « UFPel",
+          "verification_evidence": "Índice oficial aponta para editais de graduação, assistência, pós-graduação, extensão e intercâmbio.",
+          "verification_notes": "Requer nova auditoria de acesso e escolha entre o índice central e fontes setoriais.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "student_assistance", "extension", "mobility"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "649",
+      "official_site_url": "https://uniuv.edu.br/",
+      "coverage_status": "inactive",
+      "coverage_notes": "Registro histórico do inventário de 2024; não deve ser habilitado para monitoramento.",
+      "eligibility_status": "excluded_inactive",
+      "eligibility_reason": "As páginas oficiais da UNIUV informam que seus cursos superiores foram incorporados pela Unespar em 2026.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-649-uniuv-editais-arquivo",
+          "name": "Arquivo de Editais da UNIUV",
+          "url": "https://fundacao.uniuv.edu.br/editais_uniuv.php",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "inactive",
+          "last_verified_at": "2026-07-13",
+          "final_url": "https://fundacao.uniuv.edu.br/editais_uniuv.php",
+          "redirect_chain": [],
+          "page_title": "Editais UNIUV",
+          "verification_evidence": "Arquivo institucional histórico; a página oficial documenta a incorporação dos cursos pela Unespar.",
+          "verification_notes": "O probe HTTP não completou; fonte preservada somente como proveniência histórica.",
+          "priority": 3,
+          "categories": ["undergraduate_admission", "public_competitions"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "717",
+      "official_site_url": "https://ufcspa.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-717-ufcspa-processo-seletivo-2026",
+          "name": "Processo Seletivo UFCSPA 2026",
+          "url": "https://ufcspa.edu.br/estude-na-ufcspa/raps/processos-seletivos/processo-seletivo-2026",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ufcspa.edu.br/estude-na-ufcspa/raps/processos-seletivos/processo-seletivo-2026",
+          "redirect_chain": [],
+          "page_title": "UFCSPA - Universidade Federal de Ciências da Saúde de Porto Alegre - Processo seletivo 2026",
+          "verification_evidence": "Página oficial com edital e todas as etapas do processo seletivo de 2026.",
+          "verification_notes": "URL organizada por edição; deve ser reavaliada na atualização anual.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "residency", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "730",
+      "official_site_url": "https://www.uepg.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-730-uepg-cps",
+          "name": "Coordenadoria de Processos de Seleção da UEPG",
+          "url": "https://www2.uepg.br/cps/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www2.uepg.br/cps/",
+          "redirect_chain": [],
+          "page_title": "CPS – Universidade Estadual de Ponta Grossa",
+          "verification_evidence": "Portal oficial com vestibular, PSS, EAD, documentos e cronogramas.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "distance_education", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1126",
+      "official_site_url": "https://www3.unicentro.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-1126-unicentro-vestibular",
+          "name": "Vestibular Unicentro",
+          "url": "https://www3.unicentro.br/vestibular/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www3.unicentro.br/vestibular/",
+          "redirect_chain": [],
+          "page_title": "Vestibular",
+          "verification_evidence": "Portal oficial com editais atuais de vestibular, PAC e outras formas de ingresso.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1578",
+      "official_site_url": "https://www.ifsul.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-1578-ifsul-processo-seletivo",
+          "name": "Processo Seletivo IFSul",
+          "url": "https://processoseletivo.ifsul.edu.br/",
+          "source_type": "PROCESS_SELECTION_PORTAL",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://processoseletivo.ifsul.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Processo Seletivo - Instituto Federal Sul-rio-grandense",
+          "verification_evidence": "Portal oficial de processos seletivos de ingresso do IFSul.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3162",
+      "official_site_url": "https://www.ifsc.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-3162-ifsc-editais-abertos",
+          "name": "Editais com Inscrições Abertas do IFSC",
+          "url": "https://www.ifsc.edu.br/editais-com-inscricoes-abertas",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.ifsc.edu.br/editais-com-inscricoes-abertas",
+          "redirect_chain": [],
+          "page_title": "Editais com Inscrições Abertas - Portal do IFSC",
+          "verification_evidence": "Página oficial com editais atuais separados por modalidade e nível de curso.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "graduate_admission", "short_courses", "distance_education"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3336",
+      "official_site_url": "https://uergs.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-3336-uergs-ingresso-2026",
+          "name": "Ingresso UERGS 2026",
+          "url": "https://uergs.edu.br/ingresso2026",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://uergs.edu.br/ingresso2026",
+          "redirect_chain": [],
+          "page_title": "Ingresso 2026 - UERGS - Universidade Estadual do Rio Grande do Sul",
+          "verification_evidence": "Página oficial com ingresso por Enem, SiSU e vagas remanescentes.",
+          "verification_notes": "URL organizada por edição; deve ser reavaliada na atualização anual.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "4098",
+      "official_site_url": "https://www.iffarroupilha.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-4098-iffar-editais",
+          "name": "Editais do IFFar",
+          "url": "https://www.iffarroupilha.edu.br/editais",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.iffarroupilha.edu.br/editais",
+          "redirect_chain": [],
+          "page_title": "Editais - IFFar",
+          "verification_evidence": "Listagem oficial extensa, paginada e categorizada por modalidade e unidade.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "graduate_admission", "research", "scholarships", "public_calls"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "5036",
+      "official_site_url": "https://ifc.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-5036-ifc-ingresso",
+          "name": "Ingresso no Instituto Federal Catarinense",
+          "url": "https://ingresso.ifc.edu.br/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://ingresso.ifc.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Ingresso - Instituto Federal Catarinense",
+          "verification_evidence": "Portal oficial de ingresso com modalidades, editais e normas dos processos seletivos.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "affirmative_action"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "5322",
+      "official_site_url": "https://unipampa.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-5322-unipampa-ingresso",
+          "name": "Processos Seletivos da Unipampa",
+          "url": "https://sites.unipampa.edu.br/ingresso/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://sites.unipampa.edu.br/ingresso/",
+          "redirect_chain": [],
+          "page_title": "Ingresso - Unipampa",
+          "verification_evidence": "Portal oficial do Núcleo de Processos Seletivos com processos regulares e complementares.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "affirmative_action", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "5706",
+      "official_site_url": "https://fmpsc.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "A fonte específica foi confirmada por conteúdo web, mas o probe HTTP controlado não completou a conexão.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-5706-fmp-vestibular",
+          "name": "Vestibular da Faculdade Municipal de Palhoça",
+          "url": "https://fmpsc.edu.br/vestibular/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "final_url": "https://fmpsc.edu.br/vestibular/",
+          "redirect_chain": [],
+          "page_title": "Acadêmicos",
+          "verification_evidence": "Página oficial com vestibular, transferência e processos seletivos especiais.",
+          "verification_notes": "O cliente curl não obteve status HTTP; a estrutura foi confirmada por acesso web oficial.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "14724",
+      "official_site_url": "https://ifpr.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-14724-ifpr-processo-seletivo",
+          "name": "Processo Seletivo IFPR",
+          "url": "https://ifpr.edu.br/processo-seletivo/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://ifpr.edu.br/processo-seletivo/",
+          "redirect_chain": [],
+          "page_title": "Processo Seletivo IFPR 2027 - IFPR",
+          "verification_evidence": "Portal oficial com editais vigentes para cursos técnicos e superiores.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["technical_education", "undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "15001",
+      "official_site_url": "https://portal.unila.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-15001-unila-ingresso",
+          "name": "Formas de Ingresso da UNILA",
+          "url": "https://portal.unila.edu.br/ingresso",
+          "source_type": "GOVBR",
+          "content_type": "public_notices",
+          "recommended_spider": "govbr",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://portal.unila.edu.br/ingresso",
+          "redirect_chain": [],
+          "page_title": "Formas de Ingresso — Universidade Federal da Integração Latino-Americana",
+          "verification_evidence": "Portal oficial que reúne processos nacionais, internacionais, remanescentes e vagas ociosas.",
+          "verification_notes": null,
+          "priority": 1,
+          "categories": ["undergraduate_admission", "international_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "15015",
+      "official_site_url": "https://uenp.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-15015-uenp-vestibular-2026",
+          "name": "Vestibular UENP 2026",
+          "url": "https://vestibular.uenp.edu.br/2026/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://vestibular.uenp.edu.br/2026/",
+          "redirect_chain": [],
+          "page_title": "Vestibular UENP 2026",
+          "verification_evidence": "Página oficial com editais, resultados e cronograma do vestibular de 2026.",
+          "verification_notes": "HTTP 206 decorre do probe limitado; URL organizada por edição.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "15121",
+      "official_site_url": "https://www.uffs.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-15121-uffs-editais-ingresso-2026",
+          "name": "Editais do Processo Seletivo UFFS 2026",
+          "url": "https://uffs.edu.br/uffs/processo-seletivo-2026/editais-do-processo-seletivo",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://uffs.edu.br/uffs/processo-seletivo-2026/editais-do-processo-seletivo",
+          "redirect_chain": [],
+          "page_title": "Portal UFFS - Editais do Processo Seletivo",
+          "verification_evidence": "Página oficial com editais de abertura, documentação, chamadas e reclassificações.",
+          "verification_notes": "URL organizada por edição; deve ser reavaliada na atualização anual.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "affirmative_action", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "18492",
+      "official_site_url": "https://unespar.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-18492-unespar-vestibular-2025-2026",
+          "name": "Coleção Vestibular Unespar 2025/2026",
+          "url": "https://vestibular.unespar.edu.br/arquivos-vestibular-2025-2026/colecao-vestibular-2025-2026",
+          "source_type": "PAGINATED_HTML",
+          "content_type": "public_notices",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://vestibular.unespar.edu.br/arquivos-vestibular-2025-2026/colecao-vestibular-2025-2026",
+          "redirect_chain": [],
+          "page_title": "Coleção - Vestibular 2025/2026 — Universidade Estadual do Paraná Portal do Vestibular",
+          "verification_evidence": "Coleção oficial de editais, homologações, resultados e documentos do vestibular vigente.",
+          "verification_notes": "URL organizada por edição; deve ser reavaliada na atualização anual.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "affirmative_action", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "22015",
+      "official_site_url": "https://famapr.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-22015-fama-vestibular",
+          "name": "Vestibular FAMA",
+          "url": "https://famapr.edu.br/vestibular/",
+          "source_type": "WORDPRESS",
+          "content_type": "public_notices",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://famapr.edu.br/vestibular/",
+          "redirect_chain": [],
+          "page_title": "FAMA - Faculdade Municipal de Educação e Meio Ambiente",
+          "verification_evidence": "Página oficial específica com processo seletivo de vestibular da faculdade municipal.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "22090",
+      "official_site_url": "https://escolaghc.ghc.com.br/",
+      "coverage_status": "verified",
+      "coverage_notes": null,
+      "sources": [
+        {
+          "catalog_source_id": "inep-22090-facs-ghc-noticias-editais",
+          "name": "Formação e Editais da Escola GHC",
+          "url": "https://escolaghc.ghc.com.br/noticias.html",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 206,
+          "final_url": "https://escolaghc.ghc.com.br/noticias.html",
+          "redirect_chain": [],
+          "page_title": "GEP/GHC | Formação no GHC",
+          "verification_evidence": "Canal oficial com processos seletivos públicos atuais de graduação, pós-graduação e cursos da Escola GHC.",
+          "verification_notes": "HTTP 206 decorre do probe deliberadamente limitado por Range.",
+          "priority": 1,
+          "categories": ["undergraduate_admission", "graduate_admission", "technical_education", "public_calls"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "24530",
+      "official_site_url": "https://www.pm.sc.gov.br/",
+      "coverage_status": "manual_review",
+      "coverage_notes": "A instituição e seus editais foram confirmados, mas não foi localizada uma listagem pública estável e exclusiva da FAPOM.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-24530-fapom-noticias-pmsc",
+          "name": "Publicações da FAPOM no Portal da PMSC",
+          "url": "https://www.pm.sc.gov.br/tudo-sobre/fapom",
+          "source_type": "HTML_STATIC",
+          "content_type": "public_notices",
+          "recommended_spider": "generic",
+          "status": "manual_review",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.pm.sc.gov.br/tudo-sobre/fapom",
+          "redirect_chain": [],
+          "page_title": "Portal da Polícia Militar de Santa Catarina - Tudo sobre: FAPOM",
+          "verification_evidence": "Agregador oficial de publicações sobre a FAPOM; editais também aparecem no Boletim Eletrônico da PMSC.",
+          "verification_notes": "Requer definição manual de uma fonte estável antes de habilitar monitoramento.",
+          "priority": 3,
+          "categories": ["professional_training", "public_competitions", "selection_processes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    }
+  ]
+}

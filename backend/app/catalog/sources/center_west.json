@@ -1,0 +1,817 @@
+{
+  "schema_version": 1,
+  "region": "Centro-Oeste",
+  "verified_at": "2026-07-13",
+  "institutions": [
+    {
+      "official_code": "1",
+      "official_site_url": "https://www.ufmt.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "A fonte cobre concursos e seleções, mas não centraliza todas as classes de editais da UFMT.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1-ufmt-supervisao-concursos",
+          "name": "Supervisão de Concursos - SC / PROAD / UFMT",
+          "url": "https://www.concursos.ufmt.br/Portal/",
+          "source_type": "processos_seletivos",
+          "content_type": "concursos e processos seletivos",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.concursos.ufmt.br/Portal/",
+          "redirect_chain": [],
+          "page_title": "Supervisão de Concursos - SC / PROAD / UFMT",
+          "verification_evidence": "Página oficial identificada como UFMT e com seção 'Concursos em Andamento'.",
+          "verification_notes": "Verificação leve da listagem, sem abrir documentos nem executar coleta.",
+          "priority": 2,
+          "categories": ["concursos", "pessoal", "ingresso"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "2",
+      "official_site_url": "https://www.unb.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "O SIGAA cobre processos seletivos acadêmicos, não o conjunto integral de editais da UnB.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-2-unb-sigaa-processos-seletivos",
+          "name": "Processos Seletivos - SIGAA UnB",
+          "url": "https://sigaa.unb.br/sigaa/public/processo_seletivo/lista.jsf",
+          "source_type": "processos_seletivos",
+          "content_type": "processos seletivos acadêmicos",
+          "recommended_spider": "sigaa",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://sigaa.unb.br/sigaa/public/processo_seletivo/lista.jsf",
+          "redirect_chain": [],
+          "page_title": "SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas",
+          "verification_evidence": "A página informa que disponibiliza processos recentes, editais, manuais e instruções; não havia processo aberto no filtro padrão.",
+          "verification_notes": "Escopo concentrado em ingresso e pós-graduação.",
+          "priority": 2,
+          "categories": ["pos-graduacao", "ingresso"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "47",
+      "official_site_url": "https://www.ueg.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Índice oficial amplo e atual de editais da UEG.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-47-ueg-editais",
+          "name": "Editais UEG",
+          "url": "https://www.ueg.br/editais",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.ueg.br/editais",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Listagem oficial apresentou itens de 2026, incluindo graduação, licitação e chamamento público.",
+          "verification_notes": "Estrutura de listagem confirmada sem coleta de documentos.",
+          "priority": 1,
+          "categories": ["graduacao", "licitacoes", "chamadas-publicas", "bolsas"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "584",
+      "official_site_url": "https://ufg.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "O SIGAA cobre seleções acadêmicas, mas outras categorias são distribuídas em portais distintos.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-584-ufg-sigaa-processos-seletivos",
+          "name": "Processos Seletivos SIGAA UFG",
+          "url": "https://sigaa.sistemas.ufg.br/sigaa/public/processo_seletivo/lista.jsf",
+          "source_type": "processos_seletivos",
+          "content_type": "processos seletivos acadêmicos",
+          "recommended_spider": "sigaa",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://sigaa.sistemas.ufg.br/sigaa/public/processo_seletivo/lista.jsf",
+          "redirect_chain": [],
+          "page_title": "SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas",
+          "verification_evidence": "Listagem oficial exibiu processo seletivo de especialização em Farmácia Oncológica.",
+          "verification_notes": "Fonte válida para seleções no SIGAA; cobertura institucional não exaustiva.",
+          "priority": 2,
+          "categories": ["pos-graduacao", "ingresso"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "694",
+      "official_site_url": "https://www.ufms.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Página oficial organiza editais por ano e oferece cobertura temática ampla.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-694-ufms-editais",
+          "name": "Editais - UFMS",
+          "url": "https://www.ufms.br/editais/",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.ufms.br/editais/",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Índice oficial aponta para os anos e a página de 2026 contém editais atuais de diferentes áreas.",
+          "verification_notes": "Validação estrutural leve, sem seguir anexos.",
+          "priority": 1,
+          "categories": ["ensino", "pesquisa", "extensao", "assistencia-estudantil", "chamadas-publicas"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "719",
+      "official_site_url": "https://www.unemat.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Painel oficial atual com filtros de categoria, data e situação.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-719-unemat-editais",
+          "name": "Editais UNEMAT",
+          "url": "https://unemat.br/editais/",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://unemat.br/editais/",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Página oficial apresentou numerosos itens de 2026 e filtros por categoria, data e situação aberta.",
+          "verification_notes": "Listagem confirmada sem baixar anexos.",
+          "priority": 1,
+          "categories": ["ensino", "pesquisa", "extensao", "pessoal", "assistencia-estudantil"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "744",
+      "official_site_url": "https://faculdadeanicuns.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "Foi encontrado edital corrente no mural da página inicial, sem índice estável dedicado.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-744-fa-mural-avisos",
+          "name": "Mural de Avisos - Faculdade de Anicuns",
+          "url": "https://faculdadeanicuns.edu.br/",
+          "source_type": "mural",
+          "content_type": "avisos e processos seletivos",
+          "recommended_spider": "wordpress",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://faculdadeanicuns.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Faculdade de Anicuns",
+          "verification_evidence": "O mural oficial exibia 'EDITAL PROC. SELETIVO 001/2026'.",
+          "verification_notes": "Fonte genérica na página inicial; requer reavaliação se surgir índice dedicado.",
+          "priority": 2,
+          "categories": ["ingresso", "contratacao"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "824",
+      "official_site_url": "https://unicerrado.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Página dedicada reúne seleções atuais e arquivadas de diversas categorias.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-824-unicerrado-selecoes",
+          "name": "Seleções UniCerrado",
+          "url": "https://unicerrado.edu.br/selecoes/",
+          "source_type": "selecoes",
+          "content_type": "editais e processos seletivos",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://unicerrado.edu.br/selecoes/",
+          "redirect_chain": [],
+          "page_title": "Seleções",
+          "verification_evidence": "Página oficial reúne vestibular, bolsas, monitoria, pesquisa, extensão, docentes e vagas remanescentes.",
+          "verification_notes": "Estrutura dedicada e histórica confirmada.",
+          "priority": 1,
+          "categories": ["ingresso", "bolsas", "monitoria", "pesquisa", "extensao", "pessoal"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1028",
+      "official_site_url": "https://www.uems.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Índice institucional amplo, paginado e filtrável.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1028-uems-editais-concursos",
+          "name": "Editais e Concursos - UEMS",
+          "url": "https://www.uems.br/Editais",
+          "source_type": "editais",
+          "content_type": "editais e concursos",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.uems.br/Editais",
+          "redirect_chain": [],
+          "page_title": "Editais e Concursos",
+          "verification_evidence": "Listagem oficial indicava mais de 1.700 registros em 175 páginas e itens correntes de 2026.",
+          "verification_notes": "Filtros e status dos editais foram confirmados.",
+          "priority": 1,
+          "categories": ["ensino", "pesquisa", "extensao", "pessoal", "assistencia-estudantil"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1303",
+      "official_site_url": "https://www.ifgoiano.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Sistema dedicado separa inscrições abertas, processos em andamento e concluídos.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1303-ifgoiano-editais",
+          "name": "Editais IF Goiano - Sistema de Gerenciamento de Concursos",
+          "url": "https://ps.ifgoiano.edu.br/",
+          "source_type": "processos_seletivos",
+          "content_type": "concursos e processos seletivos",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ps.ifgoiano.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Editais IF Goiano | Sistema de Gerenciamento de Concursos",
+          "verification_evidence": "Sistema oficial apresentou vários processos de graduação e pós-graduação de 2026 em blocos de situação.",
+          "verification_notes": "Estrutura reutilizável de listagem confirmada.",
+          "priority": 1,
+          "categories": ["ingresso", "graduacao", "pos-graduacao", "concursos"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "1811",
+      "official_site_url": "https://www.ifg.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "A página cobre ensino; pesquisa, extensão e outros eixos permanecem distribuídos.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-1811-ifg-editais-ensino",
+          "name": "Editais de Ensino IFG",
+          "url": "https://www.ifg.edu.br/editais-ensino",
+          "source_type": "editais_ensino",
+          "content_type": "editais de ensino",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.ifg.edu.br/editais-ensino",
+          "redirect_chain": [],
+          "page_title": "Editais de Ensino",
+          "verification_evidence": "Página oficial atualizada em 18/06/2026 reúne projetos, chamadas, PIBID, PET e monitoria.",
+          "verification_notes": "Somente o eixo ensino foi consolidado nesta fonte.",
+          "priority": 2,
+          "categories": ["ensino", "projetos", "pibid", "pet", "monitoria"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3164",
+      "official_site_url": "https://ifmt.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Painel dedicado com filtros por status e categoria.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-3164-ifmt-painel-editais",
+          "name": "Painel de Editais IFMT",
+          "url": "https://ifmt.edu.br/painel-de-editais/",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ifmt.edu.br/painel-de-editais/",
+          "redirect_chain": [],
+          "page_title": "Painel de Editais",
+          "verification_evidence": "Página oficial apresentou entradas correntes e filtros por situação e categoria.",
+          "verification_notes": "Painel validado sem abrir os documentos vinculados.",
+          "priority": 1,
+          "categories": ["pesquisa", "extensao", "ensino", "pessoal"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "3974",
+      "official_site_url": "https://www.unirv.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "A página localizada cobre uma família de seleções PRONATEC, não todos os editais da UniRV.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-3974-unirv-processo-seletivo-2026",
+          "name": "Processo Seletivo 2026 - UniRV",
+          "url": "https://www.unirv.edu.br/paginas.php?id=709",
+          "source_type": "processos_seletivos",
+          "content_type": "processos seletivos PRONATEC",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://www.unirv.edu.br/paginas.php?id=709",
+          "redirect_chain": [],
+          "page_title": "Processo Seletivo 2026",
+          "verification_evidence": "Página oficial continha editais PRONATEC 2026 para professores e bolsistas.",
+          "verification_notes": "Fonte temática; manter busca por índice institucional mais amplo.",
+          "priority": 2,
+          "categories": ["formacao", "professores", "bolsistas"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "4396",
+      "official_site_url": "https://unifimes.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "O portal publica editais em áreas temáticas, mas não foi localizado índice central estável.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-4396-unifimes-portal",
+          "name": "Portal UNIFIMES",
+          "url": "https://unifimes.edu.br/",
+          "source_type": "portal_noticias",
+          "content_type": "notícias e editais institucionais",
+          "recommended_spider": "wordpress",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://unifimes.edu.br/",
+          "redirect_chain": [],
+          "page_title": "UNIFIMES",
+          "verification_evidence": "Portal e páginas temáticas oficiais exibiam vestibular, contratação, pesquisa e extensão.",
+          "verification_notes": "Página inicial usada provisoriamente até localizar índice dedicado.",
+          "priority": 2,
+          "categories": ["ingresso", "contratacao", "pesquisa", "extensao"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "4504",
+      "official_site_url": "https://portal.ufgd.edu.br/",
+      "coverage_status": "manual_review",
+      "coverage_notes": "O portal de editais é uma aplicação JavaScript; o endpoint de dados precisa ser identificado com segurança antes da ativação.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-4504-ufgd-portal-editais",
+          "name": "Portal de Editais UFGD",
+          "url": "https://editais.ufgd.edu.br/",
+          "source_type": "editais",
+          "content_type": "editais institucionais em aplicação dinâmica",
+          "recommended_spider": "generic",
+          "status": "manual_review",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://editais.app.ufgd.edu.br/",
+          "redirect_chain": ["https://editais.ufgd.edu.br/", "https://editais.app.ufgd.edu.br/"],
+          "page_title": "Portal de Editais UFGD",
+          "verification_evidence": "A URL oficial redirecionou para editais.app.ufgd.edu.br e o HTML estático mostrou busca e botão 'Carregar Mais'.",
+          "verification_notes": "Itens são renderizados por JavaScript/API; nenhuma tentativa de contorno foi realizada.",
+          "priority": 3,
+          "categories": ["editais-institucionais"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "14408",
+      "official_site_url": "https://www.ifb.edu.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "A fonte cobre ingresso; assistência, extensão e pessoal permanecem em páginas distintas.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-14408-ifb-processo-seletivo",
+          "name": "Sistema de Processo Seletivo - Instituto Federal de Brasília",
+          "url": "https://processoseletivo.ifb.edu.br/",
+          "source_type": "processos_seletivos",
+          "content_type": "processos seletivos de ingresso",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://processoseletivo.ifb.edu.br/",
+          "redirect_chain": [],
+          "page_title": "Sistema de Processo Seletivo - Instituto Federal de Brasília",
+          "verification_evidence": "Sistema oficial apresentou seleções 2026/2 para cursos superiores e técnicos.",
+          "verification_notes": "Cobertura limitada aos processos de ingresso.",
+          "priority": 2,
+          "categories": ["ingresso", "graduacao", "cursos-tecnicos"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "15520",
+      "official_site_url": "https://www.ifms.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Central de seleção oficial com processos atuais e concluídos de diferentes categorias.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-15520-ifms-central-selecao-estudantes",
+          "name": "Central de Seleção IFMS - Estudantes",
+          "url": "https://selecao.ifms.edu.br/perfil/estudantes",
+          "source_type": "processos_seletivos",
+          "content_type": "seleções para estudantes",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://selecao.ifms.edu.br/perfil/estudantes",
+          "redirect_chain": [],
+          "page_title": "Central de Seleção - Estudantes",
+          "verification_evidence": "Central oficial exibiu processos atuais e concluídos de graduação, pós-graduação, PIBID e assistência.",
+          "verification_notes": "O portal institucional raiz respondeu 403 à ferramenta, mas esta central oficial respondeu normalmente.",
+          "priority": 1,
+          "categories": ["ingresso", "graduacao", "pos-graduacao", "pibid", "assistencia-estudantil"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "16037",
+      "official_site_url": "https://dec.pm.df.gov.br/",
+      "coverage_status": "partial",
+      "coverage_notes": "Página oficial reúne seleções da DEC/ISCP, com foco no público de segurança e sem índice amplo de editais acadêmicos.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-16037-iscp-dec-selecoes",
+          "name": "Seleções DEC/ISCP",
+          "url": "https://dec.pm.df.gov.br/index.php?option=com_sppagebuilder&view=page&id=7",
+          "source_type": "selecoes",
+          "content_type": "seleções de educação superior militar",
+          "recommended_spider": "generic",
+          "status": "partial",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://dec.pm.df.gov.br/index.php?option=com_sppagebuilder&view=page&id=7",
+          "redirect_chain": [],
+          "page_title": "Seleções",
+          "verification_evidence": "Página oficial continha Edital 03 ISCP/DEC/PMDF e cronogramas de outras seleções.",
+          "verification_notes": "Escopo especializado; revisar centralização e relevância de cada processo antes de ativar.",
+          "priority": 2,
+          "categories": ["educacao-superior-militar", "ingresso"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "24387",
+      "official_site_url": "https://www.escfd.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Portal oficial de ensino do CBMDF publica editais e seleções vinculados à ESCFD.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-24387-escfd-portal-ensino-cbmdf",
+          "name": "Portal de Ensino do CBMDF",
+          "url": "https://ensino.cbm.df.gov.br/",
+          "source_type": "portal_ensino",
+          "content_type": "editais de educação superior militar",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ensino.cbm.df.gov.br/",
+          "redirect_chain": [],
+          "page_title": "Portal de Ensino do CBMDF",
+          "verification_evidence": "Feed oficial continha os Editais 040/2026, 041/2026 e outras seleções; o portal cruza referência com a ESCFD.",
+          "verification_notes": "A instituição é a Escola Superior de Ciência do Fogo e dos Desastres, não a ESCS da saúde.",
+          "priority": 1,
+          "categories": ["educacao-superior-militar", "ingresso", "selecoes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "25274",
+      "official_site_url": "https://ufcat.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Índice oficial Gov.br/Plone com editais atuais de múltiplas áreas.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-25274-ufcat-editais",
+          "name": "Editais UFCAT",
+          "url": "https://plone.ufcat.edu.br/ufcat/pt-br/editais",
+          "source_type": "editais",
+          "content_type": "editais institucionais",
+          "recommended_spider": "govbr",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://plone.ufcat.edu.br/ufcat/pt-br/editais",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Página oficial apresentou itens atuais de ingresso, PET, pós-graduação, pesquisa e extensão.",
+          "verification_notes": "Estrutura de listagem Plone confirmada.",
+          "priority": 1,
+          "categories": ["ingresso", "pet", "pos-graduacao", "pesquisa", "extensao"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "25282",
+      "official_site_url": "https://ufj.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Categoria WordPress dedicada, atual e paginada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-25282-ufj-categoria-editais",
+          "name": "Categoria Editais UFJ",
+          "url": "https://ufj.edu.br/category/editais/",
+          "source_type": "editais",
+          "content_type": "notícias de editais",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ufj.edu.br/category/editais/",
+          "redirect_chain": [],
+          "page_title": "Editais",
+          "verification_evidence": "Listagem oficial continha PET, ingresso, bolsas, chamadas, concursos e pós-graduação.",
+          "verification_notes": "Paginação WordPress confirmada sem coletar anexos.",
+          "priority": 1,
+          "categories": ["pet", "ingresso", "bolsas", "chamadas-publicas", "concursos", "pos-graduacao"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "25352",
+      "official_site_url": "https://ufr.edu.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Categoria WordPress dedicada, atual e paginada.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-25352-ufr-categoria-edital",
+          "name": "Categoria Edital UFR",
+          "url": "https://ufr.edu.br/category/edital/",
+          "source_type": "editais",
+          "content_type": "notícias de editais",
+          "recommended_spider": "wordpress",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://ufr.edu.br/category/edital/",
+          "redirect_chain": [],
+          "page_title": "Edital",
+          "verification_evidence": "Categoria oficial apresentou editais correntes em lista paginada.",
+          "verification_notes": "Estrutura WordPress confirmada.",
+          "priority": 1,
+          "categories": ["ingresso", "pesquisa", "extensao", "assistencia-estudantil"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "26974",
+      "official_site_url": "https://efg.org.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Painel oficial amplo com filtros e registros de educação superior tecnológica, além de outras modalidades.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-26974-efgabf-editais-cursos",
+          "name": "EFG - Editais",
+          "url": "https://efg.org.br/editaiscursos",
+          "source_type": "editais_cursos",
+          "content_type": "editais de cursos e seleções",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://efg.org.br/editaiscursos",
+          "redirect_chain": [],
+          "page_title": "EFG = Editais",
+          "verification_evidence": "Painel oficial indicava 768 registros e item atual de Superior de Tecnologia em Produção Cênica do Basileu França.",
+          "verification_notes": "A fonte mistura educação superior, técnica e FIC; filtrar por unidade e nível na captura.",
+          "priority": 1,
+          "categories": ["graduacao-tecnologica", "cursos-tecnicos", "fic", "artes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "27103",
+      "official_site_url": "https://universidade.df.gov.br/",
+      "coverage_status": "verified",
+      "coverage_notes": "Página oficial de editais em andamento com itens atuais de várias áreas.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-27103-undf-editais-andamento",
+          "name": "Editais em Andamento - UnDF",
+          "url": "https://universidade.df.gov.br/editais-em-andamento",
+          "source_type": "editais",
+          "content_type": "editais institucionais em andamento",
+          "recommended_spider": "pagination",
+          "status": "verified",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://universidade.df.gov.br/editais-em-andamento",
+          "redirect_chain": [],
+          "page_title": "Editais em Andamento",
+          "verification_evidence": "Página oficial continha editais 2026 de graduação, pesquisa, iniciação científica, assistência e eleição.",
+          "verification_notes": "Estrutura GDF/Liferay validada sem abrir documentos.",
+          "priority": 1,
+          "categories": ["graduacao", "pesquisa", "iniciacao-cientifica", "assistencia-estudantil", "eleicoes"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "29927",
+      "official_site_url": "https://cotec.go.gov.br/",
+      "coverage_status": "manual_review",
+      "coverage_notes": "O índice é dinâmico e não foi confirmado edital vigente de educação superior para esta unidade.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-29927-cotec-goq-editais",
+          "name": "Editais COTEC - Governador Onofre Quinan",
+          "url": "https://cotec.go.gov.br/editais",
+          "source_type": "editais",
+          "content_type": "editais de cursos em aplicação dinâmica",
+          "recommended_spider": "generic",
+          "status": "manual_review",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://cotec.go.gov.br/editais",
+          "redirect_chain": [],
+          "page_title": "Site Cotec",
+          "verification_evidence": "Portal oficial respondeu, mas o corpo da listagem não foi renderizado no HTML estático; páginas oficiais confirmam a unidade ativa.",
+          "verification_notes": "Preservar o NO_IES truncado do Inep; expansão nominal fica somente em observação. Nenhum edital superior atual confirmado.",
+          "priority": 3,
+          "categories": ["cursos"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "29928",
+      "official_site_url": "https://cotec.go.gov.br/",
+      "coverage_status": "manual_review",
+      "coverage_notes": "Há edital 2026 oficial da unidade para nível técnico, mas não foi confirmada fonte corrente de educação superior.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-29928-cotec-acn-editais",
+          "name": "Editais COTEC - Aguinaldo de Campos Netto",
+          "url": "https://cotec.go.gov.br/editais",
+          "source_type": "editais",
+          "content_type": "editais de cursos em aplicação dinâmica",
+          "recommended_spider": "generic",
+          "status": "manual_review",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://cotec.go.gov.br/editais",
+          "redirect_chain": [],
+          "page_title": "Site Cotec",
+          "verification_evidence": "Portal oficial respondeu; mecanismo de busca indexou edital oficial 2026 da unidade, restrito a nível técnico.",
+          "verification_notes": "Preservar o NO_IES truncado do Inep; expansão nominal fica somente em observação. Revisar antes de ativar.",
+          "priority": 3,
+          "categories": ["cursos-tecnicos"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    },
+    {
+      "official_code": "29929",
+      "official_site_url": "https://cotec.go.gov.br/",
+      "coverage_status": "manual_review",
+      "coverage_notes": "Há edital 2026 oficial da unidade para nível técnico, mas não foi confirmada fonte corrente de educação superior.",
+      "sources": [
+        {
+          "catalog_source_id": "inep-29929-cotec-gol-editais",
+          "name": "Editais COTEC - Governador Otávio Lage",
+          "url": "https://cotec.go.gov.br/editais",
+          "source_type": "editais",
+          "content_type": "editais de cursos em aplicação dinâmica",
+          "recommended_spider": "generic",
+          "status": "manual_review",
+          "last_verified_at": "2026-07-13",
+          "http_status": 200,
+          "final_url": "https://cotec.go.gov.br/editais",
+          "redirect_chain": [],
+          "page_title": "Site Cotec",
+          "verification_evidence": "Portal oficial respondeu; mecanismo de busca indexou o Edital 001/2026 da unidade, restrito a nível técnico.",
+          "verification_notes": "Preservar o NO_IES truncado do Inep; expansão nominal fica somente em observação. Revisar antes de ativar.",
+          "priority": 3,
+          "categories": ["cursos-tecnicos"],
+          "is_active": false,
+          "capture_validated_at": null,
+          "capture_evidence": null,
+          "replaces": []
+        }
+      ]
+    }
+  ]
+}

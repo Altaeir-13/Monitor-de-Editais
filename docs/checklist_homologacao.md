@@ -1,6 +1,86 @@
-# Checklist de HomologaÃ§Ã£o
+# Checklist de Homologação
 
-Use este checklist antes de considerar o Monitor de Editais pronto para homologaÃ§Ã£o ou produÃ§Ã£o assistida.
+Use este checklist antes de considerar o Monitor de Editais pronto para homologação ou produção assistida.
+
+## Expansão nacional auditável
+
+- [ ] A formulação de transparência está visível: “O inventário institucional possui alcance nacional. A cobertura operacional das fontes permanece em validação progressiva.”
+- [ ] A base canônica é o Censo da Educação Superior 2024 do Inep.
+- [ ] O gerador aplica `NU_ANO_CENSO = 2024` e `TP_REDE = 1`.
+- [ ] O checksum SHA-256 do CSV canônico é `aaa37fb9433d005686616bb9e48c5d7083526fdcc171973e787eed35a2ee349d`.
+- [ ] Totais conferidos: 317 registros públicos, 315 elegíveis no Censo e 3 instituições pós-Censo.
+- [ ] Inventário conferido: 320 registros, 318 elegíveis e 2 excluídos preservados.
+- [ ] Fontes conferidas: 303 no inventário, 302 elegíveis e 1 histórica excluída.
+- [ ] Instituições elegíveis conferidas: 263 com fonte e 55 sem fonte.
+- [ ] Status conferidos: 93 `verified`, 165 `partial`, 29 `manual_review` e 31 `source_not_found`.
+- [ ] Captura validada nacional permanece 0 enquanto não houver evidência.
+- [ ] Monitoramento ativo nacional permanece 0 enquanto não houver evidência.
+- [ ] Totais regionais elegível/com fonte/fontes: CO 29/27/27, NE 67/46/85, N 24/24/24, SE 166/134/134 e S 32/32/32.
+- [ ] O inventário Sul mostra 34 registros: UNC em revisão de escopo e UNIUV inativa continuam auditáveis.
+- [ ] A única fonte histórica da UNIUV está inativa e fora das 302 fontes elegíveis.
+- [ ] Inventário, fonte mapeada, `verified`, captura validada e monitoramento ativo aparecem como estágios distintos.
+- [ ] Nenhuma tela ou documento confunde inventário nacional com operação validada em todo o país.
+- [ ] Fontes criadas pelo seed nacional permanecem inativas.
+- [ ] `CRAWLER_SCHEDULER_ENABLED=false` permanece o padrão remoto.
+
+## Catálogo e seed
+
+- [ ] `test_national_catalog.py`, `test_source_manifests.py` e `test_catalog_eligibility.py` passaram.
+- [ ] O seed nacional inclui somente `eligibility_status` iniciado por `included`.
+- [ ] `POST /api/admin/seed-national` exige administrador.
+- [ ] O seed nacional completo foi executado duas vezes sem duplicação.
+- [ ] O seed filtrado por região foi validado.
+- [ ] O wrapper `POST /api/admin/seed-northeast` continua compatível.
+- [ ] Instituições e fontes criadas, atualizadas e ignoradas foram conferidas separadamente.
+- [ ] Pendências e revisões manuais foram conferidas.
+
+## Cobertura administrativa
+
+- [ ] `GET /api/admin/coverage` exige administrador e retorna totais coerentes.
+- [ ] `GET /api/admin/coverage/regions` retorna a distribuição regional.
+- [ ] `GET /api/admin/coverage/institutions` retorna lista e filtros.
+- [ ] Filtros de região, UF, categoria, organização, elegibilidade, cobertura, verificação, ativação e presença de fonte foram testados.
+- [ ] O painel explica que fonte verificada não significa captura validada.
+- [ ] O painel explica que captura validada não significa monitoramento contínuo.
+
+## Migrations e bancos descartáveis
+
+SQLite:
+
+- [ ] Um banco SQLite temporário isolado foi selecionado antes de importar as configurações.
+- [ ] `alembic upgrade head` passou.
+- [ ] O downgrade da migration nacional passou.
+- [ ] Um novo `alembic upgrade head` passou.
+- [ ] Leitura e escrita dos campos nacionais passaram.
+- [ ] Seed repetido e filtro regional passaram.
+
+PostgreSQL:
+
+- [ ] Um project name e um volume exclusivos desta validação foram registrados.
+- [ ] Upgrade até head, downgrade da migration nacional e novo upgrade passaram.
+- [ ] Seed nacional e repetição idempotente passaram.
+- [ ] Filtros e API de cobertura passaram.
+- [ ] Somente recursos criados nesta validação foram removidos.
+
+## Docker e frontend
+
+- [ ] `docker compose --env-file .env.prod.example -f docker-compose.prod.yml config --quiet` passou.
+- [ ] `docker compose --env-file .env.prod.example -f docker-compose.prod.yml build` passou.
+- [ ] Em runtime descartável, Nginx foi o único serviço com portas públicas.
+- [ ] Backend e PostgreSQL ficaram sem host port bindings.
+- [ ] O serviço one-shot `migrate` terminou com código zero antes do backend.
+- [ ] `npm ci`, lint, build e audit foram executados dentro de `frontend`.
+- [ ] `npm audit` reportou zero vulnerabilidades conhecidas ou qualquer falha foi registrada sem `--force`.
+- [ ] Nenhum `package.json`, `node_modules` ou `dist` foi criado na raiz.
+
+## Auditoria amostrada
+
+- [ ] A amostra inclui ao menos uma instituição de cada região.
+- [ ] A amostra varia spiders e inclui fontes `verified` e `partial`.
+- [ ] Concorrência, timeout e User-Agent identificável foram registrados.
+- [ ] `robots.txt` foi respeitado quando aplicável.
+- [ ] Não houve autenticação, bypass, ativação de fonte ou crawler nacional completo.
+- [ ] O resultado foi descrito como amostral, sem inferência nacional.
 
 ## Ambiente
 
@@ -8,21 +88,21 @@ Use este checklist antes de considerar o Monitor de Editais pronto para homologa
 - [ ] `frontend/.env` foi criado a partir de `frontend/.env.example`.
 - [ ] `SECRET_KEY` foi trocada por valor forte.
 - [ ] `DATABASE_URL` aponta para banco correto do ambiente.
-- [ ] PostgreSQL estÃ¡ disponÃ­vel para homologaÃ§Ã£o/produÃ§Ã£o.
-- [ ] SQLite, se usado, estÃ¡ restrito a validaÃ§Ã£o local controlada.
-- [ ] `.env` real nÃ£o estÃ¡ versionado.
+- [ ] PostgreSQL está disponível para homologação/produção.
+- [ ] SQLite, se usado, está restrito a validação local controlada.
+- [ ] `.env` real não está versionado.
 
 ## Backend
 
 - [ ] Backend sobe sem erro.
-- [ ] Migrations/tabelas estÃ£o disponÃ­veis no banco do ambiente.
+- [ ] Migrations/tabelas estão disponíveis no banco do ambiente.
 - [ ] Login admin funciona.
 - [ ] `POST /admin/seed-northeast` executa sem duplicar fontes.
 - [ ] `POST /admin/run-crawler` executa e retorna resumo.
-- [ ] `POST /admin/run-crawler/source/{source_id}` executa uma fonte especÃ­fica.
-- [ ] Falhas externas de fontes nÃ£o interrompem a execuÃ§Ã£o geral.
-- [ ] Scheduler estÃ¡ desativado por padrÃ£o.
-- [ ] Scheduler sÃ³ Ã© ativado com `CRAWLER_SCHEDULER_ENABLED=true` em ambiente controlado.
+- [ ] `POST /admin/run-crawler/source/{source_id}` executa uma fonte específica.
+- [ ] Falhas externas de fontes não interrompem a execução geral.
+- [ ] Scheduler está desativado por padrão.
+- [ ] Scheduler só é ativado com `CRAWLER_SCHEDULER_ENABLED=true` em ambiente controlado.
 
 ## Frontend
 
@@ -31,26 +111,26 @@ Use este checklist antes de considerar o Monitor de Editais pronto para homologa
 - [ ] `/admin/crawler` abre.
 - [ ] Cards de resumo carregam.
 - [ ] Tabela de fontes carrega.
-- [ ] HistÃ³rico recente carrega.
-- [ ] ExecuÃ§Ã£o por fonte funciona.
-- [ ] ExecuÃ§Ã£o geral funciona.
+- [ ] Histórico recente carrega.
+- [ ] Execução por fonte funciona.
+- [ ] Execução geral funciona.
 - [ ] Link para URL oficial da fonte abre.
-- [ ] Link para ediÃ§Ã£o de fontes abre `/admin/sources`.
-- [ ] Listagem pÃºblica de editais mostra dados.
+- [ ] Link para edição de fontes abre `/admin/sources`.
+- [ ] Listagem pública de editais mostra dados.
 
 ## Painel Operacional
 
 - [ ] Status `ok` aparece para fontes funcionais.
-- [ ] Status `warning` aparece para fontes sem itens no Ãºltimo run.
+- [ ] Status `warning` aparece para fontes sem itens no último run.
 - [ ] Status `error` aparece para fontes com falha.
-- [ ] Status `never_checked` aparece para fontes ainda nÃ£o checadas.
+- [ ] Status `never_checked` aparece para fontes ainda não checadas.
 - [ ] Status `inactive` aparece para fontes desativadas.
-- [ ] Ãšltima checagem Ã© exibida.
-- [ ] Ãšltimo sucesso Ã© exibido.
-- [ ] Ãšltimo erro Ã© exibido quando houver.
-- [ ] Itens encontrados e novos salvos sÃ£o exibidos.
+- [ ] Última checagem é exibida.
+- [ ] Último sucesso é exibido.
+- [ ] Último erro é exibido quando houver.
+- [ ] Itens encontrados e novos salvos são exibidos.
 
-## ValidaÃ§Ãµes TÃ©cnicas
+## Validações Técnicas
 
 Backend:
 
@@ -72,9 +152,9 @@ npm run build
 - [ ] `npm run lint` passou.
 - [ ] `npm run build` passou.
 
-## Resultado da ValidaÃ§Ã£o Manual Registrada
+## Resultado da Validação Manual Registrada
 
-ValidaÃ§Ã£o registrada nesta fase:
+Validação registrada nesta fase:
 
 - Backend: `127.0.0.1:8000`
 - Frontend: `127.0.0.1:5173`
@@ -85,25 +165,25 @@ ValidaÃ§Ã£o registrada nesta fase:
 - Cards: OK
 - Fontes totais: 83
 - Fontes ativas: 82
-- Editais ativos antes da execuÃ§Ã£o geral: 1.418
+- Editais ativos antes da execução geral: 1.418
 - Tabela de fontes: 83 fontes carregadas
-- HistÃ³rico: 50 runs recentes carregados
-- ExecuÃ§Ã£o de fonte especÃ­fica `#78`: OK
-- ExecuÃ§Ã£o geral: `sources_checked=82`, `items_found=5674`, `new_items=3336`, `failed_sources=4`
+- Histórico: 50 runs recentes carregados
+- Execução de fonte específica `#78`: OK
+- Execução geral: `sources_checked=82`, `items_found=5674`, `new_items=3336`, `failed_sources=4`
 - As 4 falhas foram falhas reais de fontes externas, e o runner continuou corretamente.
 
-## CritÃ©rio de Pronto para HomologaÃ§Ã£o
+## Critério de Pronto para Homologação
 
-- [ ] Todos os itens crÃ­ticos de ambiente foram conferidos.
-- [ ] Backend e frontend sobem de forma reproduzÃ­vel.
+- [ ] Todos os itens críticos de ambiente foram conferidos.
+- [ ] Backend e frontend sobem de forma reproduzível.
 - [ ] Admin consegue operar crawler pelo painel.
-- [ ] Falhas externas sÃ£o visÃ­veis no painel e nÃ£o quebram execuÃ§Ã£o geral.
-- [ ] ValidaÃ§Ãµes tÃ©cnicas passaram.
-- [ ] Nenhum artefato local ou segredo real estÃ¡ em `git status --short`.
+- [ ] Falhas externas são visíveis no painel e não quebram execução geral.
+- [ ] Validações técnicas passaram.
+- [ ] Nenhum artefato local ou segredo real está em `git status --short`.
 
 ## Checklist de Homologacao PostgreSQL Reproduzivel
 
-- [ ] Branch usada: `chore/remote-staging-deployment`.
+- [ ] A branch de trabalho atual foi conferida, sem impor um nome legado fixo.
 - [ ] `git status --short` limpo antes das alteracoes.
 - [ ] `.env` criado a partir de `.env.prod.example` e nao versionado.
 - [ ] `POSTGRES_PASSWORD` real definido somente no `.env` local/ambiente.
@@ -112,7 +192,7 @@ ValidaÃ§Ã£o registrada nesta fase:
 - [ ] `docker compose -f docker-compose.prod.yml config` passou.
 - [ ] `docker compose -f docker-compose.prod.yml build` passou.
 - [ ] PostgreSQL subiu saudavel pelo health check.
-- [ ] Backend subiu e aplicou `alembic upgrade head` sem erro.
+- [ ] O serviço one-shot `migrate` aplicou `alembic upgrade head` e terminou com código zero antes do backend.
 - [ ] Frontend serviu build de producao via Nginx.
 - [ ] `GET /health` retornou `{"status":"ok"}`.
 - [ ] `GET /ready` retornou `{"status":"ok"}`.
@@ -154,7 +234,7 @@ Editais salvos:
 - [ ] Teste automatizado confirma que falha do crawler e registrada e nao escapa do job.
 - [ ] Teste automatizado confirma fechamento da sessao de banco no `finally`.
 - [ ] Teste automatizado confirma shutdown idempotente.
-- [ ] Validacao Docker foi feita em banco descartavel e encerrada com remocao do volume.
+- [ ] Validação Docker foi feita em banco descartável e somente o volume criado para o project name registrado foi removido.
 - [ ] Scheduler habilitado somente com uma instancia do backend.
 
 ## Checklist de homologacao remota HTTPS

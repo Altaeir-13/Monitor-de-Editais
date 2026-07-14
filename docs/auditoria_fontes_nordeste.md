@@ -1,7 +1,7 @@
 # Auditoria de fontes do Nordeste
 
 Gerado em: 2026-06-27 18:41:49 UTC
-Banco usado: `sqlite:///C:/Users/Altair/Documents/Editais/backend/audit_northeast_final.db`
+Banco usado: banco SQLite local descartável (caminho omitido).
 
 ## Escopo
 

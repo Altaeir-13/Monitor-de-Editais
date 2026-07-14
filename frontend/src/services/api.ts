@@ -350,6 +350,171 @@ export async function deleteAdminSource(id: number): Promise<MonitoredSourceResp
   return response.data;
 }
 
+// ── Admin National Coverage Service ──────────────────────────────────────────
+
+export type CoverageStatus =
+  | 'verified'
+  | 'partial'
+  | 'source_not_found'
+  | 'temporarily_unavailable'
+  | 'manual_review'
+  | 'unsupported'
+  | 'inactive';
+
+export interface InventoryCoverage {
+  census_raw_total: number;
+  eligible_census_total: number;
+  post_census_total: number;
+  inventory_total: number;
+  eligible_total: number;
+  registered: number;
+  percent: number;
+}
+
+export interface CoverageStage {
+  institutions: number;
+  percent: number;
+}
+
+export interface CoverageBreakdownItem {
+  key: string;
+  label: string;
+  inventory_total: number;
+  eligible_total: number;
+  mapped_sources: number;
+  institutions_with_source: number;
+  institutions_without_source: number;
+  verified: number;
+  partial: number;
+  manual_review: number;
+  source_not_found: number;
+  capture_validated: number;
+  active_monitoring: number;
+}
+
+export interface SpiderBreakdownItem {
+  spider: string;
+  sources: number;
+  institutions: number;
+}
+
+export interface CoverageBreakdown {
+  regions: CoverageBreakdownItem[];
+  states: CoverageBreakdownItem[];
+  administrative_categories: CoverageBreakdownItem[];
+  academic_organizations: CoverageBreakdownItem[];
+  spiders: SpiderBreakdownItem[];
+}
+
+export interface CoveragePendingItem {
+  official_code: string;
+  official_name: string;
+  state: string;
+  region: string;
+  status: string;
+  reason: string;
+}
+
+export interface CoverageResponse {
+  inventory_total: number;
+  eligible_target_total: number;
+  mapped_source_total_inventory: number;
+  mapped_source_total_eligible: number;
+  institutions_with_source: number;
+  institutions_without_source: number;
+  verified_source_institutions: number;
+  partial_source_institutions: number;
+  manual_review_institutions: number;
+  source_not_found_institutions: number;
+  validated_capture_total: number;
+  active_monitoring_total: number;
+  inventory: InventoryCoverage;
+  mapped: CoverageStage;
+  verified: CoverageStage;
+  capture_validated: CoverageStage;
+  active_monitoring: CoverageStage;
+  institution_status_counts: Record<string, number>;
+  source_status_counts: Record<string, number>;
+  breakdown: CoverageBreakdown;
+  last_audit: string | null;
+  pending: CoveragePendingItem[];
+}
+
+export interface CoverageInstitutionItem {
+  official_code: string;
+  official_name: string;
+  initials: string;
+  state: string;
+  region: string;
+  administrative_category_code: number | null;
+  administrative_category: string | null;
+  academic_organization_code: number | null;
+  academic_organization: string | null;
+  eligibility_status: string;
+  eligibility_reason: string | null;
+  coverage_status: string;
+  coverage_notes: string | null;
+  source_count: number;
+  source_statuses: string[];
+  has_source: boolean;
+  registered: boolean;
+  institution_active: boolean | null;
+  source_active: boolean;
+  capture_validated: boolean;
+  active_monitoring: boolean;
+}
+
+export interface CoverageInstitutionList {
+  total: number;
+  skip: number;
+  limit: number;
+  items: CoverageInstitutionItem[];
+}
+
+export interface CoverageSummaryFilters {
+  region?: string;
+  state?: string;
+  administrative_category_code?: number;
+  source_status?: CoverageStatus;
+}
+
+export interface CoverageInstitutionFilters {
+  region?: string;
+  state?: string;
+  administrative_category_code?: number;
+  academic_organization_code?: number;
+  eligibility_status?: string;
+  coverage_status?: CoverageStatus;
+  verification_status?: CoverageStatus;
+  institution_active?: boolean;
+  source_active?: boolean;
+  has_source?: boolean;
+  manual_review?: boolean;
+  skip?: number;
+  limit?: number;
+}
+
+export async function getAdminCoverage(
+  filters: CoverageSummaryFilters = {}
+): Promise<CoverageResponse> {
+  const response = await api.get<CoverageResponse>('/admin/coverage', { params: filters });
+  return response.data;
+}
+
+export async function getAdminCoverageRegions(): Promise<CoverageBreakdownItem[]> {
+  const response = await api.get<CoverageBreakdownItem[]>('/admin/coverage/regions');
+  return response.data;
+}
+
+export async function getAdminCoverageInstitutions(
+  filters: CoverageInstitutionFilters = {}
+): Promise<CoverageInstitutionList> {
+  const response = await api.get<CoverageInstitutionList>('/admin/coverage/institutions', {
+    params: filters,
+  });
+  return response.data;
+}
+
 export interface CrawlerRunSummary {
   sources_checked: number;
   items_found: number;
