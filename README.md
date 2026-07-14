@@ -4,9 +4,11 @@ Aplicação web para reunir editais publicados por instituições públicas em f
 
 O sistema está em estágio de MVP funcional. A topologia de homologação com PostgreSQL, FastAPI, React, Nginx e HTTPS foi preparada e validada localmente; a implantação em um servidor remoto ainda depende de DNS, certificado, segredos e operação do ambiente. Isso não representa uma produção concluída.
 
+O inventário institucional possui alcance nacional. A cobertura operacional das fontes permanece em validação progressiva.
+
 ## Principais funcionalidades
 
-- catálogo de instituições e fontes oficiais, com seed idempotente para a região Nordeste;
+- catálogo nacional auditável de instituições públicas e fontes oficiais, com seed idempotente nacional e wrapper compatível para o Nordeste;
 - crawlers genérico, WordPress, Gov.br, paginado e SIGAA/JSF;
 - normalização de títulos e URLs, fingerprint SHA-256 e deduplicação;
 - classificação normalizada por tipo de edital e filtros de consulta;
@@ -19,6 +21,39 @@ O sistema está em estágio de MVP funcional. A topologia de homologação com P
 - scheduler com APScheduler, configurável e desativado por padrão.
 
 A API `GET /notices/` e o detalhe `GET /notices/{notice_id}` não exigem autenticação. Na SPA atual, porém, as páginas `/notices` e `/notices/:id` ficam em uma rota protegida e exigem login; somente `/login` e `/register` são páginas públicas.
+
+## Escopo nacional auditável
+
+A fonte canônica são os Microdados do Censo da Educação Superior 2024 do Inep,
+com os filtros `NU_ANO_CENSO = 2024` e `TP_REDE = 1`. A reconciliação preserva
+as instituições excluídas no inventário para que decisões de escopo continuem
+auditáveis.
+
+| Métrica | Total |
+|---|---:|
+| Registros públicos no Censo | 317 |
+| Registros censitários elegíveis | 315 |
+| Instituições posteriores ao Censo | 3 |
+| Inventário auditável, incluindo excluídas | 320 |
+| Alvo operacional elegível | 318 |
+| Fontes no inventário completo | 303 |
+| Fontes associadas a instituições elegíveis | 302 |
+| Instituições elegíveis com fonte | 263 |
+| Instituições elegíveis sem fonte | 55 |
+| Instituições com status `verified` | 93 |
+| Instituições com status `partial` | 165 |
+| Instituições em `manual_review` | 29 |
+| Instituições em `source_not_found` | 31 |
+| Instituições com captura validada | 0 |
+| Instituições em monitoramento ativo | 0 |
+
+Inventário, fonte mapeada, fonte verificada, captura validada e monitoramento
+ativo são estágios diferentes. Uma URL `verified` indica verificação da fonte,
+não uma captura validada. Captura validada, por sua vez, não habilita
+monitoramento contínuo. As fontes introduzidas pelo catálogo nacional começam
+inativas e o scheduler remoto permanece com `CRAWLER_SCHEDULER_ENABLED=false`.
+Metodologia, totais regionais, checksums e limitações estão em [Cobertura
+nacional](docs/cobertura_nacional.md).
 
 ## Arquitetura
 
@@ -157,7 +192,7 @@ A partir de `backend`:
 
 O script solicita a senha sem exibi-la, é idempotente e pode criar, promover ou reativar o usuário. Não grave a senha no comando nem no Git.
 
-### Aplicar o seed Nordeste
+### Aplicar o seed nacional
 
 Com um administrador criado e o backend local em execução:
 
@@ -175,7 +210,7 @@ try {
 
     Invoke-RestMethod `
         -Method Post `
-        -Uri "http://127.0.0.1:8000/admin/seed-northeast" `
+        -Uri "http://127.0.0.1:8000/admin/seed-national" `
         -Headers $Headers
 }
 finally {
@@ -183,7 +218,12 @@ finally {
 }
 ```
 
-O seed pode ser repetido sem duplicar instituições ou fontes. Na topologia Nginx, acrescente o prefixo `/api` às rotas da API.
+O seed nacional pode ser executado para todo o alvo elegível ou filtrado por
+região e repetido sem duplicar instituições ou fontes. Ele ignora registros
+excluídos e cria fontes novas com `is_active=false`. O endpoint legado
+`POST /admin/seed-northeast` permanece como wrapper compatível do mesmo serviço,
+limitado ao Nordeste. Na topologia Nginx, acrescente o prefixo público `/api`
+às rotas da API.
 
 ### Frontend local
 
@@ -274,7 +314,7 @@ O procedimento canônico está em [Deploy de homologação remota](docs/deploy_h
 6. validar e executar `scripts/deploy.ps1`;
 7. confirmar a migration one-shot, health e readiness;
 8. criar o administrador;
-9. aplicar o seed Nordeste;
+9. aplicar o seed nacional, mantendo as fontes novas inativas;
 10. executar o smoke remoto;
 11. criar e testar backup;
 12. manter o scheduler desativado na validação inicial.
@@ -327,6 +367,12 @@ Execute a partir de `backend`. Cada teste que grava dados seleciona um SQLite te
 .\venv\Scripts\python.exe tests\test_config.py
 .\venv\Scripts\python.exe tests\test_smoke_test.py
 .\venv\Scripts\python.exe tests\test_seed.py
+.\venv\Scripts\python.exe tests\test_national_catalog.py
+.\venv\Scripts\python.exe tests\test_source_manifests.py
+.\venv\Scripts\python.exe tests\test_catalog_eligibility.py
+.\venv\Scripts\python.exe tests\test_national_seed.py
+.\venv\Scripts\python.exe tests\test_coverage.py
+.\venv\Scripts\python.exe tests\test_source_audit.py
 .\venv\Scripts\python.exe tests\test_notices.py
 .\venv\Scripts\python.exe tests\test_email_dispatcher.py
 .\venv\Scripts\python.exe tests\test_alerts.py
@@ -435,6 +481,7 @@ O script recusa restaurar no banco principal configurado. Restaurações devem o
 
 ## Documentação
 
+- [Cobertura nacional auditável](docs/cobertura_nacional.md)
 - [Operação do crawler e painel](docs/operacao.md)
 - [Checklist de homologação](docs/checklist_homologacao.md)
 - [Deploy de homologação remota](docs/deploy_homologacao_remota.md)
@@ -460,8 +507,9 @@ Confirmado nesta fase:
 - backend, migrations, autenticação, health, readiness, seed, scheduler desativado e suíte Python;
 - frontend, lint, build e auditoria de dependências;
 - Compose, imagens, PostgreSQL, migration one-shot, Nginx, HTTPS, proxy e fallback SPA;
-- administrador e seed idempotentes;
-- smoke, backup e restauração em ambiente descartável.
+- administrador, seed nacional idempotente e wrapper Nordeste compatível;
+- smoke, backup e restauração em ambiente descartável;
+- inventário nacional auditável e manifestos regionais reconciliados; a validação operacional das fontes continua progressiva.
 
 Pendente para uma homologação remota real:
 

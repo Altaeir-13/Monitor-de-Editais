@@ -1,12 +1,38 @@
-# OperaÃƒÂ§ÃƒÂ£o do Monitor de Editais
+# Operação do Monitor de Editais
 
-Este guia descreve como operar o crawler e interpretar o painel administrativo `/admin/crawler` em homologaÃƒÂ§ÃƒÂ£o ou produÃƒÂ§ÃƒÂ£o.
+Este guia descreve como operar o crawler e interpretar o painel administrativo `/admin/crawler` em homologação ou produção.
 
-Para validaÃƒÂ§ÃƒÂ£o local rÃƒÂ¡pida do backend, use `backend/.env.local.example`, que aponta para SQLite (`sqlite:///./app.db`) e mantÃƒÂ©m o scheduler desativado. O arquivo `backend/.env.example` aponta para PostgreSQL e exige PostgreSQL rodando, banco criado e credenciais compatÃƒÂ­veis.
+Para validação local rápida do backend, use `backend/.env.local.example`, que aponta para SQLite (`sqlite:///./app.db`) e mantém o scheduler desativado. O arquivo `backend/.env.example` aponta para PostgreSQL e exige PostgreSQL rodando, banco criado e credenciais compatíveis.
+
+## Catálogo e cobertura nacional
+
+O inventário institucional possui alcance nacional. A cobertura operacional das fontes permanece em validação progressiva.
+
+A linha de base usa o Censo da Educação Superior 2024 do Inep com
+`NU_ANO_CENSO = 2024` e `TP_REDE = 1`. O inventário auditável tem 320
+instituições; 318 formam o alvo elegível. Há 303 fontes no inventário, das quais
+302 pertencem a instituições elegíveis. Entre as elegíveis, 263 possuem fonte e
+55 ainda não possuem.
+
+Esses números não autorizam execução nacional do crawler. `verified` confirma
+a fonte oficial, mas não confirma captura. Captura validada não equivale a
+monitoramento contínuo. Nesta versão, captura validada nacional e monitoramento
+ativo nacional permanecem em zero.
+
+As rotas administrativas disponíveis sob o prefixo público `/api` são:
+
+- `GET /api/admin/coverage`;
+- `GET /api/admin/coverage/regions`;
+- `GET /api/admin/coverage/institutions`;
+- `POST /api/admin/seed-national`.
+
+As rotas exigem administrador. Fontes criadas pelo seed nacional permanecem
+inativas. Mantenha `CRAWLER_SCHEDULER_ENABLED=false` durante seed, homologação
+e auditoria amostrada.
 
 ## Painel Operacional do Crawler
 
-Acesse como usuÃƒÂ¡rio admin:
+Acesse como usuário admin:
 
 ```text
 /admin/crawler
@@ -16,92 +42,92 @@ O painel mostra:
 
 - resumo geral das fontes;
 - tabela de status por fonte;
-- histÃƒÂ³rico recente de execuÃƒÂ§ÃƒÂµes;
-- execuÃƒÂ§ÃƒÂ£o manual geral;
-- execuÃƒÂ§ÃƒÂ£o manual de uma fonte especÃƒÂ­fica;
-- atalhos para abrir URL oficial e acessar ediÃƒÂ§ÃƒÂ£o de fontes.
+- histórico recente de execuções;
+- execução manual geral;
+- execução manual de uma fonte específica;
+- atalhos para abrir URL oficial e acessar edição de fontes.
 
 ## Status das Fontes
 
-- `ok`: fonte ativa com ÃƒÂºltimo run bem-sucedido e itens encontrados.
-- `warning`: fonte ativa com ÃƒÂºltimo run concluÃƒÂ­do, mas sem itens encontrados.
-- `error`: ÃƒÂºltimo run falhou ou a fonte possui `last_error_message`.
-- `never_checked`: fonte ativa sem checagem ou histÃƒÂ³rico de execuÃƒÂ§ÃƒÂ£o.
-- `inactive`: fonte desativada; nÃƒÂ£o serÃƒÂ¡ executada pelo crawler.
+- `ok`: fonte ativa com último run bem-sucedido e itens encontrados.
+- `warning`: fonte ativa com último run concluído, mas sem itens encontrados.
+- `error`: último run falhou ou a fonte possui `last_error_message`.
+- `never_checked`: fonte ativa sem checagem ou histórico de execução.
+- `inactive`: fonte desativada; não será executada pelo crawler.
 
-`warning` nÃƒÂ£o significa necessariamente erro. Pode indicar uma fonte vÃƒÂ¡lida sem edital novo no momento.
+`warning` não significa necessariamente erro. Pode indicar uma fonte válida sem edital novo no momento.
 
-## ExecuÃƒÂ§ÃƒÂ£o Geral
+## Execução Geral
 
-Use o botÃƒÂ£o de execuÃƒÂ§ÃƒÂ£o geral no painel ou o endpoint:
+Use o botão de execução geral no painel ou o endpoint:
 
 ```http
 POST /admin/run-crawler
 ```
 
-A execuÃƒÂ§ÃƒÂ£o geral percorre as fontes ativas. Falhas individuais sÃƒÂ£o registradas, mas nÃƒÂ£o devem interromper o restante do crawler.
+A execução geral percorre as fontes ativas. Falhas individuais são registradas, mas não devem interromper o restante do crawler.
 
-## ExecuÃƒÂ§ÃƒÂ£o por Fonte
+## Execução por Fonte
 
-Use o botÃƒÂ£o de execuÃƒÂ§ÃƒÂ£o na linha da fonte ou o endpoint:
+Use o botão de execução na linha da fonte ou o endpoint:
 
 ```http
 POST /admin/run-crawler/source/{source_id}
 ```
 
-Essa aÃƒÂ§ÃƒÂ£o ÃƒÂ© indicada para:
+Essa ação é indicada para:
 
-- validar uma correÃƒÂ§ÃƒÂ£o de fonte;
+- validar uma correção de fonte;
 - investigar uma fonte com erro;
-- evitar rodar todas as fontes durante uma anÃƒÂ¡lise pontual.
+- evitar rodar todas as fontes durante uma análise pontual.
 
-## InvestigaÃƒÂ§ÃƒÂ£o de Fonte com Erro
+## Investigação de Fonte com Erro
 
 1. Abra `/admin/crawler`.
 2. Localize fontes com status `error`.
-3. Leia a coluna de ÃƒÂºltimo erro.
+3. Leia a coluna de último erro.
 4. Abra a URL oficial da fonte.
 5. Reexecute apenas a fonte.
 6. Se o erro persistir, classifique a causa antes de alterar o crawler.
 
 ## Erro Externo vs Erro do Sistema
 
-Normalmente ÃƒÂ© erro externo quando ocorrer:
+Normalmente é erro externo quando ocorrer:
 
-- certificado SSL expirado, invÃƒÂ¡lido ou self-signed;
-- conexÃƒÂ£o resetada pelo host remoto;
+- certificado SSL expirado, inválido ou self-signed;
+- conexão resetada pelo host remoto;
 - timeout em portal oficial;
-- HTTP 404 em pÃƒÂ¡gina institucional;
-- redirecionamento para login, captcha ou sessÃƒÂ£o;
-- indisponibilidade temporÃƒÂ¡ria do site.
+- HTTP 404 em página institucional;
+- redirecionamento para login, captcha ou sessão;
+- indisponibilidade temporária do site.
 
-Normalmente ÃƒÂ© erro do sistema quando ocorrer:
+Normalmente é erro do sistema quando ocorrer:
 
-- traceback de cÃƒÂ³digo sem relaÃƒÂ§ÃƒÂ£o com rede externa;
+- traceback de código sem relação com rede externa;
 - erro de banco de dados;
-- falha de importaÃƒÂ§ÃƒÂ£o ou configuraÃƒÂ§ÃƒÂ£o local;
-- erro de normalizaÃƒÂ§ÃƒÂ£o/persistÃƒÂªncia em dados vÃƒÂ¡lidos;
-- falha em todos os spiders apÃƒÂ³s mudanÃƒÂ§a de cÃƒÂ³digo.
+- falha de importação ou configuração local;
+- erro de normalização/persistência em dados válidos;
+- falha em todos os spiders após mudança de código.
 
-Erros externos devem ser documentados e acompanhados. NÃƒÂ£o desative uma fonte oficial sem evidÃƒÂªncia de que ela foi substituÃƒÂ­da por outra fonte oficial melhor.
+Erros externos devem ser documentados e acompanhados. Não desative uma fonte oficial sem evidência de que ela foi substituída por outra fonte oficial melhor.
 
-## HistÃƒÂ³rico de ExecuÃƒÂ§ÃƒÂµes
+## Histórico de Execuções
 
-O histÃƒÂ³rico usa `CrawlerRun`, que representa execuÃƒÂ§ÃƒÂ£o por fonte. Ele mostra:
+O histórico usa `CrawlerRun`, que representa execução por fonte. Ele mostra:
 
 - fonte executada;
-- instituiÃƒÂ§ÃƒÂ£o;
+- instituição;
 - status;
 - itens encontrados;
 - novos editais salvos;
 - erro, quando houver;
-- inÃƒÂ­cio e fim da execuÃƒÂ§ÃƒÂ£o.
+- início e fim da execução.
 
-O painel nÃƒÂ£o usa uma tabela de execuÃƒÂ§ÃƒÂ£o geral. O resumo geral ÃƒÂ© calculado por agregaÃƒÂ§ÃƒÂ£o de fontes, runs e editais.
+O painel não usa uma tabela de execução geral. O resumo geral é calculado por agregação de fontes, runs e editais.
 
 ## Scheduler
 
-O scheduler fica desativado por padrÃƒÂ£o:
+O scheduler fica desativado por padrão:
 
 ```env
 CRAWLER_SCHEDULER_ENABLED=false
@@ -115,21 +141,35 @@ CRAWLER_SCHEDULER_ENABLED=true
 CRAWLER_INTERVAL_MINUTES=360
 ```
 
-Para verificar se estÃƒÂ¡ ativo:
+Para verificar se está ativo:
 
-- confira as variÃƒÂ¡veis de ambiente do backend;
-- confira os logs de inicializaÃƒÂ§ÃƒÂ£o da aplicaÃƒÂ§ÃƒÂ£o;
-- procure logs de inÃƒÂ­cio, conclusÃƒÂ£o ou falha do job agendado.
+- confira as variáveis de ambiente do backend;
+- confira os logs de inicialização da aplicação;
+- procure logs de início, conclusão ou falha do job agendado.
 
-## Seed Nordeste
+## Seed nacional e compatibilidade Nordeste
 
-Execute como admin:
+Execute o seed nacional como administrador:
+
+```http
+POST /admin/seed-national
+```
+
+Sob Nginx, use `POST /api/admin/seed-national`. A execução pode abranger todo o
+alvo elegível ou ser filtrada por região. O serviço só inclui registros cujo
+`eligibility_status` começa com `included`, preserva registros existentes sem
+regra explícita de substituição e cria fontes com `is_active=false`.
+
+O endpoint legado continua disponível:
 
 ```http
 POST /admin/seed-northeast
 ```
 
-O seed ÃƒÂ© idempotente. A segunda execuÃƒÂ§ÃƒÂ£o nÃƒÂ£o deve duplicar instituiÃƒÂ§ÃƒÂµes ou fontes. Fontes antigas listadas em `replaces` devem ser atualizadas/substituÃƒÂ­das de forma segura.
+Ele é um wrapper do seed nacional limitado ao Nordeste. Ambos são idempotentes:
+uma segunda execução não duplica instituições nem fontes. Antes de prosseguir,
+revise separadamente instituições e fontes criadas, atualizadas e ignoradas,
+além das pendências e revisões manuais.
 
 ## Arquivos que Nunca Devem Ser Versionados
 
@@ -140,12 +180,12 @@ O seed ÃƒÂ© idempotente. A segunda execuÃƒÂ§ÃƒÂ£o nÃƒÂ£o deve du
 - `__pycache__/`;
 - `*.pyc`;
 - bancos SQLite locais: `*.db`, `*.sqlite`, `*.sqlite3`;
-- bancos temporÃƒÂ¡rios de auditoria;
-- arquivos temporÃƒÂ¡rios de validaÃƒÂ§ÃƒÂ£o.
+- bancos temporários de auditoria;
+- arquivos temporários de validação.
 
-## ValidaÃƒÂ§ÃƒÂ£o Manual Registrada
+## Validação Manual Registrada
 
-ÃƒÅ¡ltima validaÃƒÂ§ÃƒÂ£o manual registrada nesta fase:
+Última validação manual registrada nesta fase:
 
 - Backend: `127.0.0.1:8000`
 - Frontend: `127.0.0.1:5173`
@@ -156,50 +196,43 @@ O seed ÃƒÂ© idempotente. A segunda execuÃƒÂ§ÃƒÂ£o nÃƒÂ£o deve du
 - Cards: OK
 - Fontes totais: 83
 - Fontes ativas: 82
-- Editais ativos antes da execuÃƒÂ§ÃƒÂ£o geral: 1.418
+- Editais ativos antes da execução geral: 1.418
 - Tabela de fontes: 83 fontes carregadas
-- HistÃƒÂ³rico: 50 runs recentes carregados
-- ExecuÃƒÂ§ÃƒÂ£o de fonte especÃƒÂ­fica `#78`: OK
-- ExecuÃƒÂ§ÃƒÂ£o geral: `sources_checked=82`, `items_found=5674`, `new_items=3336`, `failed_sources=4`
+- Histórico: 50 runs recentes carregados
+- Execução de fonte específica `#78`: OK
+- Execução geral: `sources_checked=82`, `items_found=5674`, `new_items=3336`, `failed_sources=4`
 - As 4 falhas foram falhas reais de fontes externas, e o runner continuou corretamente.
 
-## Homologacao PostgreSQL
+## Homologação PostgreSQL
 
-Para homologacao, use PostgreSQL via `docker-compose.prod.yml`; nao use SQLite. O arquivo `.env.prod.example` define placeholders seguros e deve ser copiado para `.env` antes da subida.
-
-Sequencia recomendada:
-
-```powershell
-cd "C:\Users\Altair\Documents\Working\Development\Monitor de Editais"
-copy .env.prod.example .env
-notepad .env
-docker compose -f docker-compose.prod.yml config
-docker compose -f docker-compose.prod.yml build
-docker compose -f docker-compose.prod.yml up -d db
-docker compose -f docker-compose.prod.yml up -d backend frontend
-```
-
-O backend aplica migrations no startup. Use `/health` para processo vivo e `/ready` para confirmar banco acessivel.
-
-Crie o admin com:
+Homologação compartilhada e produção usam PostgreSQL; SQLite fica restrito a
+desenvolvimento e testes locais isolados. Prepare um `.env.prod` fora do Git a
+partir de `.env.prod.example` e use um project name conhecido:
 
 ```powershell
-docker compose -f docker-compose.prod.yml exec backend python scripts/create_admin.py --name "Administrador" --email "admin@example.com"
+$ProjectName = "monitor-editais-staging"
+docker compose --project-name $ProjectName --env-file .env.prod -f docker-compose.prod.yml config --quiet
+docker compose --project-name $ProjectName --env-file .env.prod -f docker-compose.prod.yml build
+docker compose --project-name $ProjectName --env-file .env.prod -f docker-compose.prod.yml up -d --wait
+docker compose --project-name $ProjectName --env-file .env.prod -f docker-compose.prod.yml ps
+docker compose --project-name $ProjectName --env-file .env.prod -f docker-compose.prod.yml logs --tail=100 migrate backend frontend
 ```
 
-Execute smoke test com credenciais via variaveis:
+As migrations **não** são aplicadas pelo startup do backend. O serviço one-shot
+`migrate` executa `alembic upgrade head` e deve terminar com código zero antes
+de o backend iniciar. Use `/health` para o processo e `/ready` para confirmar a
+conexão com o banco.
+
+Crie o administrador sem expor a senha:
 
 ```powershell
-$env:SMOKE_BASE_URL = "http://localhost/api"
-$env:SMOKE_ADMIN_EMAIL = "admin@example.com"
-$env:SMOKE_ADMIN_PASSWORD = Read-Host "Senha admin"
-docker compose -f docker-compose.prod.yml exec -e SMOKE_BASE_URL=$env:SMOKE_BASE_URL -e SMOKE_ADMIN_EMAIL=$env:SMOKE_ADMIN_EMAIL -e SMOKE_ADMIN_PASSWORD=$env:SMOKE_ADMIN_PASSWORD backend python scripts/smoke_test.py
-Remove-Item Env:\SMOKE_BASE_URL
-Remove-Item Env:\SMOKE_ADMIN_EMAIL
-Remove-Item Env:\SMOKE_ADMIN_PASSWORD
+docker compose --project-name $ProjectName --env-file .env.prod -f docker-compose.prod.yml exec backend python scripts/create_admin.py --name "Administrador" --email "admin@example.com"
 ```
 
-Nao registre senhas, tokens, `SECRET_KEY`, credenciais SMTP ou `DATABASE_URL` com senha em logs ou tickets. Para diagnostico, registre apenas status HTTP, contadores e mensagens operacionais sem segredo.
+Execute o smoke com credenciais fornecidas pelo ambiente ou por prompt, nunca
+versionadas. Não registre senhas, tokens, `SECRET_KEY`, credenciais SMTP ou
+`DATABASE_URL` com senha em logs ou tickets. Para diagnóstico, registre apenas
+status HTTP, contadores e mensagens operacionais sem segredo.
 
 ## Validacao controlada do scheduler
 
@@ -219,6 +252,17 @@ Regras operacionais:
 - confirme nos logs `Crawler scheduler job registered`, `Crawler scheduler started`, `Scheduled crawler started`, `Scheduled crawler completed` ou `Scheduled crawler failed`;
 - em caso de comportamento inesperado, volte `CRAWLER_SCHEDULER_ENABLED=false` e recrie o backend;
 - o job usa `max_instances=1` e `coalesce=True` para evitar sobreposicao dentro do mesmo processo.
+
+## Auditoria nacional amostrada
+
+A auditoria nacional é pequena e controlada: selecione ao menos uma instituição
+por região, varie os tipos de spider e inclua fontes `verified` e `partial`.
+Use concorrência baixa, timeout, User-Agent identificável e respeito a
+`robots.txt`. Não autentique, não contorne bloqueios e não ative fontes.
+
+Registre amostra, horário, parâmetros, respostas e limitações. Um resultado
+amostral não demonstra cobertura operacional nacional e não autoriza o crawler
+geral nem a habilitação permanente do scheduler.
 
 ## Operacao da homologacao remota
 

@@ -7,6 +7,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from app.api.routers import (
     admin_crawler,
+    admin_coverage,
     admin_institutions,
     admin_match,
     admin_sources,
@@ -80,3 +81,4 @@ app.include_router(alerts.router, prefix="/alerts", tags=["alerts"])
 app.include_router(notifications.router, prefix="/notifications", tags=["notifications"])
 app.include_router(admin_match.router, prefix="/admin", tags=["admin-match"])
 app.include_router(admin_crawler.router, prefix="/admin", tags=["admin-crawler"])
+app.include_router(admin_coverage.router, prefix="/admin", tags=["admin-coverage"])

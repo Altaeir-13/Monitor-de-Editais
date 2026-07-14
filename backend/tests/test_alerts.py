@@ -7,9 +7,30 @@ backend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if backend_path not in sys.path:
     sys.path.insert(0, backend_path)
 
+from pathlib import Path
+import tempfile
+from uuid import uuid4
+
+test_db_path = (
+    Path(tempfile.gettempdir())
+    / f"monitor_editais_isolated_{uuid4().hex}.sqlite3"
+)
+os.environ.update(
+    {
+        "ENVIRONMENT": "test",
+        "DATABASE_URL": f"sqlite:///{test_db_path.as_posix()}",
+        "SECRET_KEY": "isolated-legacy-test-secret-key-123456789",
+        "ALGORITHM": "HS256",
+        "ACCESS_TOKEN_EXPIRE_MINUTES": "30",
+        "CRAWLER_SCHEDULER_ENABLED": "false",
+    }
+)
 from fastapi.testclient import TestClient
 from main import app
-from app.db.session import SessionLocal
+from app.db.base import Base
+from app.db.session import SessionLocal, engine
+
+Base.metadata.create_all(bind=engine)
 from app.models.user import User
 from app.models.institution import Institution
 from app.models.monitored_source import MonitoredSource
@@ -390,5 +411,7 @@ finally:
 
     db.commit()
     db.close()
+    engine.dispose()
+    test_db_path.unlink(missing_ok=True)
 
 print(json.dumps(results, indent=2))
